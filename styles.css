@@ -1,0 +1,180 @@
+/* ===== The App Atelier – Shared Styles ===== */
+
+:root{
+  --bg:#F7F7F5;
+  --text:#1E1E1E;
+  --muted:#5F6368;
+  --stroke:#E6E4E1;
+
+  --p-blue:#BFD7EA;
+  --p-lavender:#C9C2F0;
+  --p-peach:#F7C8B0;
+  --p-mint:#CBE8D8;
+  --p-sun:#F4E4A6;
+
+  --accent:#3C5A99;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(0,0,0,.06);
+  --shadow-soft:0 6px 18px rgba(0,0,0,.04);
+  --maxw:1160px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+  line-height:1.55;
+  letter-spacing:.2px;
+}
+
+/* ---- Global Layout ---- */
+.container{max-width:var(--maxw); margin-inline:auto; padding: clamp(16px, 2vw, 28px);}
+.header{
+  position:sticky; top:0; z-index:20;
+  backdrop-filter: blur(12px);
+  background: color-mix(in oklab, var(--bg) 85%, white 15%);
+  border-bottom:1px solid var(--stroke);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px;
+}
+.brand{
+  display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;
+}
+.brand-logo{
+  width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
+  background: linear-gradient(135deg, var(--p-lavender), var(--p-mint));
+  border:1px solid color-mix(in oklab, var(--p-lavender) 60%, black 6%);
+  box-shadow: var(--shadow-soft);
+  font-weight:700;
+}
+.brand-name{font-weight:700; letter-spacing:.3px}
+
+.nav a{
+  text-decoration:none; color:var(--text); opacity:.85; padding:10px 12px; border-radius:10px;
+}
+.nav a:hover{background:color-mix(in oklab, var(--bg) 80%, white 20%); opacity:1}
+.nav a.active{background:linear-gradient(135deg, var(--p-blue), var(--p-peach)); color:#111; font-weight:700}
+
+/* ---- Hero ---- */
+.hero{
+  padding: clamp(40px, 8vw, 110px) 0;
+  background:
+    radial-gradient(800px 400px at 10% 10%, color-mix(in oklab, var(--p-blue) 22%, transparent), transparent),
+    radial-gradient(800px 400px at 90% 0%, color-mix(in oklab, var(--p-peach) 20%, transparent), transparent),
+    radial-gradient(600px 300px at 50% 100%, color-mix(in oklab, var(--p-lavender) 16%, transparent), transparent);
+  border-bottom:1px solid var(--stroke);
+}
+.kicker{color:var(--muted); text-transform:uppercase; letter-spacing:.18em; font-size:.85rem}
+h1{
+  margin:.4em 0 .2em; font-size: clamp(2rem, 5.2vw, 4.2rem);
+  line-height:1.06; letter-spacing:.2px;
+}
+.subtitle{
+  max-width: 58ch; font-size: clamp(1.02rem, 1.2vw, 1.2rem);
+  color:var(--muted);
+}
+.cta-row{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+.button{
+  appearance:none; border:1px solid var(--stroke); background:white; color:#111;
+  padding:12px 16px; border-radius:12px; font-weight:600; text-decoration:none;
+  box-shadow: var(--shadow-soft);
+}
+.button.primary{
+  background: linear-gradient(135deg, var(--p-mint), var(--p-lavender));
+  border-color: transparent;
+}
+.button:hover{transform: translateY(-1px); box-shadow: var(--shadow)}
+
+/* ---- Gallery ---- */
+.gallery{
+  padding: clamp(32px, 5vw, 72px) 0;
+}
+.gallery-head{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:20px; margin-bottom:20px;
+}
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(14px, 1.4vw, 22px);
+}
+.frame{
+  grid-column: span 4; /* default 3 per row on desktop */
+  background: white;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+}
+@media (max-width: 960px){ .frame{grid-column: span 6} }  /* 2 per row */
+@media (max-width: 620px){ .frame{grid-column: span 12} } /* 1 per row */
+
+.canvas{
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--p-blue), var(--p-sun));
+  display:grid; place-items:center;
+  border-bottom:1px solid var(--stroke);
+  position:relative; overflow:hidden;
+}
+.canvas::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(400px 200px at 80% 20%, color-mix(in oklab, var(--p-peach) 40%, transparent), transparent),
+    radial-gradient(300px 240px at 15% 80%, color-mix(in oklab, var(--p-lavender) 40%, transparent), transparent);
+  mix-blend-mode:multiply; opacity:.9;
+}
+.canvas-mark{
+  padding:10px 14px; border-radius:999px;
+  background: rgba(255,255,255,.75);
+  border:1px solid var(--stroke);
+  box-shadow: var(--shadow-soft);
+  font-weight:700; letter-spacing:.5px;
+}
+
+.plaque{
+  padding:16px 16px 20px;
+}
+.plaque h3{ margin: 8px 0; font-size:1.08rem }
+.meta{ color:var(--muted); font-size:.95rem; margin: 0 0 10px }
+.plaque .link{
+  display:inline-flex; align-items:center; gap:8px;
+  font-weight:600; text-decoration:none; padding:10px 12px; border-radius:10px;
+  border:1px solid var(--stroke); background: color-mix(in oklab, var(--bg) 85%, white 15%);
+}
+.plaque .link:hover{ transform: translateY(-1px); box-shadow: var(--shadow-soft) }
+
+/* ---- About / Content blocks ---- */
+.section{ padding: clamp(36px, 6vw, 96px) 0; border-top:1px solid var(--stroke) }
+.columns{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(18px, 3vw, 40px);
+}
+@media (max-width: 900px){ .columns{ grid-template-columns: 1fr } }
+.prose{
+  max-width: 70ch; font-size:1.06rem; color:#2A2A2A;
+}
+.manifest{
+  font-size:1.15rem; line-height:1.6; font-weight:600;
+  background: linear-gradient(90deg, var(--p-mint), var(--p-peach));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* ---- Footer ---- */
+.footer{
+  border-top:1px solid var(--stroke);
+  padding:26px 0; font-size:.95rem; color:var(--muted);
+}
+.footer a{ color:inherit; text-decoration:none }
+.footer a:hover{ text-decoration:underline }
+
+/* ---- Utility ---- */
+.badge{
+  display:inline-block; padding:8px 12px; border-radius:999px;
+  background: color-mix(in oklab, var(--bg) 86%, white 14%);
+  border:1px solid var(--stroke); font-weight:600; font-size:.85rem; color:var(--muted);
+}
