@@ -1,154 +1,241 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <title>The App Atelier – Wo Software zur Kunst wird</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The App Atelier – Digitale Erlebnisse, kuratiert wie Kunstwerke. Software Engineering mit Seele.">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <title>The App Atelier – Wo Software zur Kunst wird</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The App Atelier – Digitale Erlebnisse, kuratiert wie Kunstwerke. Software Engineering mit Seele.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Responsive header + hamburger basics (add to your styles.css if preferred) */
+        .nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; position:relative; }
+        .nav nav { display:flex; gap:1rem; align-items:center; }
+        .nav .nav-toggle { display:none; background:transparent; border:0; padding:.5rem; cursor:pointer; }
+        .nav .nav-toggle .bar { display:block; width:22px; height:2px; background:currentColor; margin:4px 0; transition:transform .2s ease, opacity .2s ease; }
+
+        /* Gallery responsive grid */
+        .gallery-grid { display:grid; gap:1.25rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+        /* Small screens: collapse nav into hamburger */
+        @media (max-width: 800px) {
+            .nav nav { 
+                display:flex;
+                position:absolute;
+                left:0;
+                right:0;
+                top:100%;
+                background:var(--surface, #fff);
+                flex-direction:column;
+                padding:1rem;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+                transform-origin: top;
+                transform: scaleY(0);
+                transition: transform .18s ease, opacity .18s ease;
+                opacity:0;
+                z-index:50;
+            }
+            .nav nav a { padding:.5rem 0; }
+            .nav .nav-toggle { display:block; }
+
+            /* when open */
+            .nav.nav-open nav {
+                transform: scaleY(1);
+                opacity:1;
+            }
+
+            /* simple animated hamburger -> X */
+            .nav.nav-open .nav-toggle .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+            .nav.nav-open .nav-toggle .bar:nth-child(2) { opacity:0; }
+            .nav.nav-open .nav-toggle .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        }
+
+        /* Optional minor layout tweaks for very small screens */
+        @media (max-width: 420px) {
+            .brand-name { font-size: 1rem; }
+            .canvas-mark { font-size: .8rem; }
+        }
+    </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="/">
-        <div class="brand-logo">AA</div>
-        <div class="brand-name">The App Atelier</div>
-      </a>
-      <nav>
-        <a class="active" href="/">Projekte</a>
-        <a href="about.html">Über uns</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-      </nav>
-    </div>
-  </header>
+    <header class="header">
+        <div class="container nav">
+            <a class="brand" href="/">
+                <div class="brand-logo">AA</div>
+                <div class="brand-name">The App Atelier</div>
+            </a>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="kicker">Kuratiertes Software-Engineering</div>
-        <h1>Wo Software zur Kunst wird.</h1>
-        <p class="subtitle">
-          Im <strong>App Atelier</strong> erschaffen wir digitale Werke mit der Präzision von Ingenieuren und der Intuition von Künstlern.
-          Jedes Projekt – ein neues Gemälde aus Code, Design und Vision.
-        </p>
-        <div class="cta-row">
-          <a class="button primary" href="#gallery">Projekte entdecken</a>
-          <a class="button" href="about.html">Über uns</a>
+            <!-- Hamburger toggle for small screens -->
+            <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Menü umschalten">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav id="site-navigation" role="navigation">
+                <a class="active" href="/">Projekte</a>
+                <a href="about.html">Über uns</a>
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </nav>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <section id="gallery" class="gallery">
-      <div class="container">
-        <div class="gallery-head">
-          <h2>Galerie der Werke</h2>
-          <span class="badge">Ausstellung · 2025</span>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="kicker">Kuratiertes Software-Engineering</div>
+                <h1>Wo Software zur Kunst wird.</h1>
+                <p class="subtitle">
+                    Im <strong>App Atelier</strong> erschaffen wir digitale Werke mit der Präzision von Ingenieuren und der Intuition von Künstlern.
+                    Jedes Projekt – ein neues Gemälde aus Code, Design und Vision.
+                </p>
+                <div class="cta-row">
+                    <a class="button primary" href="#gallery">Projekte entdecken</a>
+                    <a class="button" href="about.html">Über uns</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <div class="gallery-head">
+                    <h2>Galerie der Werke</h2>
+                    <span class="badge">Ausstellung · 2025</span>
+                </div>
+
+                <div class="gallery-grid">
+                    <!-- Frames unchanged -->
+                    <article class="frame">
+                        <div class="canvas" style="background: linear-gradient(135deg, var(--p-blue), var(--p-lavender));">
+                            <div class="canvas-mark">No. 01</div>
+                        </div>
+                        <div class="plaque">
+                            <p class="meta">Mobile · iOS / Swift</p>
+                            <h3>Echoes of Code</h3>
+                            <p class="meta">Eine minimalistische App, die Berührung in Klanglandschaften übersetzt.</p>
+                            <a class="link" href="#">Mehr erfahren →</a>
+                        </div>
+                    </article>
+
+                    <article class="frame">
+                        <div class="canvas" style="background: linear-gradient(135deg, var(--p-peach), var(--p-sun));">
+                            <div class="canvas-mark">No. 02</div>
+                        </div>
+                        <div class="plaque">
+                            <p class="meta">Web · Next.js / TypeScript</p>
+                            <h3>Neon Patterns</h3>
+                            <p class="meta">Ein KI-gestütztes Designsystem für dynamische Markenidentitäten.</p>
+                            <a class="link" href="#">Mehr erfahren →</a>
+                        </div>
+                    </article>
+
+                    <article class="frame">
+                        <div class="canvas" style="background: linear-gradient(135deg, var(--p-mint), var(--p-blue));">
+                            <div class="canvas-mark">No. 03</div>
+                        </div>
+                        <div class="plaque">
+                            <p class="meta">Data · Python / FastAPI</p>
+                            <h3>Logic Mill</h3>
+                            <p class="meta">Ein modulare Pipeline, die Daten in klare Entscheidungen „mahlt“.</p>
+                            <a class="link" href="#">Mehr erfahren →</a>
+                        </div>
+                    </article>
+
+                    <article class="frame">
+                        <div class="canvas" style="background: linear-gradient(135deg, var(--p-lavender), var(--p-peach));">
+                            <div class="canvas-mark">No. 04</div>
+                        </div>
+                        <div class="plaque">
+                            <p class="meta">Installation · WebGL</p>
+                            <h3>Light Study</h3>
+                            <p class="meta">Interaktive Licht-Skulptur im Browser – Physik trifft Poesie.</p>
+                            <a class="link" href="#">Mehr erfahren →</a>
+                        </div>
+                    </article>
+
+                    <article class="frame">
+                        <div class="canvas" style="background: linear-gradient(135deg, var(--p-sun), var(--p-mint));">
+                            <div class="canvas-mark">No. 05</div>
+                        </div>
+                        <div class="plaque">
+                            <p class="meta">Backend · Go / Postgres</p>
+                            <h3>Distilled</h3>
+                            <p class="meta">Ein schnelles Event-Streaming-System, auf das man sich verlassen kann.</p>
+                            <a class="link" href="#">Mehr erfahren →</a>
+                        </div>
+                    </article>
+
+                    <article class="frame">
+                        <div class="canvas" style="background: linear-gradient(135deg, var(--p-blue), var(--p-peach));">
+                            <div class="canvas-mark">No. 06</div>
+                        </div>
+                        <div class="plaque">
+                            <p class="meta">AI · PyTorch</p>
+                            <h3>Form & Function</h3>
+                            <p class="meta">Generative Modelle, die Interface-Kompositionen vorschlagen.</p>
+                            <a class="link" href="#">Mehr erfahren →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container columns">
+                <div class="prose">
+                    <h2>Kuratorische Notiz</h2>
+                    <p>Jedes Werk im App Atelier folgt einer strengen Ingenieurslinie – Skalierbarkeit, Robustheit, Tests – 
+                         und wird zugleich mit einer sensiblen visuellen Sprache inszeniert. Diese Spannung ist unsere Signatur.</p>
+                    <p>Wir verbinden Architektur-Disziplin (DDD, Clean Code, Observability) mit ästhetischer Führung 
+                         (Typografie, Rhythmus, Materialität). Das Ergebnis: Shippable Art.</p>
+                </div>
+                <div>
+                    <p class="manifest">„In der Welt des Codes ist jede Zeile ein Pinselstrich.“</p>
+                    <a class="button" href="about.html">Über uns lesen</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            © 2025 The App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
         </div>
+    </footer>
 
-        <div class="gallery-grid">
-          <!-- Frame 1 -->
-          <article class="frame">
-            <div class="canvas" style="background: linear-gradient(135deg, var(--p-blue), var(--p-lavender));">
-              <div class="canvas-mark">No. 01</div>
-            </div>
-            <div class="plaque">
-              <p class="meta">Mobile · iOS / Swift</p>
-              <h3>Echoes of Code</h3>
-              <p class="meta">Eine minimalistische App, die Berührung in Klanglandschaften übersetzt.</p>
-              <a class="link" href="#">Mehr erfahren →</a>
-            </div>
-          </article>
+    <script>
+        // Small, dependency-free toggle for the hamburger menu
+        (function () {
+            const container = document.querySelector('.container.nav');
+            const toggle = container && container.querySelector('.nav-toggle');
+            const nav = container && container.querySelector('nav');
 
-          <!-- Frame 2 -->
-          <article class="frame">
-            <div class="canvas" style="background: linear-gradient(135deg, var(--p-peach), var(--p-sun));">
-              <div class="canvas-mark">No. 02</div>
-            </div>
-            <div class="plaque">
-              <p class="meta">Web · Next.js / TypeScript</p>
-              <h3>Neon Patterns</h3>
-              <p class="meta">Ein KI-gestütztes Designsystem für dynamische Markenidentitäten.</p>
-              <a class="link" href="#">Mehr erfahren →</a>
-            </div>
-          </article>
+            if (!toggle || !nav) return;
 
-          <!-- Frame 3 -->
-          <article class="frame">
-            <div class="canvas" style="background: linear-gradient(135deg, var(--p-mint), var(--p-blue));">
-              <div class="canvas-mark">No. 03</div>
-            </div>
-            <div class="plaque">
-              <p class="meta">Data · Python / FastAPI</p>
-              <h3>Logic Mill</h3>
-              <p class="meta">Ein modulare Pipeline, die Daten in klare Entscheidungen „mahlt“.</p>
-              <a class="link" href="#">Mehr erfahren →</a>
-            </div>
-          </article>
+            function setExpanded(isOpen) {
+                toggle.setAttribute('aria-expanded', String(!!isOpen));
+                container.classList.toggle('nav-open', !!isOpen);
+            }
 
-          <!-- Frame 4 -->
-          <article class="frame">
-            <div class="canvas" style="background: linear-gradient(135deg, var(--p-lavender), var(--p-peach));">
-              <div class="canvas-mark">No. 04</div>
-            </div>
-            <div class="plaque">
-              <p class="meta">Installation · WebGL</p>
-              <h3>Light Study</h3>
-              <p class="meta">Interaktive Licht-Skulptur im Browser – Physik trifft Poesie.</p>
-              <a class="link" href="#">Mehr erfahren →</a>
-            </div>
-          </article>
+            toggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                setExpanded(!container.classList.contains('nav-open'));
+            });
 
-          <!-- Frame 5 -->
-          <article class="frame">
-            <div class="canvas" style="background: linear-gradient(135deg, var(--p-sun), var(--p-mint));">
-              <div class="canvas-mark">No. 05</div>
-            </div>
-            <div class="plaque">
-              <p class="meta">Backend · Go / Postgres</p>
-              <h3>Distilled</h3>
-              <p class="meta">Ein schnelles Event-Streaming-System, auf das man sich verlassen kann.</p>
-              <a class="link" href="#">Mehr erfahren →</a>
-            </div>
-          </article>
+            // close when clicking a link or outside
+            nav.addEventListener('click', function (e) {
+                if (e.target.tagName === 'A') setExpanded(false);
+            });
+            document.addEventListener('click', function (e) {
+                if (!container.contains(e.target)) setExpanded(false);
+            });
 
-          <!-- Frame 6 -->
-          <article class="frame">
-            <div class="canvas" style="background: linear-gradient(135deg, var(--p-blue), var(--p-peach));">
-              <div class="canvas-mark">No. 06</div>
-            </div>
-            <div class="plaque">
-              <p class="meta">AI · PyTorch</p>
-              <h3>Form & Function</h3>
-              <p class="meta">Generative Modelle, die Interface-Kompositionen vorschlagen.</p>
-              <a class="link" href="#">Mehr erfahren →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container columns">
-        <div class="prose">
-          <h2>Kuratorische Notiz</h2>
-          <p>Jedes Werk im App Atelier folgt einer strengen Ingenieurslinie – Skalierbarkeit, Robustheit, Tests – 
-             und wird zugleich mit einer sensiblen visuellen Sprache inszeniert. Diese Spannung ist unsere Signatur.</p>
-          <p>Wir verbinden Architektur-Disziplin (DDD, Clean Code, Observability) mit ästhetischer Führung 
-             (Typografie, Rhythmus, Materialität). Das Ergebnis: Shippable Art.</p>
-        </div>
-        <div>
-          <p class="manifest">„In der Welt des Codes ist jede Zeile ein Pinselstrich.“</p>
-          <a class="button" href="about.html">Über uns lesen</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      © 2025 The App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
-    </div>
-  </footer>
+            // optional: close on ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') setExpanded(false);
+            });
+        })();
+    </script>
 </body>
 </html>
