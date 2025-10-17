@@ -7,55 +7,6 @@
     <meta name="description" content="The App Atelier – Digitale Erlebnisse, kuratiert wie Kunstwerke. Software Engineering mit Seele.">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Responsive header + hamburger basics (add to your styles.css if preferred) */
-        .nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; position:relative; }
-        .nav nav { display:flex; gap:1rem; align-items:center; }
-        .nav .nav-toggle { display:none; background:transparent; border:0; padding:.5rem; cursor:pointer; }
-        .nav .nav-toggle .bar { display:block; width:22px; height:2px; background:currentColor; margin:4px 0; transition:transform .2s ease, opacity .2s ease; }
-
-        /* Gallery responsive grid */
-        .gallery-grid { display:grid; gap:1.25rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-
-        /* Small screens: collapse nav into hamburger */
-        @media (max-width: 800px) {
-            .nav nav { 
-                display:flex;
-                position:absolute;
-                left:0;
-                right:0;
-                top:100%;
-                background:var(--surface, #fff);
-                flex-direction:column;
-                padding:1rem;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-                transform-origin: top;
-                transform: scaleY(0);
-                transition: transform .18s ease, opacity .18s ease;
-                opacity:0;
-                z-index:50;
-            }
-            .nav nav a { padding:.5rem 0; }
-            .nav .nav-toggle { display:block; }
-
-            /* when open */
-            .nav.nav-open nav {
-                transform: scaleY(1);
-                opacity:1;
-            }
-
-            /* simple animated hamburger -> X */
-            .nav.nav-open .nav-toggle .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-            .nav.nav-open .nav-toggle .bar:nth-child(2) { opacity:0; }
-            .nav.nav-open .nav-toggle .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-        }
-
-        /* Optional minor layout tweaks for very small screens */
-        @media (max-width: 420px) {
-            .brand-name { font-size: 1rem; }
-            .canvas-mark { font-size: .8rem; }
-        }
-    </style>
 </head>
 <body>
     <header class="header">
