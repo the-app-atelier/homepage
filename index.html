@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Das App Atelier – Wo Software zur Kunst wird</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="The App Atelier – Digitale Erlebnisse, kuratiert wie Kunstwerke. Software Engineering mit Seele.">
+    <meta name="description" content="Das App Atelier – Digitale Erlebnisse, kuratiert wie Kunstwerke. Software Engineering mit Seele.">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,7 +13,7 @@
         <div class="container nav">
             <a class="brand" href="/homepage">
                 <div class="brand-logo">AA</div>
-                <div class="brand-name">The App Atelier</div>
+                <div class="brand-name">Das App Atelier</div>
             </a>
 
             <!-- Hamburger toggle for small screens -->
@@ -74,10 +74,10 @@
                             <div class="canvas-mark">No. 02</div>
                         </div>
                         <div class="plaque">
-                            <p class="meta">Web · Next.js / TypeScript</p>
-                            <h3>Neon Patterns</h3>
-                            <p class="meta">Ein KI-gestütztes Designsystem für dynamische Markenidentitäten.</p>
-                            <a class="link" href="#">Mehr erfahren →</a>
+                            <p class="meta">Mobile · iOS / SwiftUI & SwiftData</p>
+                            <h3>InSight</h3>
+                            <p class="meta">Ein personalisiertes self-assessment Tool zur Selbsflexion</p>
+                            <a class="link" href="projects/insight/insight.html">Mehr erfahren →</a>
                         </div>
                     </article>
 
@@ -151,43 +151,12 @@
 
     <footer class="footer">
         <div class="container">
-            © 2025 The App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
+            © 2025 Das App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
         </div>
     </footer>
 
-    <script>
-        // Small, dependency-free toggle for the hamburger menu
-        (function () {
-            const container = document.querySelector('.container.nav');
-            const toggle = container && container.querySelector('.nav-toggle');
-            const nav = container && container.querySelector('nav');
-
-            if (!toggle || !nav) return;
-
-            function setExpanded(isOpen) {
-                toggle.setAttribute('aria-expanded', String(!!isOpen));
-                container.classList.toggle('nav-open', !!isOpen);
-            }
-
-            toggle.addEventListener('click', function (e) {
-                e.stopPropagation();
-                setExpanded(!container.classList.contains('nav-open'));
-            });
-
-            // close when clicking a link or outside
-            nav.addEventListener('click', function (e) {
-                if (e.target.tagName === 'A') setExpanded(false);
-            });
-            document.addEventListener('click', function (e) {
-                if (!container.contains(e.target)) setExpanded(false);
-            });
-
-            // optional: close on ESC
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') setExpanded(false);
-            });
-        })();
-    </script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
 
