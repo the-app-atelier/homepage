@@ -41,7 +41,7 @@
             </button>
     <nav>
       <a href="/index.html">Projekte</a>
-      <!--a href="/about.html">Über uns</a-->
+      <a href="/about.html">Über uns</a>
       <a href="/methodologie.html">Methodologie</a>
       <a href="/karierre.html">Karierre</a>
       <!--a href="/impressum.html">Impressum</a-->
@@ -88,8 +88,12 @@
           Zentrale Anforderungen wurden gemeinsam mit der HR‑Abteilung ausgearbeitet und <strong>iterativ verprobt</strong>.
         </p>
         <div class="figure">
-          <img src="assets/timex/skizzen-placeholder.jpg" alt="Skizzen & erste Flows" />
-          <figcaption>Skizzen & erste Flows (Platzhalter – echte Scans/Screens folgen)</figcaption>
+          <img src="assets/Skizzen.png" alt="Skizzen & erste Flows" />
+          <figcaption>Skizzen & erste Flows</figcaption>
+        </div>
+        <div class="figure">
+          <img src="assets/Skizze_2.png" alt="Skizzen & erste Flows" />
+          <figcaption>Skizzen & erste Flows</figcaption>
         </div>
       </div>
       <aside>
@@ -113,15 +117,12 @@
           Prozesse in <strong>Camunda</strong> beschrieben und gegen reale HR‑Abläufe gespiegelt. Die UI entstand als klare, mobile‑taugliche
           Web‑Applikation mit <strong>HTMX</strong> für reaktive Partial‑Updates und <strong>Bootstrap 5</strong>‑Komponenten; <strong>PWA</strong> liefert Offline‑Robustheit.
         </p>
-        <div class="grid-2 figure">
+        <div class="grid figure">
           <figure>
-            <img src="assets/timex/bpmn-placeholder.jpg" alt="BPMN Prozess – Tagesabschluss" />
-            <figcaption>BPMN – Tagesabschluss/After‑Hours </figcaption>
+            <img src="assets/BPMN.png" alt="BPMN Prozess – Tagesabschluss" />
+            <figcaption>BPMN – Camunda – Prozessvarianten & Eskalationen </figcaption>
           </figure>
-          <figure>
-            <img src="assets/timex/camunda-placeholder.jpg" alt="Camunda Modellierung & Prozessvarianten" />
-            <figcaption>Camunda – Prozessvarianten & Eskalationen </figcaption>
-          </figure>
+          
         </div>
       </div>
       <aside>
@@ -142,12 +143,11 @@
         <h2>3. Iteration & Abstimmung mit Stakeholdern</h2>
         <p>
           Regelmäßige Reviews mit HR/Disposition führten zu präziseren <em>Break‑Rules</em>, klaren <em>Edge‑Cases</em> (z. B. vergessener Checkout) und 
-          einem abgestuften Benachrichtigungssystem (E‑Mail/Reminder). Die <strong>After‑Hours‑Automatik</strong> wird via <strong>Celery Beat</strong> ausgeführt
-          und ergänzt manuelle Korrekturflüsse.
+          einem abgestuften Benachrichtigungssystem (E‑Mail/Reminder).
         </p>
         <div class="figure">
-          <img src="assets/timex/review-notes-placeholder.jpg" alt="Annotierte HR‑Feedbackrunden" />
-          <figcaption>Annotierte HR‑Feedbackrunden </figcaption>
+          <img src="assets/Speichern.png" alt="Annotierte HR‑Feedbackrunden" />
+          <figcaption>Speichern von Personalanforderungen zwecks der besseren Planung für das Saisongeschäft</figcaption>
         </div>
       </div>
       <aside>
@@ -170,14 +170,11 @@
           <strong>Architektur:</strong> <em>Django</em> + <em>DRF</em> als API‑Backbone, <em>PostgreSQL</em> als transaktionale Basis, <em>Celery</em> für Jobs (u. a. Tagesabschluss),
           <em>HTMX</em> für reaktive Views ohne Vollreload, <em>PWA</em> (Service Worker, Manifest) für mobiles Arbeiten.
         </p>
-        <div class="grid-2 figure">
+        <div class="grid figure">
+          
           <figure>
-            <img src="assets/timex/arch-placeholder.jpg" alt="Architekturübersicht – Django/DRF, Celery, PostgreSQL, HTMX/PWA" />
-            <figcaption>Architektur – Backend/Frontend/Jobs </figcaption>
-          </figure>
-          <figure>
-            <img src="assets/timex/dashboard-placeholder.jpg" alt="Rollen‑Dashboard & Statusmonitoring" />
-            <figcaption>Rollen‑Dashboard & Statusmonitoring </figcaption>
+            <img src="assets/rollenbasiertes_dashboard.png" alt="Rollen‑Dashboard & Statusmonitoring" />
+            <figcaption>Rollen‑Dashboard, RBAC-Account-Anlegen und Statusmonitoring </figcaption>
           </figure>
         </div>
         <p>
