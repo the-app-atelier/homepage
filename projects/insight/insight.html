@@ -1,238 +1,306 @@
 <!doctype html>
 <html lang="de">
+
 <head>
   <meta charset="utf-8" />
   <title>InSight – Das App Atelier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="InSight – Self-Assessment App: Case Study im App Atelier in fünf Phasen: Motivation, Konzeption, Iteration, Prototyp, Ausblick. iOS, SwiftUI, SwiftData, MVVM." />
+  <meta name="description"
+    content="InSight – Self-Assessment App: Case Study im App Atelier in fünf Phasen: Motivation, Konzeption, Iteration, Prototyp, Ausblick. iOS, SwiftUI, SwiftData, MVVM." />
   <link rel="stylesheet" href="../../styles.css" />
   <!-- Projektspezifische Pastell-Variante (kühl & klar) -->
   <style>
-    :root{
-      --p-blue:#BFD7EA;    /* Calm Blue */
-      --p-mint:#CBE8D8;    /* Mint */
-      --p-lavender:#C9C2F0;/* Lavender */
-      --p-peach:#F7C8B0;   /* Warm Accent */
+    :root {
+      --p-blue: #BFD7EA;
+      /* Calm Blue */
+      --p-mint: #CBE8D8;
+      /* Mint */
+      --p-lavender: #C9C2F0;
+      /* Lavender */
+      --p-peach: #F7C8B0;
+      /* Warm Accent */
     }
-    .figure{margin:14px 0 22px}
-    .figure img{width:100%; height:auto; border-radius:12px; border:1px solid var(--stroke); box-shadow: var(--shadow-soft)}
-    .figure figcaption{font-size:.93rem; color: var(--muted); margin-top:8px}
-    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-    @media (max-width: 900px){ .grid-2{grid-template-columns:1fr} }
-    .pill{display:inline-block; padding:6px 10px; border:1px solid var(--stroke); border-radius:999px; background:#fff; margin-right:6px; font-size:.9rem}
-    .meta-list{list-style:none; padding:0; margin:8px 0 0}
-    .meta-list li{color:var(--muted)}
-    code{background: #fff; padding:1px 6px; border:1px solid var(--stroke); border-radius:8px}
+
+    .figure {
+      margin: 14px 0 22px
+    }
+
+    .figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow-soft)
+    }
+
+    .figure figcaption {
+      font-size: .93rem;
+      color: var(--muted);
+      margin-top: 8px
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      background: #fff;
+      margin-right: 6px;
+      font-size: .9rem
+    }
+
+    .meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0
+    }
+
+    .meta-list li {
+      color: var(--muted)
+    }
+
+    code {
+      background: #fff;
+      padding: 1px 6px;
+      border: 1px solid var(--stroke);
+      border-radius: 8px
+    }
   </style>
 </head>
+
 <body>
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="/homepage">
-      <div class="brand-logo">AA</div>
-      <div class="brand-name">Das App Atelier</div>
-    </a>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="/homepage">
+        <div class="brand-logo">AA</div>
+        <div class="brand-name">Das App Atelier</div>
+      </a>
 
-    <!-- Hamburger toggle for small screens -->
-    <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Menü umschalten">
+      <!-- Hamburger toggle for small screens -->
+      <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Menü umschalten">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
-    </button>
-    <nav>
-      <a href="../../index.html">Projekte</a>
-      <a href="../../about.html">Über uns</a>
-      <a href="../../impressum.html">Impressum</a>
-      <a href="../../datenschutz.html">Datenschutz</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- Header -->
-  <section class="hero" style="padding-block: 84px;">
-    <div class="container">
-      <div class="kicker">Projekt · iOS · SwiftUI · SwiftData</div>
-      <h1>InSight</h1>
-      <p class="subtitle">
-        Eine Self‑Assessment‑App für strukturierte Selbsteinschätzungen mit persistenter Speicherung,
-        automatischer Auswertung und Export. Moderne iOS‑Paradigmen (MVVM, SwiftUI, SwiftData) und
-        klare, barrierearme UI nach den Human Interface Guidelines. [HIG]
-      </p>
-      <p class="meta" style="margin-top:10px">
-        Tech Stack: SwiftUI · SwiftData · MVVM · NavigationStack · JSON‑Konfiguration · Core Animation
-      </p>
-      <div class="cta-row">
-        <a class="button primary" href="https://github.com/iosif-gogolos/InSight">GitHub‑Repository</a>
-        <a class="button" href="#phase-1">Zur Case Study</a>
-      </div>
+      </button>
+      <nav>
+        <a href="../../index.html">Projekte</a>
+        <a href="../../about.html">Über uns</a>
+        <a href="../../impressum.html">Impressum</a>
+        <a href="../../datenschutz.html">Datenschutz</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- 1. Hintergrund & Motivation -->
-  <section id="phase-1" class="section">
-    <div class="container columns">
-      <div class="prose">
-        <h2>1. Hintergrund & Motivation</h2>
-        <p>
-          Ziel des Projekts: eine <strong>native iOS‑App</strong> zur Durchführung <em>strukturierter Selbsteinschätzungen</em> mit
-          persistenter Speicherung, automatischer Kategorisierung und späterem Export/Sharing. Die Entwicklung folgt
-          einem iterativen, nutzerzentrierten Ansatz – von der <em>User Journey</em> über Wireframes/Prototyping in Figma bis
-          zur Implementierung in Xcode. [1]
+  <main>
+    <!-- Header -->
+    <section class="hero" style="padding-block: 84px;">
+      <div class="container">
+        <div class="kicker">Projekt · iOS · SwiftUI · SwiftData</div>
+        <h1>InSight</h1>
+        <p class="subtitle">
+          Eine Self‑Assessment‑App für strukturierte Selbsteinschätzungen mit persistenter Speicherung,
+          automatischer Auswertung und Export. Moderne iOS‑Paradigmen (MVVM, SwiftUI, SwiftData) und
+          klare, barrierearme UI nach den Human Interface Guidelines. [HIG]
         </p>
-        <p>
-          Die Architektur fußt auf <strong>MVVM</strong> für klare Trennung von Präsentation und Geschäftslogik sowie auf den
-          <strong>Human Interface Guidelines</strong> für konsistente Interaktion und Ästhetik. Persistenz wird mit <strong>SwiftData</strong>
-          umgesetzt. [HIG][4]
+        <p class="meta" style="margin-top:10px">
+          Tech Stack: SwiftUI · SwiftData · MVVM · NavigationStack · JSON‑Konfiguration · Core Animation
         </p>
-        <div class="figure">
-          <img src="assets/user_journey.png" alt="InSight – User Journey Diagramm" />
-          <figcaption>User Journey</figcaption>
+        <div class="cta-row">
+          <a class="button primary" href="https://github.com/iosif-gogolos/InSight">GitHub‑Repository</a>
+          <a class="button" href="#phase-1">Zur Case Study</a>
         </div>
       </div>
-      <aside>
-        <div class="badge">Phase 01</div>
-        <p class="meta">Ziele: Assessment · Auswertung · Persistenz · Export</p>
-        <ul class="meta-list">
-          <li>Frameworks: SwiftUI, SwiftData</li>
-          <li>Muster: MVVM</li>
-          <li>Design: HIG, UCD</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+    </section>
 
-  <!-- 2. Konzeption & Design -->
-  <section id="phase-2" class="section" style="background:color-mix(in oklab, var(--p-lavender) 10%, white 90%);">
-    <div class="container columns">
-      <div class="prose">
-        <h2>2. Konzeption & Design</h2>
-        <p>
-          Informationsarchitektur und Navigationskonzept basieren auf <code>NavigationStack</code>. In Figma entstanden
-          Wireframes und ein klickbarer High‑Fidelity‑Prototyp. Das UI setzt auf klares, beruhigendes Farbschema
-          (Primär: Blau/Türkis), deutliche Hierarchie und konsistente Komponenten. [2]
-        </p>
-        <div class="grid figure">
-          
-          <figure>
-            <img src="assets/wireframes.png" alt="High-Fidelity Prototyp – Splash, Likert‑Skala, Ergebnisliste" />
-            <figcaption>High‑Fidelity Design</figcaption>
-          </figure>
+    <!-- 1. Hintergrund & Motivation -->
+    <section id="phase-1" class="section">
+      <div class="container columns">
+        <div class="prose">
+          <h2>1. Hintergrund & Motivation</h2>
+          <p>
+            Ziel des Projekts: eine <strong>native iOS‑App</strong> zur Durchführung <em>strukturierter
+              Selbsteinschätzungen</em> mit
+            persistenter Speicherung, automatischer Kategorisierung und späterem Export/Sharing. Die Entwicklung folgt
+            einem iterativen, nutzerzentrierten Ansatz – von der <em>User Journey</em> über Wireframes/Prototyping in
+            Figma bis
+            zur Implementierung in Xcode. [1]
+          </p>
+          <p>
+            Die Architektur fußt auf <strong>MVVM</strong> für klare Trennung von Präsentation und Geschäftslogik sowie
+            auf den
+            <strong>Human Interface Guidelines</strong> für konsistente Interaktion und Ästhetik. Persistenz wird mit
+            <strong>SwiftData</strong>
+            umgesetzt. [HIG][4]
+          </p>
+          <div class="figure">
+            <img src="assets/user_journey.png" alt="InSight – User Journey Diagramm" />
+            <figcaption>User Journey</figcaption>
+          </div>
         </div>
-        <p>
-          <span class="pill">Typografie: iOS‑System</span>
-          <span class="pill">Komponenten: Buttons, Cards, Progress</span>
-          <span class="pill">A11y: Dynamic Type, Kontraste</span>
-        </p>
+        <aside>
+          <div class="badge">Phase 01</div>
+          <p class="meta">Ziele: Assessment · Auswertung · Persistenz · Export</p>
+          <ul class="meta-list">
+            <li>Frameworks: SwiftUI, SwiftData</li>
+            <li>Muster: MVVM</li>
+            <li>Design: HIG, UCD</li>
+          </ul>
+        </aside>
       </div>
-      <aside>
-        <div class="badge">Phase 02</div>
-        <p class="meta">IA · Wireframes · Hi‑Fi Prototyp</p>
-        <a class="button" href="https://www.figma.com/proto/GOPSsqF8v59vL4hJRWKvi8/InSight?page-id=0%3A1&node-id=3-79&viewport=-945%2C60%2C0.4&t=dFYqSrZ5Al2zlK3h-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=3%3A79&show-proto-sidebar=1" target="_blank" aria-disabled="true">Figma‑Prototyp öffnen</a>
-      </aside>
-    </div>
-  </section>
+    </section>
 
-  <!-- 3. Iteration & Abstimmung -->
-  <section id="phase-3" class="section">
-    <div class="container columns">
-      <div class="prose">
-        <h2>3. Iteration & Abstimmung mit Stakeholdern</h2>
-        <p>
-          In wiederholten Reviews wurden Navigationskanten geglättet (z. B. Rückkehr nach Speichern), Validierungen
-          vor Navigation ergänzt und die Performance bei größeren Datensätzen verbessert. Ein Callback‑Mechanismus
-          löste die Vollbild‑Präsentationsprobleme nach dem Speichern. [2.6.1]
-        </p>
-        <div class="figure">
-          <img src="assets/callback.png" alt="Annotierte Screens aus Review‑Zyklen" />
-          <figcaption>Implementation eines Callback-Mechanismus über Closure-Parameter</figcaption>
+    <!-- 2. Konzeption & Design -->
+    <section id="phase-2" class="section" style="background:color-mix(in oklab, var(--p-lavender) 10%, white 90%);">
+      <div class="container columns">
+        <div class="prose">
+          <h2>2. Konzeption & Design</h2>
+          <p>
+            Informationsarchitektur und Navigationskonzept basieren auf <code>NavigationStack</code>. In Figma
+            entstanden
+            Wireframes und ein klickbarer High‑Fidelity‑Prototyp. Das UI setzt auf klares, beruhigendes Farbschema
+            (Primär: Blau/Türkis), deutliche Hierarchie und konsistente Komponenten. [2]
+          </p>
+          <div class="grid figure">
+
+            <figure>
+              <img src="assets/wireframes.png" alt="High-Fidelity Prototyp – Splash, Likert‑Skala, Ergebnisliste" />
+              <figcaption>High‑Fidelity Design</figcaption>
+            </figure>
+          </div>
+          <p>
+            <span class="pill">Typografie: iOS‑System</span>
+            <span class="pill">Komponenten: Buttons, Cards, Progress</span>
+            <span class="pill">A11y: Dynamic Type, Kontraste</span>
+          </p>
         </div>
+        <aside>
+          <div class="badge">Phase 02</div>
+          <p class="meta">IA · Wireframes · Hi‑Fi Prototyp</p>
+          <a class="button"
+            href="https://www.figma.com/proto/GOPSsqF8v59vL4hJRWKvi8/InSight?page-id=0%3A1&node-id=3-79&viewport=-945%2C60%2C0.4&t=dFYqSrZ5Al2zlK3h-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=3%3A79&show-proto-sidebar=1"
+            target="_blank" aria-disabled="true">Figma‑Prototyp öffnen</a>
+        </aside>
       </div>
-      <aside>
-        <div class="badge">Phase 03</div>
-        <p class="meta">Feedback · Validation · Navigation</p>
-        <ul class="meta-list">
-          <li>Closure‑Callbacks für Flows</li>
-          <li>Vorab‑Validierung</li>
-          <li>Query‑Optimierung</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+    </section>
 
-  <!-- 4. Prototyp & Ergebnisse -->
-  <section id="phase-4" class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
-    <div class="container columns">
-      <div class="prose">
-        <h2>4. Prototyp & Ergebnisse</h2>
-        <p>
-          <strong>Persistenz:</strong> <code>SwiftData</code> über <code>.modelContainer(for: [Question.self, TestSession.self])</code>. 
-          <strong>Fragenmodell:</strong> <code>@Model Question</code> kombiniert mit <code>Codable</code> erlaubt JSON‑Import und lokale Speicherung. 
-          <strong>UI:</strong> Splash‑Animation via <code>withAnimation(.easeInOut)</code>; Fragebogen als 5‑Punkt‑Likert‑Skala mit
-          farblicher Auswahl‑Rückmeldung.
-        </p>
-        <div class="grid figure">
-          <figure>
-            <img src="assets/mobile-ansicht.png" alt="Splash Screen mit animiertem Logo" />
-            <figcaption>SplashScreen, Likert‑Skala im Fragebogen und Eingabevalidierung</figcaption>
-          </figure>
-          
+    <!-- 3. Iteration & Abstimmung -->
+    <section id="phase-3" class="section">
+      <div class="container columns">
+        <div class="prose">
+          <h2>3. Iteration & Abstimmung mit Stakeholdern</h2>
+          <p>
+            In wiederholten Reviews wurden Navigationskanten geglättet (z. B. Rückkehr nach Speichern), Validierungen
+            vor Navigation ergänzt und die Performance bei größeren Datensätzen verbessert. Ein Callback‑Mechanismus
+            löste die Vollbild‑Präsentationsprobleme nach dem Speichern. [2.6.1]
+          </p>
+          <div class="figure">
+            <img src="assets/callback.png" alt="Annotierte Screens aus Review‑Zyklen" />
+            <figcaption>Implementation eines Callback-Mechanismus über Closure-Parameter</figcaption>
+          </div>
         </div>
-        <p>
-          <strong>Evaluationslogik:</strong> Durchschnitt je Domäne, Identifikation von Stärken/Potenzialen und per‑Domain‑Map. 
-          <strong>Export:</strong> Vorbereitung eines benutzerdefinierten <code>UTType</code> (<code>exportedAs: "com.example.testResults"</code>) für 
-          spätere Sharing‑Workflows.
-        </p>
-        <div class="figure">
-          <img src="assets/persistence-test.png" alt="Annotierte Screens aus Review‑Zyklen" />
-          <figcaption>Persistente Ergebnisse (macOS‑Variante)</figcaption>
+        <aside>
+          <div class="badge">Phase 03</div>
+          <p class="meta">Feedback · Validation · Navigation</p>
+          <ul class="meta-list">
+            <li>Closure‑Callbacks für Flows</li>
+            <li>Vorab‑Validierung</li>
+            <li>Query‑Optimierung</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 4. Prototyp & Ergebnisse -->
+    <section id="phase-4" class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
+      <div class="container columns">
+        <div class="prose">
+          <h2>4. Prototyp & Ergebnisse</h2>
+          <p>
+            <strong>Persistenz:</strong> <code>SwiftData</code> über
+            <code>.modelContainer(for: [Question.self, TestSession.self])</code>.
+            <strong>Fragenmodell:</strong> <code>@Model Question</code> kombiniert mit <code>Codable</code> erlaubt
+            JSON‑Import und lokale Speicherung.
+            <strong>UI:</strong> Splash‑Animation via <code>withAnimation(.easeInOut)</code>; Fragebogen als
+            5‑Punkt‑Likert‑Skala mit
+            farblicher Auswahl‑Rückmeldung.
+          </p>
+          <div class="grid figure">
+            <figure>
+              <img src="assets/mobile-ansicht.png" alt="Splash Screen mit animiertem Logo" />
+              <figcaption>SplashScreen, Likert‑Skala im Fragebogen und Eingabevalidierung</figcaption>
+            </figure>
+
+          </div>
+          <p>
+            <strong>Evaluationslogik:</strong> Durchschnitt je Domäne, Identifikation von Stärken/Potenzialen und
+            per‑Domain‑Map.
+            <strong>Export:</strong> Vorbereitung eines benutzerdefinierten <code>UTType</code>
+            (<code>exportedAs: "com.example.testResults"</code>) für
+            spätere Sharing‑Workflows.
+          </p>
+          <div class="figure">
+            <img src="assets/persistence-test.png" alt="Annotierte Screens aus Review‑Zyklen" />
+            <figcaption>Persistente Ergebnisse (macOS‑Variante)</figcaption>
+          </div>
+          <p>
+            <a class="button primary" href="https://github.com/iosif-gogolos/InSight" target="_blank"
+              rel="noopener">Code & Releases ansehen</a>
+          </p>
         </div>
-        <p>
-          <a class="button primary" href="https://github.com/iosif-gogolos/InSight" target="_blank" rel="noopener">Code & Releases ansehen</a>
-        </p>
+        <aside>
+          <div class="badge">Phase 04</div>
+          <p class="meta">Implementation · Demo · Tests</p>
+          <ul class="meta-list">
+            <li>JSON‑Konfiguration</li>
+            <li>SwiftData Queries</li>
+            <li>Dark‑Mode kompatibel</li>
+          </ul>
+        </aside>
       </div>
-      <aside>
-        <div class="badge">Phase 04</div>
-        <p class="meta">Implementation · Demo · Tests</p>
-        <ul class="meta-list">
-          <li>JSON‑Konfiguration</li>
-          <li>SwiftData Queries</li>
-          <li>Dark‑Mode kompatibel</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+    </section>
 
-  <!-- 5. Ausblick & Weitere Schritte -->
-  <section id="phase-5" class="section">
-    <div class="container columns">
-      <div class="prose">
-        <h2>5. Ausblick & Weitere Schritte</h2>
-        <p>
-          Nächste Meilensteine: 
-          <strong>Cloud‑Sync</strong> (geräteübergreifend), <strong>erweiterte Analysen</strong> mit Trends, 
-          <strong>Template‑System</strong> für Fragebögen, und mittel‑ bis langfristig 
-          <strong>ML‑gestützte Empfehlungen</strong> für personalisierte Insights.
-        </p>
+    <!-- 5. Ausblick & Weitere Schritte -->
+    <section id="phase-5" class="section">
+      <div class="container columns">
+        <div class="prose">
+          <h2>5. Ausblick & Weitere Schritte</h2>
+          <p>
+            Nächste Meilensteine:
+            <strong>Cloud‑Sync</strong> (geräteübergreifend), <strong>erweiterte Analysen</strong> mit Trends,
+            <strong>Template‑System</strong> für Fragebögen, und mittel‑ bis langfristig
+            <strong>ML‑gestützte Empfehlungen</strong> für personalisierte Insights.
+          </p>
+        </div>
+        <aside>
+          <div class="badge">Phase 05</div>
+          <p class="meta">Roadmap · Skalierung</p>
+          <ul class="meta-list">
+            <li>Share‑Flows</li>
+            <li>Curriculum‑Fit</li>
+            <li>Telemetry/Analytics</li>
+          </ul>
+        </aside>
       </div>
-      <aside>
-        <div class="badge">Phase 05</div>
-        <p class="meta">Roadmap · Skalierung</p>
-        <ul class="meta-list">
-          <li>Share‑Flows</li>
-          <li>Curriculum‑Fit</li>
-          <li>Telemetry/Analytics</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+    </section>
 
-  <!-- JSON‑Schema (aus Anhang, gekürzt als Platzhalter) -->
-  <section class="section">
-    <div class="container prose">
-      <h2>Anhang (Auszug)</h2>
-      <p><strong>JSON‑Schema für Fragen‑Konfiguration</strong> (Placeholder – vollständige Datei im Repo):</p>
-      <pre><code>{
+    <!-- JSON‑Schema (aus Anhang, gekürzt als Platzhalter) -->
+    <section class="section">
+      <div class="container prose">
+        <h2>Anhang (Auszug)</h2>
+        <p><strong>JSON‑Schema für Fragen‑Konfiguration</strong> (Placeholder – vollständige Datei im Repo):</p>
+        <pre><code>{
   "questions": [
     { "id": 1, "text": "…", "domain": "Selbstreflexion" },
     { "id": 2, "text": "…", "domain": "Offenheit & Neugier" }
@@ -240,53 +308,56 @@
   "domains": { "Selbstreflexion": { "description": "…" } },
   "scoring": { "method": "Durchschnitt pro Domäne (1-5)" }
 }</code></pre>
-      <div class="grid figure">
-        <figure>
-          <img src="assets/SwiftData.png" alt="Projektkonfiguration in Xcode" />
-          <figcaption>Anhang 3.1: Projektkonfiguration für die Nutzung von SwiftData</figcaption>
-        </figure>
-        
+        <div class="grid figure">
+          <figure>
+            <img src="assets/SwiftData.png" alt="Projektkonfiguration in Xcode" />
+            <figcaption>Anhang 3.1: Projektkonfiguration für die Nutzung von SwiftData</figcaption>
+          </figure>
+
+        </div>
+        <div class="grid figure">
+
+          <figure>
+            <img src="assets/challenge.png" alt="Herausforderungen beim ersten Testen" />
+            <figcaption>Anhang 3.2: Herausforderungen beim ersten Testen (Platzhalter)</figcaption>
+          </figure>
+        </div>
       </div>
-      <div class="grid figure">
-        
-        <figure>
-          <img src="assets/challenge.png" alt="Herausforderungen beim ersten Testen" />
-          <figcaption>Anhang 3.2: Herausforderungen beim ersten Testen (Platzhalter)</figcaption>
-        </figure>
+    </section>
+
+    <!-- Literatur & Referenzen -->
+    <section class="section">
+      <div class="container prose">
+        <h2>Literatur & Referenzen</h2>
+        <ol>
+          <li>[1] Apple. (2024). <em>Develop in Swift Explorations. Xcode 15</em>. Apple Books.</li>
+          <li>[2] <em>Develop in Swift Fundamentals</em> & <em>Data Collections</em>. Apple Books (n. d./2024).</li>
+          <li>[3] Sillmann, T. (2022). <em>Das Swift‑Handbuch</em>. Hanser. https://doi.org/10.3139/9783446469631</li>
+          <li>[4] Apple Developer Documentation. <em>Human Interface Guidelines</em> (n. d.).</li>
+          <li>[5] Apple Developer (2024a). WWDC23: Discover Observation in SwiftUI. (Video).</li>
+          <li>[6] Apple Developer (2024b). WWDC23: Build an app with SwiftData. (Video).</li>
+          <li>[7] Apple Developer (2020/2024c). WWDC20: Data Essentials in SwiftUI. (Video).</li>
+          <li>[8] WWDC20: Data Essentials in SwiftUI | Apple—YouTube. (n. d.).</li>
+        </ol>
+        <!--p class="meta">Hinweis: An Reihenfolge/Bezeichnungen deines Projektberichts anpassen. YouTube/WWDC‑IDs optional ergänzen.</p-->
       </div>
+    </section>
+
+    <!-- Backlink -->
+    <section class="section" style="text-align:center">
+      <a class="button" href="../../index.html">← Zurück zur Galerie</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2025 Das App Atelier · <a href="../../impressum.html">Impressum</a> · <a
+        href="../../datenschutz.html">Datenschutz</a>
     </div>
-  </section>
+  </footer>
 
-  <!-- Literatur & Referenzen -->
-  <section class="section">
-    <div class="container prose">
-      <h2>Literatur & Referenzen</h2>
-      <ol>
-        <li>[1] Apple. (2024). <em>Develop in Swift Explorations. Xcode 15</em>. Apple Books.</li>
-        <li>[2] <em>Develop in Swift Fundamentals</em> & <em>Data Collections</em>. Apple Books (n. d./2024).</li>
-        <li>[3] Sillmann, T. (2022). <em>Das Swift‑Handbuch</em>. Hanser. https://doi.org/10.3139/9783446469631</li>
-        <li>[4] Apple Developer Documentation. <em>Human Interface Guidelines</em> (n. d.).</li>
-        <li>[5] Apple Developer (2024a). WWDC23: Discover Observation in SwiftUI. (Video).</li>
-        <li>[6] Apple Developer (2024b). WWDC23: Build an app with SwiftData. (Video).</li>
-        <li>[7] Apple Developer (2020/2024c). WWDC20: Data Essentials in SwiftUI. (Video).</li>
-        <li>[8] WWDC20: Data Essentials in SwiftUI | Apple—YouTube. (n. d.).</li>
-      </ol>
-      <!--p class="meta">Hinweis: An Reihenfolge/Bezeichnungen deines Projektberichts anpassen. YouTube/WWDC‑IDs optional ergänzen.</p-->
-    </div>
-  </section>
-
-  <!-- Backlink -->
-  <section class="section" style="text-align:center">
-    <a class="button" href="../../index.html">← Zurück zur Galerie</a>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    © 2025 Das App Atelier · <a href="../../impressum.html">Impressum</a> · <a href="../../datenschutz.html">Datenschutz</a>
-  </div>
-</footer>
-
-<script src="../../script.js"></script>
+  <script src="../../script.js"></script>
+  <script src="../../language_script.js"></script>
 </body>
+
 </html>

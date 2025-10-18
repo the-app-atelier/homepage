@@ -1,169 +1,239 @@
 <!doctype html>
 <html lang="de">
+
 <head>
-  <meta charset="utf-8" />
-  <title>CO2‑Tracker – Das App Atelier</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="CO2‑Tracker – Interaktive, responsive Web‑App zur Visualisierung von CO₂‑Emissionsdaten. Case Study in fünf Phasen: Motivation, Konzeption, Iteration, Prototyp, Ausblick." />
-  <link rel="stylesheet" href="../../styles.css" />
-  <!-- Projektspezifische Pastell‑Variante (erdig & frisch) -->
-  <style>
-    :root{
-      --p-mint:#CFEEDB;    /* Grün/Mint für Umweltfokus */
-      --p-sun:#F4E4A6;     /* Soft Gelb für Akzente */
-      --p-blue:#BFD7EA;    /* Daten/Seriosität */
-      --p-peach:#F7C8B0;   /* Sekundärer Akzent */
-      --p-lavender:#D7CFF7;/* Tertiär */
-    }
-    .figure{margin:14px 0 22px}
-    .figure img{width:100%; height:auto; border-radius:12px; border:1px solid var(--stroke); box-shadow: var(--shadow-soft)}
-    .figure figcaption{font-size:.93rem; color: var(--muted); margin-top:8px}
-    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-    @media (max-width: 900px){ .grid-2{grid-template-columns:1fr} }
-    .pill{display:inline-block; padding:6px 10px; border:1px solid var(--stroke); border-radius:999px; background:#fff; margin-right:6px; font-size:.9rem}
-    .meta-list{list-style:none; padding:0; margin:8px 0 0}
-    .meta-list li{color:var(--muted)}
-    code{background: #fff; padding:1px 6px; border:1px solid var(--stroke); border-radius:8px}
-  </style>
+    <meta charset="utf-8" />
+    <title>CO2‑Tracker – Das App Atelier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="CO2‑Tracker – Interaktive, responsive Web‑App zur Visualisierung von CO₂‑Emissionsdaten. Case Study in fünf Phasen: Motivation, Konzeption, Iteration, Prototyp, Ausblick." />
+    <link rel="stylesheet" href="../../styles.css" />
+    <!-- Projektspezifische Pastell‑Variante (erdig & frisch) -->
+    <style>
+        :root {
+            --p-mint: #CFEEDB;
+            /* Grün/Mint für Umweltfokus */
+            --p-sun: #F4E4A6;
+            /* Soft Gelb für Akzente */
+            --p-blue: #BFD7EA;
+            /* Daten/Seriosität */
+            --p-peach: #F7C8B0;
+            /* Sekundärer Akzent */
+            --p-lavender: #D7CFF7;
+            /* Tertiär */
+        }
+
+        .figure {
+            margin: 14px 0 22px
+        }
+
+        .figure img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-soft)
+        }
+
+        .figure figcaption {
+            font-size: .93rem;
+            color: var(--muted);
+            margin-top: 8px
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        @media (max-width: 900px) {
+            .grid-2 {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 6px 10px;
+            border: 1px solid var(--stroke);
+            border-radius: 999px;
+            background: #fff;
+            margin-right: 6px;
+            font-size: .9rem
+        }
+
+        .meta-list {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0
+        }
+
+        .meta-list li {
+            color: var(--muted)
+        }
+
+        code {
+            background: #fff;
+            padding: 1px 6px;
+            border: 1px solid var(--stroke);
+            border-radius: 8px
+        }
+    </style>
 </head>
+
 <body>
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="../../index.html">
-      <div class="brand-logo">AA</div>
-      <div class="brand-name">Das App Atelier</div>
-    </a>
-    <nav>
-      <a href="../../index.html">Projekte</a>
-      <a href="../../about.html">Über uns</a>
-      <a href="../../impressum.html">Impressum</a>
-      <a href="../../datenschutz.html">Datenschutz</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- Header -->
-  <section class="hero" style="padding-block: 84px;">
-    <div class="container">
-      <div class="kicker">Projekt · Web · Datenvisualisierung</div>
-      <h1>CO2‑Tracker</h1>
-      <p class="subtitle">
-        Eine interaktive, responsive Web‑App, die CO₂‑Emissionsdaten aus Tabellenquellen zugänglich macht –
-        mit Filterung, Diagrammen und Fokus auf Barrierefreiheit & Inklusion.
-      </p>
-      <p class="meta" style="margin-top:10px">
-        Stack: HTML · CSS (Bootstrap/Tailwind‑kompatibel) · JavaScript · XLSX‑Parser · Chart.js
-      </p>
-      <div class="cta-row">
-        <a class="button primary" href="https://github.com/iosif-gogolos/CO2-Tracker" target="_blank">GitHub‑Repository</a>
-        <a class="button" href="https://iosif-gogolos.github.io/CO2-Tracker/" target="_blank">Live‑Demo öffnen</a>
-        <a class="button" href="#phase-1">Zur Case Study</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 1. Hintergrund & Motivation -->
-  <section id="phase-1" class="section">
-    <div class="container columns">
-      <div class="prose">
-        <h2>1. Hintergrund & Motivation</h2>
-        <p>
-          Ziel ist eine öffentlich zugängliche Website, die Transparenz schafft: <em>Welche Unternehmen und Länder emittieren
-          wie viel CO₂ pro Jahr?</em> Forschung zeigt, dass verständliche Daten & klare Visualisierungen Verhalten beeinflussen
-          und die Relevanz von Klimaschutz erfahrbar machen. [M1][M2][M3][M4]
-        </p>
-        <div class="figure">
-          <img src="assets/high-fidelity-prototyp.png" alt="Ausgewähltes Logo – Environment icon by Freepik" />
-          <figcaption>High-Fidelity Prototyp<br><a href="https://www.figma.com/proto/4AGZoFTZbbJfA8YLF8N7FQ/IPWA01-01?page-id=0%3A1&node-id=2-2&viewport=395%2C677%2C0.26&t=79NxWKZmTeWINETo-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2%3A2" target="_blank">Link</a></figcaption>
+    <header class="header">
+        <div class="container nav">
+            <a class="brand" href="../../index.html">
+                <div class="brand-logo">AA</div>
+                <div class="brand-name">Das App Atelier</div>
+            </a>
+            <nav>
+                <a href="../../index.html">Projekte</a>
+                <a href="../../about.html">Über uns</a>
+                <a href="../../impressum.html">Impressum</a>
+                <a href="../../datenschutz.html">Datenschutz</a>
+            </nav>
         </div>
-      </div>
-      <aside>
-        <div class="badge">Phase 01</div>
-        <p class="meta">Ziel: Transparente CO₂‑Daten für breite Öffentlichkeit</p>
-        <ul class="meta-list">
-          <li>Fokus: Verständlichkeit, Verantwortung, Handlungsoptionen</li>
-          <li>UX: Klarheit, Erwartungskonformität, Fehlertoleranz</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+    </header>
 
-  <!-- 2. Konzeption & Design -->
-  <section id="phase-2" class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
-    <div class="container columns">
-      <div class="prose">
-        <h2>2. Konzeption & Design</h2>
-        <p>
-          Informationsarchitektur mit klarer Startseite (Intro, Filter, Tabelle, Diagramm) und separater <code>graph.html</code> für
-          Visualisierungen. Gestaltung geleitet durch Usability‑Leitlinien (Verfügbarkeit, Selbstbeschreibung, Lernbarkeit)
-          und visuelle Ästhetik als Qualitätsfaktor. Moodboard & Dribbble‑Recherche flankieren das Design. [U1][U2][U3][U4]
-        </p>
-        <div class="grid-2 figure">
-          <figure>
-            <img src="assets/moodboard.png" alt="Moodboard – visuelle Leitplanken" />
-            <figcaption>Moodboard (Auszug)</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/wireframes.png" alt="Wireframes – Landing, Tabelle, Filter" />
-            <figcaption>Wireframes – Startlayout & Navigation</figcaption>
-          </figure>
-        </div>
-        <p>
-          <span class="pill">Responsiv mit Media Queries</span>
-          <span class="pill">Barrierearm (Kontraste, Semantik)</span>
-          <span class="pill">Intl/RTL‑Überlegungen</span>
-        </p>
-      </div>
-      <aside>
-        <div class="badge">Phase 02</div>
-        <p class="meta">IA · Moodboard · Wireframes</p>
-        <ul class="meta-list">
-          <li>Start: Header · Main · Footer</li>
-          <li>Filterpanel & Datentabellen</li>
-          <li>Chart‑Ansicht separat</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+    <main>
+        <!-- Header -->
+        <section class="hero" style="padding-block: 84px;">
+            <div class="container">
+                <div class="kicker">Projekt · Web · Datenvisualisierung</div>
+                <h1>CO2‑Tracker</h1>
+                <p class="subtitle">
+                    Eine interaktive, responsive Web‑App, die CO₂‑Emissionsdaten aus Tabellenquellen zugänglich macht –
+                    mit Filterung, Diagrammen und Fokus auf Barrierefreiheit & Inklusion.
+                </p>
+                <p class="meta" style="margin-top:10px">
+                    Stack: HTML · CSS (Bootstrap/Tailwind‑kompatibel) · JavaScript · XLSX‑Parser · Chart.js
+                </p>
+                <div class="cta-row">
+                    <a class="button primary" href="https://github.com/iosif-gogolos/CO2-Tracker"
+                        target="_blank">GitHub‑Repository</a>
+                    <a class="button" href="https://iosif-gogolos.github.io/CO2-Tracker/" target="_blank">Live‑Demo
+                        öffnen</a>
+                    <a class="button" href="#phase-1">Zur Case Study</a>
+                </div>
+            </div>
+        </section>
 
-  <!-- 3. Iteration & Abstimmung -->
-  <section id="phase-3" class="section">
-    <div class="container columns">
-      <div class="prose">
-        <h2>3. Iteration & Abstimmung mit Stakeholdern</h2>
-        <p>
-          Frühprototypen (statische <code>index.html</code>) erlaubten schnelles Feedback. Haupt‑Schmerzpunkt: Tabellen‑ und
-          Grafik‑Darstellung für Desktop/Tablet/Mobile. Iterationen fokussierten auf Filternutzung, Lesbarkeit und
-          Performance – inkl. Auslagerung der Charts in <code>graph.html</code>.
-        </p>
-        <div class="figure">
-          <img src="assets/graph.png" alt="Annotierte Screens aus Review‑Zyklen" />
-          <figcaption>Ausgelagerte graph.html</figcaption>
-        </div>
-      </div>
-      <aside>
-        <div class="badge">Phase 03</div>
-        <p class="meta">Feedback · Performance · A11y</p>
-        <ul class="meta-list">
-          <li>Filter UX verfeinert</li>
-          <li>Tabellen Layout optimiert</li>
-          <li>Mobile First getestet</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+        <!-- 1. Hintergrund & Motivation -->
+        <section id="phase-1" class="section">
+            <div class="container columns">
+                <div class="prose">
+                    <h2>1. Hintergrund & Motivation</h2>
+                    <p>
+                        Ziel ist eine öffentlich zugängliche Website, die Transparenz schafft: <em>Welche Unternehmen
+                            und Länder emittieren
+                            wie viel CO₂ pro Jahr?</em> Forschung zeigt, dass verständliche Daten & klare
+                        Visualisierungen Verhalten beeinflussen
+                        und die Relevanz von Klimaschutz erfahrbar machen. [M1][M2][M3][M4]
+                    </p>
+                    <div class="figure">
+                        <img src="assets/high-fidelity-prototyp.png"
+                            alt="Ausgewähltes Logo – Environment icon by Freepik" />
+                        <figcaption>High-Fidelity Prototyp<br><a
+                                href="https://www.figma.com/proto/4AGZoFTZbbJfA8YLF8N7FQ/IPWA01-01?page-id=0%3A1&node-id=2-2&viewport=395%2C677%2C0.26&t=79NxWKZmTeWINETo-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2%3A2"
+                                target="_blank">Link</a></figcaption>
+                    </div>
+                </div>
+                <aside>
+                    <div class="badge">Phase 01</div>
+                    <p class="meta">Ziel: Transparente CO₂‑Daten für breite Öffentlichkeit</p>
+                    <ul class="meta-list">
+                        <li>Fokus: Verständlichkeit, Verantwortung, Handlungsoptionen</li>
+                        <li>UX: Klarheit, Erwartungskonformität, Fehlertoleranz</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
 
-  <!-- 4. Prototyp & Ergebnisse -->
-  <section id="phase-4" class="section" style="background:color-mix(in oklab, var(--p-blue) 12%, white 88%);">
-    <div class="container columns">
-      <div class="prose">
-        <h2>4. Prototyp & Ergebnisse</h2>
-        <p>
-          <strong>Excel → JSON:</strong> mittels <code>XLSX</code>‑Bibliothek in einer <code>async</code>‑Funktion, die <code>fetch</code> & ArrayBuffer nutzt. 
-          Anschließend Mapping auf ein sauberes Objektmodell und Rendering in der HTML‑Tabelle via <code>displayData()</code>.
-        </p>
-        <pre><code>async function fetchData(){
+        <!-- 2. Konzeption & Design -->
+        <section id="phase-2" class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
+            <div class="container columns">
+                <div class="prose">
+                    <h2>2. Konzeption & Design</h2>
+                    <p>
+                        Informationsarchitektur mit klarer Startseite (Intro, Filter, Tabelle, Diagramm) und separater
+                        <code>graph.html</code> für
+                        Visualisierungen. Gestaltung geleitet durch Usability‑Leitlinien (Verfügbarkeit,
+                        Selbstbeschreibung, Lernbarkeit)
+                        und visuelle Ästhetik als Qualitätsfaktor. Moodboard & Dribbble‑Recherche flankieren das Design.
+                        [U1][U2][U3][U4]
+                    </p>
+                    <div class="grid-2 figure">
+                        <figure>
+                            <img src="assets/moodboard.png" alt="Moodboard – visuelle Leitplanken" />
+                            <figcaption>Moodboard (Auszug)</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="assets/wireframes.png" alt="Wireframes – Landing, Tabelle, Filter" />
+                            <figcaption>Wireframes – Startlayout & Navigation</figcaption>
+                        </figure>
+                    </div>
+                    <p>
+                        <span class="pill">Responsiv mit Media Queries</span>
+                        <span class="pill">Barrierearm (Kontraste, Semantik)</span>
+                        <span class="pill">Intl/RTL‑Überlegungen</span>
+                    </p>
+                </div>
+                <aside>
+                    <div class="badge">Phase 02</div>
+                    <p class="meta">IA · Moodboard · Wireframes</p>
+                    <ul class="meta-list">
+                        <li>Start: Header · Main · Footer</li>
+                        <li>Filterpanel & Datentabellen</li>
+                        <li>Chart‑Ansicht separat</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <!-- 3. Iteration & Abstimmung -->
+        <section id="phase-3" class="section">
+            <div class="container columns">
+                <div class="prose">
+                    <h2>3. Iteration & Abstimmung mit Stakeholdern</h2>
+                    <p>
+                        Frühprototypen (statische <code>index.html</code>) erlaubten schnelles Feedback.
+                        Haupt‑Schmerzpunkt: Tabellen‑ und
+                        Grafik‑Darstellung für Desktop/Tablet/Mobile. Iterationen fokussierten auf Filternutzung,
+                        Lesbarkeit und
+                        Performance – inkl. Auslagerung der Charts in <code>graph.html</code>.
+                    </p>
+                    <div class="figure">
+                        <img src="assets/graph.png" alt="Annotierte Screens aus Review‑Zyklen" />
+                        <figcaption>Ausgelagerte graph.html</figcaption>
+                    </div>
+                </div>
+                <aside>
+                    <div class="badge">Phase 03</div>
+                    <p class="meta">Feedback · Performance · A11y</p>
+                    <ul class="meta-list">
+                        <li>Filter UX verfeinert</li>
+                        <li>Tabellen Layout optimiert</li>
+                        <li>Mobile First getestet</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <!-- 4. Prototyp & Ergebnisse -->
+        <section id="phase-4" class="section" style="background:color-mix(in oklab, var(--p-blue) 12%, white 88%);">
+            <div class="container columns">
+                <div class="prose">
+                    <h2>4. Prototyp & Ergebnisse</h2>
+                    <p>
+                        <strong>Excel → JSON:</strong> mittels <code>XLSX</code>‑Bibliothek in einer
+                        <code>async</code>‑Funktion, die <code>fetch</code> & ArrayBuffer nutzt.
+                        Anschließend Mapping auf ein sauberes Objektmodell und Rendering in der HTML‑Tabelle via
+                        <code>displayData()</code>.
+                    </p>
+                    <pre><code>async function fetchData(){
   const res = await fetch('assets/data.xlsx');
   const buf = await res.arrayBuffer();
   const wb = XLSX.read(new Uint8Array(buf), { type: 'array' });
@@ -172,65 +242,68 @@
   return rows.map(r => ({ country:r.country, company:r.company,
     date:r.date, sector:r.sector, mt:r['MtCO2 per day'] }));
 }</code></pre>
-        <p>
-          <strong>Filter:</strong> einfache <code>applyFilters()</code>‑Pipeline + <code>change</code>‑Listener. 
-          <strong>Charts:</strong> separate <code>graph.html</code> nutzt <code>Chart.js</code> für Liniendiagramme.
-        </p>
-        <div class="grid-2 figure">
-          <figure>
-            <img src="assets/gerenderte-co2-tabelle.png" alt="Gerenderte CO₂‑Tabelle" />
-            <figcaption>Abbildung 4–5: Tabelle & Filter</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/data.png" alt="Liniendiagramm in Chart.js" />
-            <figcaption>Chart.js‑Graph</figcaption>
-          </figure>
-        </div>
-        <p>
-          <a class="button primary" href="https://iosif-gogolos.github.io/CO2-Tracker/" target="_blank" >Live‑Graph ansehen</a>
-        </p>
-      </div>
-      <aside>
-        <div class="badge">Phase 04</div>
-        <p class="meta">Implementation · Demo</p>
-        <ul class="meta-list">
-          <li>Async/await Datenfluss</li>
-          <li>Separation of Concerns</li>
-          <li>Chart.js Visualisierung</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+                    <p>
+                        <strong>Filter:</strong> einfache <code>applyFilters()</code>‑Pipeline +
+                        <code>change</code>‑Listener.
+                        <strong>Charts:</strong> separate <code>graph.html</code> nutzt <code>Chart.js</code> für
+                        Liniendiagramme.
+                    </p>
+                    <div class="grid-2 figure">
+                        <figure>
+                            <img src="assets/gerenderte-co2-tabelle.png" alt="Gerenderte CO₂‑Tabelle" />
+                            <figcaption>Abbildung 4–5: Tabelle & Filter</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="assets/data.png" alt="Liniendiagramm in Chart.js" />
+                            <figcaption>Chart.js‑Graph</figcaption>
+                        </figure>
+                    </div>
+                    <p>
+                        <a class="button primary" href="https://iosif-gogolos.github.io/CO2-Tracker/"
+                            target="_blank">Live‑Graph ansehen</a>
+                    </p>
+                </div>
+                <aside>
+                    <div class="badge">Phase 04</div>
+                    <p class="meta">Implementation · Demo</p>
+                    <ul class="meta-list">
+                        <li>Async/await Datenfluss</li>
+                        <li>Separation of Concerns</li>
+                        <li>Chart.js Visualisierung</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
 
-  <!-- 5. Ausblick & Weitere Schritte -->
-  <section id="phase-5" class="section">
-    <div class="container columns">
-      <div class="prose">
-        <h2>5. Ausblick & Weitere Schritte</h2>
-        <p>
-          Nächste Schritte: 
-          <strong>Serverseitige Validierung</strong> & Caching, 
-          <strong>progressive Enhancement</strong> für No‑JS‑Fälle, 
-          <strong>internationale Lokalisierung</strong> inkl. RTL‑Sprachen, 
-          <strong>Barrierefreiheit</strong> (Tab‑Navigation, ARIA, Kontrastprüfungen), 
-          <strong>Filterpersistenz</strong> (URL‑Params), 
-          <strong>Open‑Data‑Pipelines</strong> zu Quellen wie carbonmonitor.org (ETL).
-        </p>
-      </div>
-      <aside>
-        <div class="badge">Phase 05</div>
-        <p class="meta">Roadmap · Skalierung</p>
-        <ul class="meta-list">
-          <li>CSV/XLS Automations</li>
-          <li>Download/Export</li>
-          <li>Kartenvisualisierung</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+        <!-- 5. Ausblick & Weitere Schritte -->
+        <section id="phase-5" class="section">
+            <div class="container columns">
+                <div class="prose">
+                    <h2>5. Ausblick & Weitere Schritte</h2>
+                    <p>
+                        Nächste Schritte:
+                        <strong>Serverseitige Validierung</strong> & Caching,
+                        <strong>progressive Enhancement</strong> für No‑JS‑Fälle,
+                        <strong>internationale Lokalisierung</strong> inkl. RTL‑Sprachen,
+                        <strong>Barrierefreiheit</strong> (Tab‑Navigation, ARIA, Kontrastprüfungen),
+                        <strong>Filterpersistenz</strong> (URL‑Params),
+                        <strong>Open‑Data‑Pipelines</strong> zu Quellen wie carbonmonitor.org (ETL).
+                    </p>
+                </div>
+                <aside>
+                    <div class="badge">Phase 05</div>
+                    <p class="meta">Roadmap · Skalierung</p>
+                    <ul class="meta-list">
+                        <li>CSV/XLS Automations</li>
+                        <li>Download/Export</li>
+                        <li>Kartenvisualisierung</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
 
-  <!-- Anhang & bilder -->
-   <!--
+        <!-- Anhang & bilder -->
+        <!--
   <section class="section">
     <div class="container">
       <h2>Anhang</h2>
@@ -244,41 +317,46 @@
     </div>
   </section>
 -->
-  <!-- Literatur & Referenzen -->
-  <section class="section">
-    <div class="container prose">
-      <h2>Literatur & Referenzen</h2>
-      <ol>
-        <li>[M1] Maier, J. (2024). Wirkung von CO₂‑Labels auf Verhaltensabsichten.</li>
-        <li>[M2] Koch, W. (2015). Visualisierung von Zeitreihendaten.</li>
-        <li>[M3] Koch, W., & Rohloff, T. (2015). D3.js/Highcharts für Umweltdaten.</li>
-        <li>[M4] Herring, H., et al. (2017). ClimateData.US & Wahrnehmung von Klimawandel.</li>
-        <li>[U1] Wandke, H., & Hurtienne, J. (1999). Usability‑Heuristiken für Websites.</li>
-        <li>[U2] Thielsch, M., et al. (2014). Visuelle Ästhetik & Nutzerwahrnehmung.</li>
-        <li>[U3] Neuhaus, C. (2004). Usability‑Kontext & Kompetenzgewichte.</li>
-        <li>[U4] Simon, H. (2001). Referenzmodell für Bildungs‑Websites.</li>
-        <li>[T1] Attardi, G. (2020). Media Queries im Responsive Webdesign.</li>
-        <li>[T2] Benson, E. Z. (2014). Spreadsheet‑getriebene Webanwendungen.</li>
-        <li>[T3] Abdulmukminova, E. M., et al. (2024). Async Programming in JS.</li>
-        <li>[T4] StackOverflow Diskurs (Dallimore, 2012): Excel in HTML anzeigen.</li>
-        <li>[T5] Chart.js Dokumentation (Allg.).</li>
-        <li>[A11y] Apple/MDN: A11y, Semantik, ARIA (Allg.).</li>
-      </ol>
-      <p class="meta">Hinweis: Ersetze/ergänze die Referenzen exakt nach deiner Fallstudie (inkl. Links, DOIs, Aufrufdaten).</p>
-    </div>
-  </section>
+        <!-- Literatur & Referenzen -->
+        <section class="section">
+            <div class="container prose">
+                <h2>Literatur & Referenzen</h2>
+                <ol>
+                    <li>[M1] Maier, J. (2024). Wirkung von CO₂‑Labels auf Verhaltensabsichten.</li>
+                    <li>[M2] Koch, W. (2015). Visualisierung von Zeitreihendaten.</li>
+                    <li>[M3] Koch, W., & Rohloff, T. (2015). D3.js/Highcharts für Umweltdaten.</li>
+                    <li>[M4] Herring, H., et al. (2017). ClimateData.US & Wahrnehmung von Klimawandel.</li>
+                    <li>[U1] Wandke, H., & Hurtienne, J. (1999). Usability‑Heuristiken für Websites.</li>
+                    <li>[U2] Thielsch, M., et al. (2014). Visuelle Ästhetik & Nutzerwahrnehmung.</li>
+                    <li>[U3] Neuhaus, C. (2004). Usability‑Kontext & Kompetenzgewichte.</li>
+                    <li>[U4] Simon, H. (2001). Referenzmodell für Bildungs‑Websites.</li>
+                    <li>[T1] Attardi, G. (2020). Media Queries im Responsive Webdesign.</li>
+                    <li>[T2] Benson, E. Z. (2014). Spreadsheet‑getriebene Webanwendungen.</li>
+                    <li>[T3] Abdulmukminova, E. M., et al. (2024). Async Programming in JS.</li>
+                    <li>[T4] StackOverflow Diskurs (Dallimore, 2012): Excel in HTML anzeigen.</li>
+                    <li>[T5] Chart.js Dokumentation (Allg.).</li>
+                    <li>[A11y] Apple/MDN: A11y, Semantik, ARIA (Allg.).</li>
+                </ol>
+                <p class="meta">Hinweis: Ersetze/ergänze die Referenzen exakt nach deiner Fallstudie (inkl. Links, DOIs,
+                    Aufrufdaten).</p>
+            </div>
+        </section>
 
-  <!-- Backlink -->
-  <section class="section" style="text-align:center">
-    <a class="button" href="../../index.html">← Zurück zur Galerie</a>
-  </section>
-</main>
+        <!-- Backlink -->
+        <section class="section" style="text-align:center">
+            <a class="button" href="../../index.html">← Zurück zur Galerie</a>
+        </section>
+    </main>
 
-<footer class="footer">
-  <div class="container">
-    © 2025 Das App Atelier · <a href="../../impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
-  </div>
-</footer>
-<script src="../../script.js"></script>
+    <footer class="footer">
+        <div class="container">
+            © 2025 Das App Atelier · <a href="../../impressum.html">Impressum</a> · <a
+                href="datenschutz.html">Datenschutz</a>
+        </div>
+    </footer>
+    <script src="../../script.js"></script>
+    <script src="../../language_script.js"></script>
+
 </body>
+
 </html>
