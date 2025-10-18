@@ -207,7 +207,7 @@ h1{
 /* Scroller */
 .logo-scroller {
   --logo-height: 28px;            /* globale Logohöhe */
-  --gap: 48px;                    /* Abstand zwischen Logos */
+  --gap: 85px;                    /* Abstand zwischen Logos (increased from 48px) */
   --speed: 28s;                   /* Scrollgeschwindigkeit (kleiner = schneller) */
   --mono: currentColor;           /* Ziel-Farbe der Logos (nutzt SVG currentColor) */
 
