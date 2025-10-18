@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>LumoCode – The App Atelier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="LumoCode – iOS Quiz-App zum spielerischen Einstieg in Swift. Case Study im App Atelier in fünf Phasen: Motivation, Konzeption, Iteration, Prototyp, Ausblick." />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Optional: projektspezifische Pastell-Variante -->
+  <style>
+    :root{
+      --p-blue:#BBD9FF;   /* Lumo Blau */
+      --p-peach:#FFD2B8;  /* Akzent */
+      --p-mint:#CFEEDB;   /* Sekundär */
+      --p-lavender:#D7CFF7; /* Tertiär */
+    }
+    .figure{margin: 14px 0 22px}
+    .figure img{width:100%; height:auto; border-radius:12px; border:1px solid var(--stroke); box-shadow: var(--shadow-soft)}
+    .figure figcaption{font-size:.93rem; color: var(--muted); margin-top:8px}
+    .refs{font-size:.98rem}
+    .ref{margin-bottom:10px}
+    .meta-list{list-style: none; padding:0; margin:8px 0 0}
+    .meta-list li{color:var(--muted)}
+    .pill{display:inline-block; padding:6px 10px; border:1px solid var(--stroke); border-radius:999px; background: #fff; margin-right:6px; font-size:.9rem}
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:16px}
+    @media (max-width: 900px){ .grid-2{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="/homepage/">
+      <div class="brand-logo">AA</div>
+      <div class="brand-name">The App Atelier</div>
+    </a>
+    <nav>
+      <a href="index.html">Referenzen & Projekte</a>
+      <a href="about.html">Über uns</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Header -->
+  <section class="hero" style="padding-block: 84px;">
+    <div class="container">
+      <div class="kicker">Projekt · iOS · SwiftUI</div>
+      <h1>LumoCode</h1>
+      <p class="subtitle">
+        Eine gamifizierte Quiz-App, die Jugendlichen und jungen Erwachsenen den Einstieg in <strong>Swift</strong> erleichtert –
+        inspiriert von bewährten Lernpraktiken und begleitet vom Maskottchen <em>Lumo</em>. [1][2]
+      </p>
+      <p class="meta" style="margin-top:10px">
+        Tech Stack: SwiftUI · Xcode 15/16 · MVVM · @StateObject/@ObservableObject · Local State · SF Symbols
+      </p>
+      <div class="cta-row">
+        <a class="button primary" href="https://github.com/iosif-gogolos/LumoCode" target="_blank" rel="noopener">GitHub-Repository</a>
+        <a class="button" href="#phase-1">Zur Case Study</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Hintergrund & Motivation -->
+  <section id="phase-1" class="section">
+    <div class="container columns">
+      <div class="prose">
+        <h2>1. Hintergrund & Motivation</h2>
+        <p>
+          <strong>Ziel</strong> von LumoCode ist ein niederschwelliger Einstieg in die Programmierung. Die erste Version fokussiert
+          sich bewusst auf <em>Swift</em>, um einen stabilen, gut testbaren Kern zu liefern. Das Branding und die Datenstrukturen
+          sind jedoch so gestaltet, dass weitere Sprachen (z. B. Python, C++, Java) später integriert werden können. [1]
+        </p>
+        <p>
+          Pädagogisch lehnt sich LumoCode an erfolgreiche, <em>spielbasierte Lernmodelle</em> an (Streaks, Belohnungen, klare
+          Etappen) und übersetzt diese in den Kontext des Programmierlernens. Studien belegen, dass Avatare und
+          Belohnungssysteme die Motivation und Bindung steigern können. [2][3][4]
+        </p>
+        <div class="figure">
+          <img src="assets/moodboard.png" alt="Moodboard LumoCode – freundliche Blautöne, Orange-Akzente, Fuchs-Maskottchen" />
+          <figcaption>Moodboard & Sticker Sheet</figcaption>
+        </div>
+      </div>
+      <aside>
+        <div class="badge">Phase 01</div>
+        <p class="meta">Zielgruppe 12–18, Motivation via Gamification</p>
+        <ul class="meta-list">
+          <li>Must: Swift-Syntax festigen</li>
+          <li>Should: Motivation steigern</li>
+          <li>Could: Fortschritt sichtbar machen</li>
+          <li>Won’t (v1): Daily-Streak-Boni</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 2. Konzeption & Design -->
+  <section id="phase-2" class="section" style="background:color-mix(in oklab, var(--p-lavender) 10%, white 90%);">
+    <div class="container columns">
+      <div class="prose">
+        <h2>2. Konzeption & Design</h2>
+        <p>
+          Der Prozess folgte dem <em>App Design Cycle</em> (Define → Prototype → Build). In Figma entstanden Wireframes,
+          Moodboards und High-Fidelity-Screens. Die visuelle Sprache setzt auf freundliche Farbkontraste (Blau/Orange),
+          klare Typografie und subtile Mikrointeraktionen für unmittelbares Feedback. [1]
+        </p>
+        <div class="grid-2 figure">
+          <figure>
+            <img src="assets/sketch1.png" alt="Low- und Mid-Fidelity Wireframes in Figma – Navigation, Quiz-Fluss" />
+            <figcaption>Wireframes: Navigationsfluss & Quiz-Sequenz (Platzhalter)</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/wireframes.png" alt="High-Fidelity Figma Prototyp – Start, Kategorien, Quiz" />
+            <figcaption>High-Fidelity Prototyp in Figma <a href="https://www.figma.com/proto/TAF86X4MsRLGeaXNQ60JSV/LumoCode?page-id=54%3A490&node-id=59-2302&viewport=-3685%2C538%2C0.4&t=i5GTGoarBanxjZbh-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=59%3A2302&show-proto-sidebar=1">Link</a></figcaption>
+          </figure>
+        </div>
+        <p>
+          Das Maskottchen <strong>Lumo</strong> (Fuchs) begleitet durch den Lernpfad und reagiert auf Interaktionen –
+          ein identitätsstiftendes Element, das die <em>emotionale</em> Ebene stärkt. [3]
+        </p>
+        <p>
+          <span class="pill">Farbwelt: Blau · Orange</span>
+          <span class="pill">Typografie: iOS San-Serif</span>
+          <span class="pill">Interaktion: subtil, responsiv</span>
+        </p>
+      </div>
+      <aside>
+        <div class="badge">Phase 02</div>
+        <p class="meta">Ideation, Wireframes, Visual Design</p>
+        <a class="button" href="https://www.figma.com/proto/TAF86X4MsRLGeaXNQ60JSV/LumoCode?page-id=54%3A490&node-id=59-2302&viewport=-3685%2C538%2C0.4&t=i5GTGoarBanxjZbh-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=59%3A2302&show-proto-sidebar=1" aria-disabled="true">Figma-Prototyp öffnen</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 3. Iteration & Stakeholder-Absprache -->
+  <section id="phase-3" class="section">
+    <div class="container columns">
+      <div class="prose">
+        <h2>3. Iteration & Abstimmung mit Stakeholdern</h2>
+        <p>
+          In drei Feedback-Zyklen wurden Navigationspfade vereinfacht, Kontraste für Barrierefreiheit erhöht und die
+          Quiz-Rückmeldungen (richtig/falsch) klarer inszeniert. Wöchentliche Reviews sorgten für kontinuierliche
+          Validierung – insbesondere bei der Zielgruppe 12–18. [4]
+        </p>
+        <div class="figure">
+          <img src="assets/final-design.png" alt="Annotierte Screens – Designentscheidungen aus Stakeholder-Reviews" />
+          <figcaption>Annotierte Review-Notizen aus Stakeholder-Sessions (Platzhalter)</figcaption>
+        </div>
+      </div>
+      <aside>
+        <div class="badge">Phase 03</div>
+        <p class="meta">Feedback, Review, A11y-Tuning</p>
+        <ul class="meta-list">
+          <li>Kontraste & Dynamic Type</li>
+          <li>Button-States vereinheitlicht</li>
+          <li>Progress-Bar deutlicher</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 4. Prototyp & Ergebnisse -->
+  <section id="phase-4" class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
+    <div class="container columns">
+      <div class="prose">
+        <h2>4. Prototyp & Ergebnisse</h2>
+        <p>
+          Die App wurde in <strong>SwiftUI</strong> mit reaktivem State-Management umgesetzt. Kern ist ein 
+          erweiterbares <code>Question</code>-Struct (inkl. <code>explanation</code>) sowie eine zentrale <code>QuizState</code>-Klasse für Fortschritt,
+          Streaks und Feedback. Das UI folgt iOS-Guidelines, setzt auf klare Hierarchien und unmittelbares
+          Farbfeedback (grün/rot). [1]
+        </p>
+        <div class="grid-2 figure">
+          <figure>
+            <img src="assets/welcome.png" alt="Willkommens-Screen mit Lumo-Maskottchen und Nameingabe" />
+            <figcaption>Willkommen & Onboarding (Platzhalter-Screenshot)</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/quiz.png" alt="Quiz-Ansicht mit Frage, Antwortbuttons und Feedback" />
+            <figcaption>Quiz-Ansicht mit Feedback & Progress (Platzhalter-Screenshot)</figcaption>
+          </figure>
+        </div>
+        <p>
+          <a class="button primary" href="https://github.com/iosif-gogolos/LumoCode">Code & Release ansehen</a>
+        </p>
+      </div>
+      <aside>
+        <div class="badge">Phase 04</div>
+        <p class="meta">Implementation, Demo, Testing</p>
+        <ul class="meta-list">
+          <li>Punkte: +10 korrekt</li>
+          <li>Streak-Zähler</li>
+          <li>Erklärung pro Frage</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 5. Ausblick & Weitere Schritte -->
+  <section id="phase-5" class="section">
+    <div class="container columns">
+      <div class="prose">
+        <h2>5. Ausblick & Weitere Schritte</h2>
+        <p>
+          Kurzfristig: Ausbau auf ~10 Fragen pro Kategorie, Insel-System (Themenwelten), Core Data für lokalen
+          Fortschritt. Mittelfristig: weitere Sprachen (Python, C++, Java), Analytics und Community-Features. Langfristig:
+          <em>adaptive Lernpfade</em> mit KI sowie Integration in Bildungskontexte. [1]
+        </p>
+      </div>
+      <aside>
+        <div class="badge">Phase 05</div>
+        <p class="meta">Roadmap & Skalierung</p>
+        <ul class="meta-list">
+          <li>Beta-Programm</li>
+          <li>Curriculum-Alignment</li>
+          <li>Open-Source-Module</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Anhang (Platzhalterbilder & -Links) -->
+   <!--
+  <section class="section">
+    <div class="container">
+      <h2>Anhang</h2>
+      <div class="grid-2 figure">
+        <figure>
+          <img src="assets/erweitertes_moodboard.png" alt="Anhang – Moodboard Detail" />
+          <figcaption>Anhang 1.1: Erweitertes Moodboard</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/lumocode/appendix-wireframes-placeholder.jpg" alt="Anhang – Wireframes Montage" />
+          <figcaption>Anhang 1.2: Wireframes & High-Fidelity (Platzhalter)</figcaption>
+        </figure>
+      </div>
+      <div class="grid-2 figure">
+        <figure>
+          <img src="assets/lumocode/appendix-xcode-placeholder.jpg" alt="Anhang – Xcode Projektstruktur" />
+          <figcaption>Anhang 2.2: Xcode-Projekt & Asset-Integration (Platzhalter)</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/lumocode/appendix-storyboard-placeholder.jpg" alt="Anhang – hypothetisches Storyboard Account-System" />
+          <figcaption>Anhang 2.3: (Hypothetisch) Storyboard-Entwurf Account-System (Platzhalter)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  -->
+
+  <!-- Literatur & Referenzen -->
+  <section class="section">
+    <div class="container prose">
+      <h2>Literatur & Referenzen</h2>
+      <ol class="refs">
+        <li class="ref">[1] Apple. (2024). <em>Develop in Swift – Explorations (Xcode 15)</em>. Apple Books / Developer Documentation.</li>
+        <li class="ref">[2] Bazan, M. I. V., et al. (2021). <em>The Benefits and Drawbacks of Using Duolingo to Learn English</em>. Editorial Tecnocientífica Americana. https://doi.org/10.51736/wnata785</li>
+        <li class="ref">[3] Ferdyan, A., &amp; Halim, A. (2024). Avatar-/Personalisierungs­effekte in Lernumgebungen (Studienzusammenhang, vgl. Projektbericht).</li>
+        <li class="ref">[4] Zholdas, Sh. Zh., et al. (2024). <em>Effectiveness of Duolingo in Foreign Language Learning</em>. <em>Bulletin of Toraighyrov University</em>.</li>
+        <li class="ref">[5] Manning, J., &amp; Buttfield-Addison, P. (2021). <em>Head First Swift</em>. O’Reilly Media.</li>
+        <li class="ref">[6] Ratnaparkhi, G. (2021). <em>Swift in 30 Days</em>. BPB Publications.</li>
+        <li class="ref">[7] Apple Developer. (n. d.). <em>Develop in Swift Tutorials</em>. https://developer.apple.com/tutorials/develop-in-swift/</li>
+        <li class="ref">[8] Kazu, İ. Y., &amp; Kuvvetli, M. (2025). <em>Digital language learning with Duolingo</em>. <em>Journal of Computers in Education</em>.</li>
+      </ol>
+      <p class="meta">Hinweis: Reihenfolge und Bezeichnungen an deine endgültige Literaturliste anpassen.</p>
+    </div>
+  </section>
+
+  <!-- Backlink -->
+  <section class="section" style="text-align:center">
+    <a class="button" href="index.html">← Zurück zur Galerie</a>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    © 2025 The App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+</body>
+</html>
