@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="de">
+
 <head>
     <meta charset="utf-8">
     <title>Das App Atelier – Wo Software zur Kunst wird</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Das App Atelier – Digitale Erlebnisse, kuratiert wie Kunstwerke. Software Engineering mit Seele.">
+    <meta name="description"
+        content="Das App Atelier – Digitale Erlebnisse, kuratiert wie Kunstwerke. Software Engineering mit Seele.">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header class="header">
         <div class="container nav">
@@ -17,7 +20,8 @@
             </a>
 
             <!-- Hamburger toggle for small screens -->
-            <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Menü umschalten">
+            <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false"
+                aria-label="Menü umschalten">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -40,7 +44,8 @@
                 <div class="kicker">Kuratiertes Software-Engineering</div>
                 <h1>Wo Software zur Kunst wird.</h1>
                 <p class="subtitle">
-                    Im <strong>App Atelier</strong> erschaffen wir digitale Werke mit der Präzision von Ingenieuren und der Intuition von Künstlern.
+                    Im <strong>App Atelier</strong> erschaffen wir digitale Werke mit der Präzision von Ingenieuren und
+                    der Intuition von Künstlern.
                     Jedes Projekt – ein neues Gemälde aus Code, Design und Vision.
                 </p>
                 <div class="cta-row">
@@ -49,6 +54,45 @@
                 </div>
             </div>
         </section>
+
+        <!-- Experience Logos Banner -->
+        <section class="section experience-banner" aria-labelledby="xp-title">
+            <div class="container">
+                <h2 id="xp-title" class="xp-title">
+                    Hier haben unsere Teammitglieder Erfahrungen gesammelt
+                </h2>
+
+                <div class="logo-scroller" aria-label="Firmenlogos der bisherigen Stationen">
+                    <div class="logo-track">
+                        <!-- LOGO-SET A -->
+                        <img src="assets/logos/spherity_logo_gradient.png" alt="Spherity GmbH" loading="lazy" />
+                        <img src="assets/logos/sharpist_full.jpg" alt="Sharpist GmbH" loading="lazy" />
+                        <img src="assets/logos/efficio.png" alt="Efficio Consulting" loading="lazy" />
+                        <img src="assets/logos/axelspringer_logo_long_black-ink_srgb.png"
+                            alt="Axel Springer National Media & Tech GmbH & Co. KG" loading="lazy" />
+                        <img src="assets/logos/smart7.jpeg" alt="Smart7 GmbH" loading="lazy" />
+                        <img src="assets/logos/PDR-Team-GmbH.png" alt="PDR Team GmbH" loading="lazy" />
+
+
+
+
+                        <!-- LOGO-SET A wiederholen für nahtlose Schleife -->
+                        <img src="assets/logos/spherity_logo_gradient.png" alt="Spherity GmbH" aria-hidden="true" />
+                        <img src="assets/logos/sharpist_full.jpg" alt="Sharpist GmbH" aria-hidden="true" />
+                        <img src="assets/logos/efficio.png" alt="Efficio Consulting" aria-hidden="true" />
+                        <img src="assets/logos/axelspringer_logo_long_black-ink_srgb.png"
+                            alt="Axel Springer National Media & Tech GmbH & Co. KG" aria-hidden="true" />
+                        <img src="assets/logos/smart7.jpeg" alt="Smart7 GmbH" aria-hidden="true" />
+                        <img src="assets/logos/PDR-Team-GmbH.png" alt="PDR Team GmbH" aria-hidden="true" />
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <section id="gallery" class="gallery">
             <div class="container">
@@ -61,21 +105,24 @@
                     <!-- Frames unchanged -->
                     <article class="frame">
                         <div class="canvas" style="background: linear-gradient(135deg, var(--p-peach), var(--p-sun));">
-                            <img src="projects/lumo_code/assets/AppIcon.png" alt="InSight App Icon" class="app-icon" style="width: 120px; height: 120px; border-radius: 20%; margin-bottom: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                            <img src="projects/lumo_code/assets/AppIcon.png" alt="InSight App Icon" class="app-icon"
+                                style="width: 120px; height: 120px; border-radius: 20%; margin-bottom: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
                             <!--div class="canvas-mark">LumoCode iOS App</div-->
                         </div>
                         <div class="plaque">
                             <p class="meta">Mobile · iOS / Swift</p>
                             <h3>LumoCode</h3>
-                            <p class="meta">Eine spielerische Quiz-App welche Grundlagenwissen der Programmiersprache Swift vermittelt.</p>
+                            <p class="meta">Eine spielerische Quiz-App welche Grundlagenwissen der Programmiersprache
+                                Swift vermittelt.</p>
                             <a class="link" href="projects/lumo_code/lumo_code.html">Mehr erfahren →</a>
                         </div>
                     </article>
 
                     <article class="frame">
-                        
+
                         <div class="canvas" style="background: linear-gradient(135deg, var(--p-mint), var(--p-blue));">
-                            <img src="projects/insight/assets/AppIcon.png" alt="InSight App Icon" class="app-icon" style="width: 120px; height: 120px; border-radius: 25%; margin-bottom: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                            <img src="projects/insight/assets/AppIcon.png" alt="InSight App Icon" class="app-icon"
+                                style="width: 120px; height: 120px; border-radius: 25%; margin-bottom: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
                             <!--div class="canvas-mark">InSight iOS & MacOS App</div-->
                         </div>
                         <div class="plaque">
@@ -87,9 +134,10 @@
                     </article>
 
                     <article class="frame">
-                        
+
                         <div class="canvas" style="background: linear-gradient(135deg, var(--p-sun), var(--p));">
-                            <img src="projects/co2-tracker/assets/logo.png" alt="InSight App Icon" style="width: 150; height: 120px; ">
+                            <img src="projects/co2-tracker/assets/logo.png" alt="InSight App Icon"
+                                style="width: 150; height: 120px; ">
 
                             <!--div class="canvas-mark">CO2-Tracker Website</div-->
                         </div>
@@ -100,7 +148,7 @@
                             <a class="link" href="projects/co2-tracker/co2-tracker.html">Mehr erfahren →</a>
                         </div>
                     </article>
-<!--
+                    <!--
                     <article class="frame">
                         <div class="canvas" style="background: linear-gradient(135deg, var(--p-lavender), var(--p-peach));">
                             <div class="canvas-mark">No. 04</div>
@@ -145,10 +193,12 @@
             <div class="container columns">
                 <div class="prose">
                     <h2>Kuratorische Notiz</h2>
-                    <p>Jedes Werk im App Atelier folgt einer strengen Ingenieurslinie – Skalierbarkeit, Robustheit, Tests – 
-                         und wird zugleich mit einer sensiblen visuellen Sprache inszeniert. Diese Spannung ist unsere Signatur.</p>
-                    <p>Wir verbinden Architektur-Disziplin (DDD, Clean Code, Observability) mit ästhetischer Führung 
-                         (Typografie, Rhythmus, Materialität). Das Ergebnis: Shippable Art.</p>
+                    <p>Jedes Werk im App Atelier folgt einer strengen Ingenieurslinie – Skalierbarkeit, Robustheit,
+                        Tests –
+                        und wird zugleich mit einer sensiblen visuellen Sprache inszeniert. Diese Spannung ist unsere
+                        Signatur.</p>
+                    <p>Wir verbinden Architektur-Disziplin (DDD, Clean Code, Observability) mit ästhetischer Führung
+                        (Typografie, Rhythmus, Materialität). Das Ergebnis: Shippable Art.</p>
                 </div>
                 <div>
                     <p class="manifest">„In der Welt des Codes ist jede Zeile ein Pinselstrich.“</p>
@@ -164,10 +214,9 @@
         </div>
     </footer>
 
-    
+
     <script src="script.js"></script>
     <script src="language_script.js"></script>
 </body>
+
 </html>
-
-

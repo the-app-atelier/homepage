@@ -196,6 +196,70 @@ h1{
   transition:transform .2s ease, opacity .2s ease; 
 }
 
+/* Experience banner */
+.experience-banner { padding-block: 36px 28px; }
+.xp-title {
+  font-size: clamp(1.05rem, 1vw + 0.8rem, 1.25rem);
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+/* Scroller */
+.logo-scroller {
+  --logo-height: 28px;            /* globale Logohöhe */
+  --gap: 48px;                    /* Abstand zwischen Logos */
+  --speed: 28s;                   /* Scrollgeschwindigkeit (kleiner = schneller) */
+  --mono: currentColor;           /* Ziel-Farbe der Logos (nutzt SVG currentColor) */
+
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  color: color-mix(in oklab, var(--fg) 30%, var(--muted) 70%); /* Logo-Farbe */
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  width: max-content;
+  animation: scroll-left var(--speed) linear infinite;
+}
+
+.logo-track img,
+.logo-track svg {
+  height: var(--logo-height);
+  width: auto;
+  opacity: 0.86;
+  transition: opacity .2s ease, transform .2s ease;
+  /* Einfarbig: bevorzugt SVGs, die currentColor nutzen.
+     Für PNGs aktivieren: filter: grayscale(1) brightness(0) invert(0); */
+}
+
+.logo-track img:hover,
+.logo-track svg:hover { opacity: 1; transform: translateY(-1px); }
+
+/* Pause on hover/focus */
+.logo-scroller:hover .logo-track,
+.logo-scroller:focus-within .logo-track { animation-play-state: paused; }
+
+/* Animation */
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* entspricht doppeltem Set in HTML */
+}
+
+/* Reduced motion respektieren */
+@media (prefers-reduced-motion: reduce) {
+  .logo-track { animation: none; }
+}
+
+/* Dark/Light Feinabstimmung (optional) */
+:root { --fg: #1d1d1f; --muted: #6b7280; }
+@media (prefers-color-scheme: dark) {
+  :root { --fg: #f2f2f2; --muted: #a3a3a3; }
+}
+
 
 
 /* ---- Media Queries ---- */
