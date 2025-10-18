@@ -1,199 +1,254 @@
 <!doctype html>
 <html lang="de">
+
 <head>
-  <meta charset="utf-8" />
-  <title>Karriere – The App Atelier</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Karriere bei The App Atelier – Wir suchen kreative Entwickler:innen, UX-Designer:innen und Studierende mit Leidenschaft für digitale Ästhetik und sauberen Code." />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    :root{
-      --p-blue:#BFD7EA;
-      --p-mint:#CBE8D8;
-      --p-lavender:#E4DFF9;
-      --p-peach:#F7C8B0;
-    }
-    .job-card{
-      border:1px solid var(--stroke);
-      border-radius:18px;
-      padding:22px;
-      background:#fff;
-      box-shadow:var(--shadow-soft);
-      transition:transform .2s ease;
-    }
-    .job-card:hover{transform:translateY(-4px);}
-    .job-card h3{margin-top:0;}
-    .job-meta{color:var(--muted); font-size:.95rem;}
-    .grid-jobs{display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
-    @media(max-width:900px){.grid-jobs{grid-template-columns:1fr;}}
-    .values{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-    @media(max-width:900px){.values{grid-template-columns:1fr;}}
-    .value-card{background:color-mix(in oklab, var(--p-lavender) 10%, white 90%);
-      border-radius:16px; padding:20px;}
-  </style>
+    <meta charset="utf-8" />
+    <title>Karriere – The App Atelier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Karriere bei The App Atelier – Wir suchen kreative Entwickler:innen, UX-Designer:innen und Studierende mit Leidenschaft für digitale Ästhetik und sauberen Code." />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        :root {
+            --p-blue: #BFD7EA;
+            --p-mint: #CBE8D8;
+            --p-lavender: #E4DFF9;
+            --p-peach: #F7C8B0;
+        }
+
+        .job-card {
+            border: 1px solid var(--stroke);
+            border-radius: 18px;
+            padding: 22px;
+            background: #fff;
+            box-shadow: var(--shadow-soft);
+            transition: transform .2s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .job-card h3 {
+            margin-top: 0;
+        }
+
+        .job-meta {
+            color: var(--muted);
+            font-size: .95rem;
+        }
+
+        .grid-jobs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media(max-width:900px) {
+            .grid-jobs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        @media(max-width:900px) {
+            .values {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .value-card {
+            background: color-mix(in oklab, var(--p-lavender) 10%, white 90%);
+            border-radius: 16px;
+            padding: 20px;
+        }
+    </style>
 </head>
+
 <body>
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="/">
-      <div class="brand-logo">AA</div>
-      <div class="brand-name">The App Atelier</div>
-    </a>
-    <nav>
-      <a href="index.html">Projekte</a>
-      <a href="about.html">Über uns</a>
-      <a href="methodologie.html">Methodologie</a>
-      <a class="active" href="karriere.html">Karriere</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- Hero -->
-  <section class="hero" style="padding-block:80px;">
-    <div class="container">
-      <div class="kicker">Werde Teil des Ateliers</div>
-      <h1>Karriere bei The App Atelier</h1>
-      <p class="subtitle">
-        Wir gestalten digitale Erlebnisse wie Kunstwerke – mit Präzision, Empathie und Code.  
-        Wenn du Design und Technik verbinden möchtest, bist du bei uns richtig.
-      </p>
-    </div>
-  </section>
-
-  <!-- Offene Positionen -->
-  <section class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
-    <div class="container">
-      <h2>Aktuelle Stellen</h2>
-      <div class="grid-jobs">
-
-        <div class="job-card">
-          <h3>Frontend-Entwickler:in (m/w/d)</h3>
-          <p class="job-meta">Vollzeit · Remote · ab Dezember 2025</p>
-          <p>
-            Du entwickelst performante, barrierefreie Interfaces mit <strong>React</strong>, <strong>TypeScript</strong> und <strong>Tailwind</strong>.
-            Du arbeitest eng mit UX-Designern zusammen und bringst kreative Ideen in den Entwicklungsprozess ein.
-          </p>
-          <ul>
-            <li>Erfahrung mit modernen JS-Frameworks</li>
-            <li>Gespür für Ästhetik & UX</li>
-            <li>Sauberes, wartbares Coding</li>
-          </ul>
-          <a class="button primary" href="mailto:app.atelier.de@gmail.com?subject=Bewerbung Frontend">Jetzt bewerben</a>
+    <header class="header">
+        <div class="container nav">
+            <a class="brand" href="/">
+                <div class="brand-logo">AA</div>
+                <div class="brand-name">The App Atelier</div>
+            </a>
+            <nav>
+                <a href="index.html">Projekte</a>
+                <a href="about.html">Über uns</a>
+                <a href="methodologie.html">Methodologie</a>
+                <a class="active" href="karriere.html">Karriere</a>
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="job-card">
-          <h3>UX / UI Designer:in (m/w/d)</h3>
-          <p class="job-meta">Teilzeit oder Freelance · Remote</p>
-          <p>
-            Du gestaltest Nutzererlebnisse von der Recherche bis zum Prototyp.  
-            Tools: <strong>Figma</strong>, <strong>FigJam</strong>, <strong>Adobe XD</strong>.  
-            Du arbeitest eng mit unserem Dev-Team zusammen und liebst klare, zugängliche Interfaces.
-          </p>
-          <ul>
-            <li>Portfolio mit UX-/UI-Projekten</li>
-            <li>Erfahrung mit Designsystemen</li>
-            <li>Empathischer Umgang mit Nutzerfeedback</li>
-          </ul>
-          <a class="button primary"
-   href="mailto:career@theappatelier.com?subject=Bewerbung%20Frontend&amp;body=Hallo%20The%20App%20Atelier-Team,%0A%0Aich%20m%C3%B6chte%20mich%20bewerben...">
-  Jetzt bewerben
-</a>
+    <main>
+        <!-- Hero -->
+        <section class="hero" style="padding-block:80px;">
+            <div class="container">
+                <div class="kicker">Werde Teil des Ateliers</div>
+                <h1>Karriere bei The App Atelier</h1>
+                <p class="subtitle">
+                    Wir gestalten digitale Erlebnisse wie Kunstwerke – mit Präzision, Empathie und Code.
+                    Wenn du Design und Technik verbinden möchtest, bist du bei uns richtig.
+                </p>
+            </div>
+        </section>
+
+        <!-- Offene Positionen -->
+        <section class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
+            <div class="container">
+                <h2>Aktuelle Stellen</h2>
+                <div class="grid-jobs">
+
+                    <div class="job-card">
+                        <h3>Frontend-Entwickler:in (m/w/d)</h3>
+                        <p class="job-meta">Vollzeit · Remote · ab Dezember 2025</p>
+                        <p>
+                            Du entwickelst performante, barrierefreie Interfaces mit <strong>React</strong>,
+                            <strong>TypeScript</strong> und <strong>Tailwind</strong>.
+                            Du arbeitest eng mit UX-Designern zusammen und bringst kreative Ideen in den
+                            Entwicklungsprozess ein.
+                        </p>
+                        <ul>
+                            <li>Erfahrung mit modernen JS-Frameworks</li>
+                            <li>Gespür für Ästhetik & UX</li>
+                            <li>Sauberes, wartbares Coding</li>
+                        </ul>
+                        <!-- Frontend -->
+                        <a class="button primary"
+                            href="mailto:app.atelier.de@gmail.com?subject=Bewerbung%20Frontend&amp;body=Hallo%20The%20App%20Atelier-Team,%0A%0Aich%20m%C3%B6chte%20mich%20bewerben...">
+                            Jetzt bewerben
+                        </a>
+                    </div>
+
+                    <div class="job-card">
+                        <h3>UX / UI Designer:in (m/w/d)</h3>
+                        <p class="job-meta">Teilzeit oder Freelance · Remote</p>
+                        <p>
+                            Du gestaltest Nutzererlebnisse von der Recherche bis zum Prototyp.
+                            Tools: <strong>Figma</strong>, <strong>FigJam</strong>, <strong>Adobe XD</strong>.
+                            Du arbeitest eng mit unserem Dev-Team zusammen und liebst klare, zugängliche Interfaces.
+                        </p>
+                        <ul>
+                            <li>Portfolio mit UX-/UI-Projekten</li>
+                            <li>Erfahrung mit Designsystemen</li>
+                            <li>Empathischer Umgang mit Nutzerfeedback</li>
+                        </ul>
+                        <!-- UX/UI -->
+                        <a class="button primary"
+                            href="mailto:career@theappatelier.com?subject=Bewerbung%20UX%2FUI&amp;body=Hallo%20Team,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20UX%2FUI-Position.">
+                            Jetzt bewerben
+                        </a>
+                    </div>
+
+                    <div class="job-card">
+                        <h3>Werkstudent:in Web-Development (m/w/d)</h3>
+                        <p class="job-meta">10–20 Std/Woche · Remote</p>
+                        <p>
+                            Unterstütze uns bei spannenden Projekten in den Bereichen
+                            <em>Frontend</em>, <em>UX-Prototyping</em> und <em>Automation</em>.
+                            Ideal für Studierende der Informatik, Mediengestaltung oder verwandter Fachrichtungen.
+                        </p>
+                        <ul>
+                            <li>Kenntnisse in HTML, CSS, JS</li>
+                            <li>Interesse an UX & Designsystemen</li>
+                            <li>Selbstständige, strukturierte Arbeitsweise</li>
+                        </ul>
+                        <!-- Werkstudent -->
+                        <a class="button primary"
+                            href="mailto:career@theappatelier.com?subject=Bewerbung%20Werkstudent&amp;body=Hallo%20Team,%0A%0Ahier%20meine%20Unterlagen...">
+                            Jetzt bewerben
+                        </a>
+                    </div>
+
+                    <div class="job-card">
+                        <h3>Initiativbewerbung</h3>
+                        <p class="job-meta">Remote · Laufend</p>
+                        <p>
+                            Du glaubst, du passt zu uns – auch wenn keine passende Stelle ausgeschrieben ist?
+                            Wir freuen uns über Initiativbewerbungen aus den Bereichen
+                            <strong>Development</strong>, <strong>UX-Research</strong>, <strong>3D-/AR-Design</strong>
+                            und <strong>Creative Tech</strong>.
+                        </p>
+                        <!-- CTA unten -->
+                        <a class="button primary"
+                            href="mailto:app.atelier.de@gmail.com?subject=Bewerbung%20The%20App%20Atelier&amp;body=Hallo%20The%20App%20Atelier-Team,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20...">
+                            E-Mail schreiben
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kultur & Werte -->
+        <section class="section">
+            <div class="container">
+                <h2>Unsere Kultur</h2>
+                <p class="subtitle">Wir arbeiten an der Schnittstelle von Kunst und Technologie – offen, lernend und
+                    respektvoll.</p>
+                <div class="values">
+                    <div class="value-card">
+                        <h3>💡 Kreativität</h3>
+                        <p>Wir verstehen Softwareentwicklung als kreativen Akt. Neues Denken ist kein Nebenprodukt,
+                            sondern unser Antrieb.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>🤝 Zusammenarbeit</h3>
+                        <p>Wir arbeiten interdisziplinär, transparent und mit Vertrauen. Feedback ist Teil des
+                            Prozesses, kein Kontrollinstrument.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>🌍 Verantwortung</h3>
+                        <p>Unsere Projekte achten auf Nachhaltigkeit, Inklusion und ethische Standards im Design und in
+                            der Entwicklung.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section"
+            style="text-align:center; background:color-mix(in oklab, var(--p-lavender) 8%, white 92%);">
+            <div class="container">
+                <h2>Bewirb dich jetzt</h2>
+                <p class="subtitle">Sende dein Portfolio, CV oder GitHub-Profil an<br><strong><a
+                            href="mailto:app.atelier.de@gmail.com">app.atelier.de@gmail.com</a></strong></p>
+                <a class="button primary"
+                    href="mailto:app.atelier.de@gmail.com?subject=Bewerbung%20The%20App%20Atelier&amp;body=Hallo%20The%20App%20Atelier-Team,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20...">
+                    E-Mail schreiben
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            © 2025 Das App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
         </div>
-
-        <div class="job-card">
-          <h3>Werkstudent:in Web-Development (m/w/d)</h3>
-          <p class="job-meta">10–20 Std/Woche · Remote</p>
-          <p>
-            Unterstütze uns bei spannenden Projekten in den Bereichen  
-            <em>Frontend</em>, <em>UX-Prototyping</em> und <em>Automation</em>.  
-            Ideal für Studierende der Informatik, Mediengestaltung oder verwandter Fachrichtungen.
-          </p>
-          <ul>
-            <li>Kenntnisse in HTML, CSS, JS</li>
-            <li>Interesse an UX & Designsystemen</li>
-            <li>Selbstständige, strukturierte Arbeitsweise</li>
-          </ul>
-          <a class="button primary"
-   href="mailto:career@theappatelier.com?subject=Bewerbung%20Frontend&amp;body=Hallo%20The%20App%20Atelier-Team,%0A%0Aich%20m%C3%B6chte%20mich%20bewerben...">
-  Jetzt bewerben
-</a>
-        </div>
-
-        <div class="job-card">
-          <h3>Initiativbewerbung</h3>
-          <p class="job-meta">Remote · Laufend</p>
-          <p>
-            Du glaubst, du passt zu uns – auch wenn keine passende Stelle ausgeschrieben ist?  
-            Wir freuen uns über Initiativbewerbungen aus den Bereichen  
-            <strong>Development</strong>, <strong>UX-Research</strong>, <strong>3D-/AR-Design</strong> und <strong>Creative Tech</strong>.
-          </p>
-          <a class="button primary"
-   href="mailto:career@theappatelier.com?subject=Bewerbung%20Frontend&amp;body=Hallo%20The%20App%20Atelier-Team,%0A%0Aich%20m%C3%B6chte%20mich%20bewerben...">
-  Jetzt bewerben
-</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Kultur & Werte -->
-  <section class="section">
-    <div class="container">
-      <h2>Unsere Kultur</h2>
-      <p class="subtitle">Wir arbeiten an der Schnittstelle von Kunst und Technologie – offen, lernend und respektvoll.</p>
-      <div class="values">
-        <div class="value-card">
-          <h3>💡 Kreativität</h3>
-          <p>Wir verstehen Softwareentwicklung als kreativen Akt. Neues Denken ist kein Nebenprodukt, sondern unser Antrieb.</p>
-        </div>
-        <div class="value-card">
-          <h3>🤝 Zusammenarbeit</h3>
-          <p>Wir arbeiten interdisziplinär, transparent und mit Vertrauen. Feedback ist Teil des Prozesses, kein Kontrollinstrument.</p>
-        </div>
-        <div class="value-card">
-          <h3>🌍 Verantwortung</h3>
-          <p>Unsere Projekte achten auf Nachhaltigkeit, Inklusion und ethische Standards im Design und in der Entwicklung.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section" style="text-align:center; background:color-mix(in oklab, var(--p-lavender) 8%, white 92%);">
-    <div class="container">
-      <h2>Bewirb dich jetzt</h2>
-      <p class="subtitle">Sende dein Portfolio, CV oder GitHub-Profil an<br><strong><a href="mailto:app.atelier.de@gmail.com">app.atelier.de@gmail.com</a></strong></p>
-      <a class="button primary"
-   href="mailto:app.atelier.de@gmail.com?subject=Bewerbung%20The%20App%20Atelier&amp;body=Hallo%20The%20App%20Atelier-Team,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20...">
-  E-Mail schreiben
-</a>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    © 2025 Das App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
-  </div>
-</footer>
+    </footer>
 
 
-<script>
-document.querySelectorAll('.apply-btn').forEach(btn=>{
-  btn.addEventListener('click', e=>{
-    const email = "app.atelier.de@gmail.com";
-    const subject = encodeURIComponent(btn.dataset.subject || "Bewerbung");
-    const body = encodeURIComponent(
-      "Hallo The App Atelier-Team,\n\nich interessiere mich für die ausgeschriebene Position."
-    );
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-  });
-});
-</script>
+    <script>
+        document.querySelectorAll('.apply-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const email = "app.atelier.de@gmail.com";
+                const subject = encodeURIComponent(btn.dataset.subject || "Bewerbung");
+                const body = encodeURIComponent(
+                    "Hallo The App Atelier-Team,\n\nich interessiere mich für die ausgeschriebene Position."
+                );
+                window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+            });
+        });
+    </script>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
