@@ -1,0 +1,52 @@
+.cert-slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+.cert-slider {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+.cert-frame {
+  min-width: 220px;
+  max-width: 260px;
+  background: #fff;
+  border: 6px solid var(--p-blue);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.10);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow .2s;
+}
+.cert-frame img {
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.cert-frame:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,.16);
+}
+.cert-arrow {
+  background: color-mix(in oklab, var(--p-lavender) 20%, white 80%);
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  font-size: 1.6rem;
+  padding: 10px 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: background .2s;
+}
+.cert-arrow:hover {
+  background: var(--p-blue);
+}
+@media (max-width: 700px) {
+  .cert-frame { min-width: 140px; max-width: 180px; padding: 10px; }
+  .cert-slider { gap: 12px; }
+}

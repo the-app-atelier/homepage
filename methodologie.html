@@ -1,229 +1,627 @@
 <!doctype html>
 <html lang="de">
+
 <head>
   <meta charset="utf-8" />
   <title>Unsere Methodologie – The App Atelier</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Unsere Methodologie – Vorgehensmodell, UX‑Prozess und FAQ. Inspiriert vom Google UX Design Professional Certificate. " />
+  <meta name="description"
+    content="Unsere Methodologie – Vorgehensmodell, UX‑Prozess und FAQ. Inspiriert vom Google UX Design Professional Certificate. " />
   <link rel="stylesheet" href="styles.css" />
+
   <style>
-    :root{
-      --p-blue:#BFD7EA;    /* ruhig/klar */
-      --p-mint:#CBE8D8;    /* vertrauenswürdig */
-      --p-lavender:#C9C2F0;/* freundlich */
-      --p-peach:#F7C8B0;   /* Akzent */
+    :root {
+      --p-blue: #BFD7EA;
+      /* ruhig/klar */
+      --p-mint: #CBE8D8;
+      /* vertrauenswürdig */
+      --p-lavender: #C9C2F0;
+      /* freundlich */
+      --p-peach: #F7C8B0;
+      /* Akzent */
     }
-    .accordion{border:1px solid var(--stroke); border-radius:14px; overflow:hidden; background:#fff; box-shadow: var(--shadow-soft)}
-    .acc-item + .acc-item{border-top:1px solid var(--stroke)}
-    .acc-btn{width:100%; text-align:left; padding:16px 18px; border:0; background:#fff; font-weight:700; cursor:pointer}
-    .acc-btn:hover{background:color-mix(in oklab, var(--bg) 80%, white 20%)}
-    .acc-panel{display:none; padding:0 18px 18px; color:#2A2A2A}
-    .acc-item[open] .acc-panel{display:block}
-    .pill{display:inline-block; padding:6px 10px; border:1px solid var(--stroke); border-radius:999px; background:#fff; margin:4px 6px 0 0; font-size:.9rem}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-    @media (max-width: 980px){ .grid-3{grid-template-columns:1fr 1fr} }
-    @media (max-width: 640px){ .grid-3{grid-template-columns:1fr} }
-    .badge-wrap{display:flex; gap:10px; flex-wrap:wrap}
-    .cert-card{border:1px solid var(--stroke); border-radius:14px; padding:14px; background:#fff}
-    .cert-title{font-weight:700; margin:0 0 6px}
+
+    .accordion {
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow-soft)
+    }
+
+    .acc-item+.acc-item {
+      border-top: 1px solid var(--stroke)
+    }
+
+    .acc-btn {
+      width: 100%;
+      text-align: left;
+      padding: 16px 18px;
+      border: 0;
+      background: #fff;
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    .acc-btn:hover {
+      background: color-mix(in oklab, var(--bg) 80%, white 20%)
+    }
+
+    .acc-panel {
+      display: none;
+      padding: 0 18px 18px;
+      color: #2A2A2A
+    }
+
+    .acc-item[open] .acc-panel {
+      display: block
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      background: #fff;
+      margin: 4px 6px 0 0;
+      font-size: .9rem
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    @media (max-width: 980px) {
+      .grid-3 {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media (max-width: 640px) {
+      .grid-3 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .badge-wrap {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .cert-card {
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 14px;
+      background: #fff
+    }
+
+    .cert-title {
+      font-weight: 700;
+      margin: 0 0 6px
+    }
   </style>
+  <style>
+  .cert-display-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0;
+    position: relative;
+  }
+
+  .cert-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cert-frame-stand {
+    position: relative;
+    margin-bottom: 20px;
+    perspective: 1000px;
+  }
+
+  .cert-frame {
+    width: 480px;
+    height: 360px;
+    background: #f8f5f0;
+    border: 18px solid #8a6d3b;
+    border-radius: 4px;
+    box-shadow:
+      0 0 0 1px #d4c096,
+      0 0 0 15px #a58b57,
+      5px 5px 20px rgba(0, 0, 0, 0.2);
+    transform: perspective(1000px) rotateX(5deg);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .cert-mat {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .cert-mat img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .cert-stand-shadow {
+    width: 70%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -20px;
+    left: 15%;
+    filter: blur(8px);
+    z-index: 1;
+  }
+
+  .cert-arrow {
+    background: color-mix(in oklab, var(--p-lavender) 30%, white 70%);
+    border: 1px solid var(--stroke);
+    border-radius: 50%;
+    font-size: 1.8rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+  }
+
+  .cert-arrow:hover {
+    background: var(--p-blue);
+    transform: scale(1.05);
+  }
+
+  .cert-pagination {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .cert-dot {
+    width: 12px;
+    height: 12px;
+    background: color-mix(in oklab, var(--p-lavender) 40%, white 60%);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .cert-dot-active {
+    background: var(--p-blue);
+    transform: scale(1.2);
+  }
+
+  /* Tablet scaling */
+  @media (max-width: 960px) {
+    .cert-frame {
+      width: 360px;
+      height: 270px;
+      border-width: 16px;
+      box-shadow:
+        0 0 0 1px #d4c096,
+        0 0 0 13px #a58b57,
+        5px 5px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cert-arrow {
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+    }
+    
+    .cert-stand-shadow {
+      height: 16px;
+      bottom: -16px;
+    }
+  }
+
+  /* Mobile scaling */
+  @media (max-width: 700px) {
+    .cert-frame {
+      width: 240px;
+      height: 180px;
+      border-width: 10px;
+      box-shadow:
+        0 0 0 1px #d4c096,
+        0 0 0 8px #a58b57,
+        3px 3px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cert-mat {
+      padding: 8px;
+    }
+    
+    .cert-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+    }
+    
+    .cert-pagination {
+      gap: 8px;
+      margin-top: 12px;
+    }
+    
+    .cert-dot {
+      width: 10px;
+      height: 10px;
+    }
+    
+    .cert-stand-shadow {
+      height: 12px;
+      bottom: -12px;
+    }
+  }
+
+  .cert-mat {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .cert-mat::after {
+    content: "🔍";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0.8;
+    transition: all 0.2s;
+    font-size: 14px;
+  }
+  
+  .cert-mat:hover::after {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  /* Add hint text */
+  .cert-hint {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  /* Extra small screens */
+  @media (max-width: 480px) {
+    .cert-display-wrap {
+      gap: 10px;
+    }
+    
+    .cert-frame {
+      width: 200px;
+      height: 150px;
+      border-width: 8px;
+      box-shadow:
+        0 0 0 1px #d4c096,
+        0 0 0 6px #a58b57,
+        2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+</style>
+
 </head>
+
 <body>
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="/homepage">
-      <div class="brand-logo">AA</div>
-      <div class="brand-name">Das App Atelier</div>
-    </a>
-    <!-- Hamburger toggle for small screens -->
-            <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Menü umschalten">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-    <nav>
-      <a href="index.html">Projekte</a>
-      <a href="about.html">Über uns</a>
-      <a class="active" href="methodologie.html">Methodologie</a>
-      <a href="karierre.html">Karriere</a>
-      <!--a href="impressum.html">Impressum</a-->
-      <!--a href="datenschutz.html">Datenschutz</a-->
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- Hero -->
-  <section class="hero" style="padding-block:80px;">
-    <div class="container">
-      <div class="kicker">Vorgehensweise & FAQ</div>
-      <h1>Unsere Methodologie</h1>
-      <p class="subtitle">
-        Wir arbeiten nutzerzentriert – inspiriert vom <strong>Google UX Design Professional Certificate</strong> und gestützt von unserem interdisziplinären Hintergrund in Informatik, Architektur und Mediendesign. Unser Ziel: <em>nützliche, zugängliche und schöne Software</em>.
-      </p>
-      <div class="badge-wrap" style="margin-top:10px">
-        <span class="badge">Empathize</span><span class="badge">Define</span><span class="badge">Ideate</span><span class="badge">Prototype</span><span class="badge">Test</span><span class="badge">Iterate</span>
-      </div>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="/homepage">
+        <div class="brand-logo">AA</div>
+        <div class="brand-name">Das App Atelier</div>
+      </a>
+      <!-- Hamburger toggle for small screens -->
+      <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Menü umschalten">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav>
+        <a href="index.html">Projekte</a>
+        <a href="about.html">Über uns</a>
+        <a class="active" href="methodologie.html">Methodologie</a>
+        <a href="karierre.html">Karriere</a>
+        <!--a href="impressum.html">Impressum</a-->
+        <!--a href="datenschutz.html">Datenschutz</a-->
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- Vorgehensmodell -->
-  <section class="section" style="background:color-mix(in oklab, var(--p-lavender) 10%, white 90%);">
-    <div class="container columns">
-      <div class="prose">
-        <h2>Unser Vorgehensmodell</h2>
-        <p>
-          Unser Prozess vereint <strong>UX‑Best Practices</strong> mit <strong>Software‑Engineering‑Disziplin</strong>. Wir nutzen ein klares, iteratives Modell, das entlang der Google‑Phasen strukturiert ist und von Evidence‑Based‑UX und technischer Exzellenz getragen wird.
+  <main>
+    <!-- Hero -->
+    <section class="hero" style="padding-block:80px;">
+      <div class="container">
+        <div class="kicker">Vorgehensweise & FAQ</div>
+        <h1>Unsere Methodologie</h1>
+        <p class="subtitle">
+          Wir arbeiten nutzerzentriert – inspiriert vom <strong>Google UX Design Professional Certificate</strong> und
+          gestützt von unserem interdisziplinären Hintergrund in Informatik, Architektur und Mediendesign. Unser Ziel:
+          <em>nützliche, zugängliche und schöne Software</em>.
         </p>
-        <ol>
-          <li><strong>Empathize</strong> – Nutzer:innen verstehen: Interviews, Kontextanalysen, 
-            <em>Empathy Maps</em>, <em>Personas</em>, <em>User Journeys</em>.</li>
-          <li><strong>Define</strong> – Problemraum schärfen: Pain Points clustern, 
-            <em>Problem Statements</em>, Hypothesen & Erfolgsmetriken.</li>
-          <li><strong>Ideate</strong> – Lösungen generieren: Design Studio, Crazy‑8s, Priorisierung (Impact/Effort).</li>
-          <li><strong>Prototype</strong> – Wireframes & Interaktion: Low‑ bis High‑Fidelity in Figma, interaktive Flows.</li>
-          <li><strong>Test</strong> – Evidenz sammeln: Usability‑Tests, A/B‑Ideen, Accessibility‑Checks (WCAG), 
-            Metriken (TCT, SUS, Completion).</li>
-          <li><strong>Build & Measure</strong> – Umsetzung in Code (CI/CD, Observability), Telemetrie, 
-            <em>continuous discovery</em> & Iteration.</li>
-        </ol>
-        <p>
-          Ergebnis sind <strong>validierte Prototypen</strong> und <strong>robuste Releases</strong>, die wir kuratorisch präsentieren – wie in einer Ausstellung – und kontinuierlich verbessern.
-        </p>
-      </div>
-      <aside>
-        <div class="badge">Werkzeuge</div>
-        <p class="meta">Figma · FigJam · UsabilityHub · GitHub · Playwright · Lighthouse</p>
-        <div style="margin-top:8px">
-          <span class="pill">Research Repo</span>
-          <span class="pill">Design System</span>
-          <span class="pill">Design Tokens</span>
-          <span class="pill">Accessibility</span>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- Zertifikate / Weiterbildung -->
-  <section class="section">
-    <div class="container">
-      <h2>Weiterbildung & Zertifikate</h2>
-      <p class="prose">
-        Unsere Teammitglieder haben Module des <strong>Google UX Design Professional Certificate</strong> erfolgreich abgeschlossen – 
-        ergänzend zu akademischen Abschlüssen in <em>Informatik</em>, <em>Architektur</em> , <em>Mediendesign</em> oder eines relevanten Gebiets.. Das stärkt unser gemeinsames Vokabular und unseren Qualitätsanspruch.
-      </p>
-      <div class="grid-3">
-        <div class="cert-card">
-          <p class="cert-title">Foundations of UX Design</p>
-          <p class="meta">Grundlagen, Prozesse, Verantwortlichkeiten</p>
-        </div>
-        <div class="cert-card">
-          <p class="cert-title">Empathize, Define & Ideate</p>
-          <p class="meta">Research, Personas, Problem Statements, Ideation</p>
-        </div>
-        <div class="cert-card">
-          <p class="cert-title">Wireframes & Low‑Fi Prototypes</p>
-          <p class="meta">Informationsarchitektur, Flows, Interaktionen</p>
-        </div>
-        <div class="cert-card">
-          <p class="cert-title">UX Research & Testing</p>
-          <p class="meta">Studienaufbau, Moderation, Auswertung</p>
-        </div>
-        <div class="cert-card">
-          <p class="cert-title">Hi‑Fi Prototyping in Figma</p>
-          <p class="meta">Komponenten, Auto‑Layout, Prototypen</p>
-        </div>
-        <div class="cert-card">
-          <p class="cert-title">Responsive Web (Adobe XD)</p>
-          <p class="meta">Breakpoints, Patterns, Handoff</p>
+        <div class="badge-wrap" style="margin-top:10px">
+          <span class="badge">Empathize</span><span class="badge">Define</span><span class="badge">Ideate</span><span
+            class="badge">Prototype</span><span class="badge">Test</span><span class="badge">Iterate</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ (kuratiert & komprimiert auf Basis des bereitgestellten Textes) -->
-  <section class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
-    <div class="container">
-      <h2>FAQ – Häufige Fragen</h2>
-      <div class="accordion">
-        <details class="acc-item" open>
-          <summary class="acc-btn">Was ist UX‑Design?</summary>
-          <div class="acc-panel">
-            <p>UX‑Design gestaltet <em>Erlebnisse</em> – von Apps und Websites bis hin zu vernetzten Produkten. Ziel sind nützliche, nutzbare und zugängliche Interaktionen.</p>
-          </div>
-        </details>
-        <details class="acc-item">
-          <summary class="acc-btn">Was macht ein:e UX‑Designer:in?</summary>
-          <div class="acc-panel">
-            <p>Sie fokussieren die Nutzungserfahrung: Ideen entwickeln, Nutzerforschung durchführen und <em>Wireframes, Mockups, Prototypen</em> erstellen – stets im Abgleich mit Nutzerbedürfnissen.</p>
-          </div>
-        </details>
-        <details class="acc-item">
-          <summary class="acc-btn">Unterschied zwischen UX und UI?</summary>
-          <div class="acc-panel">
-            <p>UX umfasst den gesamten Nutzungskontext und die Qualität der Erfahrung. UI ist die visuelle/interaktive Oberfläche – z. B. Menüs, Buttons, Icons – und deren Verhalten.</p>
-          </div>
-        </details>
-        <details class="acc-item">
-          <summary class="acc-btn">Wichtige Skills im UX‑Design?</summary>
-          <div class="acc-panel">
-            <ul>
-              <li>Empathie & Research (Empathy Maps, Personas, Journeys)</li>
-              <li>Problemdefinition (Problem Statements, User Stories)</li>
-              <li>Ideation & Prototyping (Wireframes, klickbare Prototypen)</li>
-              <li>Usability‑Tests & Auswertung</li>
-              <li>Zugänglichkeit & inklusive Gestaltung</li>
-            </ul>
-          </div>
-        </details>
-        <details class="acc-item">
-          <summary class="acc-btn">Warum UX‑Design?</summary>
-          <div class="acc-panel">
-            <p>Gute Erfahrungen sind geschäftskritisch. UX‑Design sorgt dafür, dass digitale Produkte intuitiver, effizienter und angenehmer sind – für Nutzer und Organisationen.</p>
-          </div>
-        </details>
-        
-        <details class="acc-item">
-          <summary class="acc-btn">Welche Jobrollen im UX‑Umfeld gibt es?</summary>
-          <div class="acc-panel">
-            <ul>
-              <li>UX Designer:in · UI Designer:in</li>
-              <li>Interaction/Visual Designer:in</li>
-              <li>Product Designer:in</li>
-            </ul>
-          </div>
-        </details>
+    <section class="section" style="background:color-mix(in oklab, var(--p-lavender) 8%, white 92%);">
+      <div class="container">
+        <h2>Zertifikate & Auszeichnungen</h2>
+        <div class="cert-display-wrap">
+          <button class="cert-arrow cert-arrow-left" aria-label="Vorheriges Zertifikat">&#8592;</button>
+          <div class="cert-display">
+  <div class="cert-frame-stand">
+    <div class="cert-frame">
+      <div class="cert-mat">
+        <img id="active-cert" src="assets/certificates/GoogleUX_C1.png" alt="Google UX Zertifikat" />
       </div>
-      <p class="meta" style="margin-top:10px">Quelle der FAQ‑Inhalte: Auszüge/Paraphrasen basierend auf dem Google UX Design Professional Certificate (bereitgestellter Text). Marken‑ und Produktnamen gehören ihren jeweiligen Eigentümern.</p>
     </div>
-  </section>
-
-  <!-- Kontakt CTA -->
-  <section class="section" style="text-align:center">
-    <div class="container">
-      <h2>Fragen zur Zusammenarbeit?</h2>
-      <p class="subtitle">Wir verbinden fundierte UX‑Methodik mit starker Umsetzung in Code. Lass uns über dein Vorhaben sprechen.</p>
-      <a class="button primary" href="mailto:app.atelier.de@gmail.com">Kontakt aufnehmen</a>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    © 2025 Das App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
+    <div class="cert-stand-shadow"></div>
   </div>
-</footer>
+  <p class="cert-hint">Klicken Sie auf das Zertifikat, um es als PDF zu öffnen</p>
+  <div class="cert-pagination">
+    <span class="cert-dot cert-dot-active" data-index="0"></span>
+    <span class="cert-dot" data-index="1"></span>
+  </div>
+</div>
+          <button class="cert-arrow cert-arrow-right" aria-label="Nächstes Zertifikat">&#8594;</button>
+        </div>
+      </div>
+    </section>
 
-<script>
-  // Progressive enhancement: toggles for details are native; this script only adds focus/scroll affordance
-  document.querySelectorAll('.acc-item > summary').forEach(sum => {
-    sum.addEventListener('click', () => {
-      const parent = sum.parentElement;
-      requestAnimationFrame(() => parent.scrollIntoView({behavior:'smooth', block:'start'}));
+    <!-- Vorgehensmodell -->
+    <section class="section" style="background:color-mix(in oklab, var(--p-lavender) 10%, white 90%);">
+      <div class="container columns">
+        <div class="prose">
+          <h2>Unser Vorgehensmodell</h2>
+          <p>
+            Unser Prozess vereint <strong>UX‑Best Practices</strong> mit
+            <strong>Software‑Engineering‑Disziplin</strong>. Wir nutzen ein klares, iteratives Modell, das entlang der
+            Google‑Phasen strukturiert ist und von Evidence‑Based‑UX und technischer Exzellenz getragen wird.
+          </p>
+          <ol>
+            <li><strong>Empathize</strong> – Nutzer:innen verstehen: Interviews, Kontextanalysen,
+              <em>Empathy Maps</em>, <em>Personas</em>, <em>User Journeys</em>.
+            </li>
+            <li><strong>Define</strong> – Problemraum schärfen: Pain Points clustern,
+              <em>Problem Statements</em>, Hypothesen & Erfolgsmetriken.
+            </li>
+            <li><strong>Ideate</strong> – Lösungen generieren: Design Studio, Crazy‑8s, Priorisierung (Impact/Effort).
+            </li>
+            <li><strong>Prototype</strong> – Wireframes & Interaktion: Low‑ bis High‑Fidelity in Figma, interaktive
+              Flows.</li>
+            <li><strong>Test</strong> – Evidenz sammeln: Usability‑Tests, A/B‑Ideen, Accessibility‑Checks (WCAG),
+              Metriken (TCT, SUS, Completion).</li>
+            <li><strong>Build & Measure</strong> – Umsetzung in Code (CI/CD, Observability), Telemetrie,
+              <em>continuous discovery</em> & Iteration.
+            </li>
+          </ol>
+          <p>
+            Ergebnis sind <strong>validierte Prototypen</strong> und <strong>robuste Releases</strong>, die wir
+            kuratorisch präsentieren – wie in einer Ausstellung – und kontinuierlich verbessern.
+          </p>
+        </div>
+        <aside>
+          <div class="badge">Werkzeuge</div>
+          <p class="meta">Figma · FigJam · UsabilityHub · GitHub · Playwright · Lighthouse</p>
+          <div style="margin-top:8px">
+            <span class="pill">Research Repo</span>
+            <span class="pill">Design System</span>
+            <span class="pill">Design Tokens</span>
+            <span class="pill">Accessibility</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Zertifikate / Weiterbildung -->
+    <section class="section">
+      <div class="container">
+        <h2>Weiterbildung & Zertifikate</h2>
+        <p class="prose">
+          Unsere Teammitglieder haben Module des <strong>Google UX Design Professional Certificate</strong> erfolgreich
+          abgeschlossen –
+          ergänzend zu akademischen Abschlüssen in <em>Informatik</em>, <em>Architektur</em> , <em>Mediendesign</em>
+          oder eines relevanten Gebiets.. Das stärkt unser gemeinsames Vokabular und unseren Qualitätsanspruch.
+        </p>
+        <div class="grid-3">
+          <div class="cert-card">
+            <p class="cert-title">Foundations of UX Design</p>
+            <p class="meta">Grundlagen, Prozesse, Verantwortlichkeiten</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-title">Empathize, Define & Ideate</p>
+            <p class="meta">Research, Personas, Problem Statements, Ideation</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-title">Wireframes & Low‑Fi Prototypes</p>
+            <p class="meta">Informationsarchitektur, Flows, Interaktionen</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-title">UX Research & Testing</p>
+            <p class="meta">Studienaufbau, Moderation, Auswertung</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-title">Hi‑Fi Prototyping in Figma</p>
+            <p class="meta">Komponenten, Auto‑Layout, Prototypen</p>
+          </div>
+          <div class="cert-card">
+            <p class="cert-title">Responsive Web (Adobe XD)</p>
+            <p class="meta">Breakpoints, Patterns, Handoff</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (kuratiert & komprimiert auf Basis des bereitgestellten Textes) -->
+    <section class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
+      <div class="container">
+        <h2>FAQ – Häufige Fragen</h2>
+        <div class="accordion">
+          <details class="acc-item" open>
+            <summary class="acc-btn">Was ist UX‑Design?</summary>
+            <div class="acc-panel">
+              <p>UX‑Design gestaltet <em>Erlebnisse</em> – von Apps und Websites bis hin zu vernetzten Produkten. Ziel
+                sind nützliche, nutzbare und zugängliche Interaktionen.</p>
+            </div>
+          </details>
+          <details class="acc-item">
+            <summary class="acc-btn">Was macht ein:e UX‑Designer:in?</summary>
+            <div class="acc-panel">
+              <p>Sie fokussieren die Nutzungserfahrung: Ideen entwickeln, Nutzerforschung durchführen und
+                <em>Wireframes, Mockups, Prototypen</em> erstellen – stets im Abgleich mit Nutzerbedürfnissen.</p>
+            </div>
+          </details>
+          <details class="acc-item">
+            <summary class="acc-btn">Unterschied zwischen UX und UI?</summary>
+            <div class="acc-panel">
+              <p>UX umfasst den gesamten Nutzungskontext und die Qualität der Erfahrung. UI ist die visuelle/interaktive
+                Oberfläche – z. B. Menüs, Buttons, Icons – und deren Verhalten.</p>
+            </div>
+          </details>
+          <details class="acc-item">
+            <summary class="acc-btn">Wichtige Skills im UX‑Design?</summary>
+            <div class="acc-panel">
+              <ul>
+                <li>Empathie & Research (Empathy Maps, Personas, Journeys)</li>
+                <li>Problemdefinition (Problem Statements, User Stories)</li>
+                <li>Ideation & Prototyping (Wireframes, klickbare Prototypen)</li>
+                <li>Usability‑Tests & Auswertung</li>
+                <li>Zugänglichkeit & inklusive Gestaltung</li>
+              </ul>
+            </div>
+          </details>
+          <details class="acc-item">
+            <summary class="acc-btn">Warum UX‑Design?</summary>
+            <div class="acc-panel">
+              <p>Gute Erfahrungen sind geschäftskritisch. UX‑Design sorgt dafür, dass digitale Produkte intuitiver,
+                effizienter und angenehmer sind – für Nutzer und Organisationen.</p>
+            </div>
+          </details>
+
+          <details class="acc-item">
+            <summary class="acc-btn">Welche Jobrollen im UX‑Umfeld gibt es?</summary>
+            <div class="acc-panel">
+              <ul>
+                <li>UX Designer:in · UI Designer:in</li>
+                <li>Interaction/Visual Designer:in</li>
+                <li>Product Designer:in</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+        <p class="meta" style="margin-top:10px">Quelle der FAQ‑Inhalte: Auszüge/Paraphrasen basierend auf dem Google UX
+          Design Professional Certificate (bereitgestellter Text). Marken‑ und Produktnamen gehören ihren jeweiligen
+          Eigentümern.</p>
+      </div>
+    </section>
+
+    <!-- Kontakt CTA -->
+    <section class="section" style="text-align:center">
+      <div class="container">
+        <h2>Fragen zur Zusammenarbeit?</h2>
+        <p class="subtitle">Wir verbinden fundierte UX‑Methodik mit starker Umsetzung in Code. Lass uns über dein
+          Vorhaben sprechen.</p>
+        <a class="button primary" href="mailto:app.atelier.de@gmail.com">Kontakt aufnehmen</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2025 Das App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
+    </div>
+  </footer>
+  <script>
+  // Certificate display script with PDF viewer functionality
+  const certImages = [
+    "assets/certificates/GoogleUX_C1.png",
+    "assets/certificates/GoogleUX_C2.png"
+  ];
+  let currentCertIndex = 0;
+  const activeCert = document.getElementById('active-cert');
+
+  function updateCert(index) {
+    currentCertIndex = index;
+    activeCert.src = certImages[index];
+
+    // Update pagination dots
+    document.querySelectorAll('.cert-dot').forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.add('cert-dot-active');
+      } else {
+        dot.classList.remove('cert-dot-active');
+      }
+    });
+  }
+
+  document.querySelector('.cert-arrow-left').addEventListener('click', function () {
+    let newIndex = currentCertIndex - 1;
+    if (newIndex < 0) newIndex = certImages.length - 1;
+    updateCert(newIndex);
+  });
+
+  document.querySelector('.cert-arrow-right').addEventListener('click', function () {
+    let newIndex = currentCertIndex + 1;
+    if (newIndex >= certImages.length) newIndex = 0;
+    updateCert(newIndex);
+  });
+
+  // Add click handlers for pagination dots
+  document.querySelectorAll('.cert-dot').forEach(dot => {
+    dot.addEventListener('click', function () {
+      updateCert(parseInt(this.dataset.index));
     });
   });
+  
+  // Add click handler to open PDF when certificate is clicked
+  document.querySelector('.cert-mat').addEventListener('click', function() {
+    // Get current image path and convert to PDF path
+    const currentImagePath = activeCert.src;
+    const pdfPath = currentImagePath.replace('.png', '.pdf');
+    
+    // Open PDF in new tab
+    window.open(pdfPath, '_blank');
+  });
 </script>
-<script src="script.js"></script>
-<script src="language_script.js"></script>
+  <script>
+    // Progressive enhancement: toggles for details are native; this script only adds focus/scroll affordance
+    document.querySelectorAll('.acc-item > summary').forEach(sum => {
+      sum.addEventListener('click', () => {
+        const parent = sum.parentElement;
+        requestAnimationFrame(() => parent.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      });
+    });
+
+  </script>
+  <script src="script.js"></script>
+  <script src="language_script.js"></script>
 </body>
+
 </html>
