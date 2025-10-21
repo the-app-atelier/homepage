@@ -34,231 +34,231 @@
     </div>
 
     <style>
-  .cert-display-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 30px 0;
-    position: relative;
-  }
+      .cert-display-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 30px 0;
+        position: relative;
+      }
 
-  .cert-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+      .cert-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-  .cert-frame-stand {
-    position: relative;
-    margin-bottom: 20px;
-    perspective: 1000px;
-  }
+      .cert-frame-stand {
+        position: relative;
+        margin-bottom: 20px;
+        perspective: 1000px;
+      }
 
-  .cert-frame {
-    width: 480px;
-    height: 360px;
-    background: #f8f5f0;
-    border: 18px solid #8a6d3b;
-    border-radius: 4px;
-    box-shadow:
-      0 0 0 1px #d4c096,
-      0 0 0 15px #a58b57,
-      5px 5px 20px rgba(0, 0, 0, 0.2);
-    transform: perspective(1000px) rotateX(5deg);
-    position: relative;
-    z-index: 2;
-    transition: all 0.3s ease;
-  }
+      .cert-frame {
+        width: 480px;
+        height: 360px;
+        background: #f8f5f0;
+        border: 18px solid #8a6d3b;
+        border-radius: 4px;
+        box-shadow:
+          0 0 0 1px #d4c096,
+          0 0 0 15px #a58b57,
+          5px 5px 20px rgba(0, 0, 0, 0.2);
+        transform: perspective(1000px) rotateX(5deg);
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s ease;
+      }
 
-  .cert-mat {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-  }
+      .cert-mat {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+      }
 
-  .cert-mat img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
+      .cert-mat img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
 
-  .cert-stand-shadow {
-    width: 70%;
-    height: 20px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
-    position: absolute;
-    bottom: -20px;
-    left: 15%;
-    filter: blur(8px);
-    z-index: 1;
-  }
+      .cert-stand-shadow {
+        width: 70%;
+        height: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        position: absolute;
+        bottom: -20px;
+        left: 15%;
+        filter: blur(8px);
+        z-index: 1;
+      }
 
-  .cert-arrow {
-    background: color-mix(in oklab, var(--p-lavender) 30%, white 70%);
-    border: 1px solid var(--stroke);
-    border-radius: 50%;
-    font-size: 1.8rem;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s;
-  }
+      .cert-arrow {
+        background: color-mix(in oklab, var(--p-lavender) 30%, white 70%);
+        border: 1px solid var(--stroke);
+        border-radius: 50%;
+        font-size: 1.8rem;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
+      }
 
-  .cert-arrow:hover {
-    background: var(--p-blue);
-    transform: scale(1.05);
-  }
+      .cert-arrow:hover {
+        background: var(--p-blue);
+        transform: scale(1.05);
+      }
 
-  .cert-pagination {
-    display: flex;
-    gap: 10px;
-    margin-top: 16px;
-  }
+      .cert-pagination {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+      }
 
-  .cert-dot {
-    width: 12px;
-    height: 12px;
-    background: color-mix(in oklab, var(--p-lavender) 40%, white 60%);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
+      .cert-dot {
+        width: 12px;
+        height: 12px;
+        background: color-mix(in oklab, var(--p-lavender) 40%, white 60%);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
 
-  .cert-dot-active {
-    background: var(--p-blue);
-    transform: scale(1.2);
-  }
+      .cert-dot-active {
+        background: var(--p-blue);
+        transform: scale(1.2);
+      }
 
-  /* Tablet scaling */
-  @media (max-width: 960px) {
-    .cert-frame {
-      width: 360px;
-      height: 270px;
-      border-width: 16px;
-      box-shadow:
-        0 0 0 1px #d4c096,
-        0 0 0 13px #a58b57,
-        5px 5px 16px rgba(0, 0, 0, 0.2);
-    }
-    
-    .cert-arrow {
-      width: 50px;
-      height: 50px;
-      font-size: 1.5rem;
-    }
-    
-    .cert-stand-shadow {
-      height: 16px;
-      bottom: -16px;
-    }
-  }
+      /* Tablet scaling */
+      @media (max-width: 960px) {
+        .cert-frame {
+          width: 360px;
+          height: 270px;
+          border-width: 16px;
+          box-shadow:
+            0 0 0 1px #d4c096,
+            0 0 0 13px #a58b57,
+            5px 5px 16px rgba(0, 0, 0, 0.2);
+        }
 
-  /* Mobile scaling */
-  @media (max-width: 700px) {
-    .cert-frame {
-      width: 240px;
-      height: 180px;
-      border-width: 10px;
-      box-shadow:
-        0 0 0 1px #d4c096,
-        0 0 0 8px #a58b57,
-        3px 3px 12px rgba(0, 0, 0, 0.2);
-    }
-    
-    .cert-mat {
-      padding: 8px;
-    }
-    
-    .cert-arrow {
-      width: 40px;
-      height: 40px;
-      font-size: 1.2rem;
-    }
-    
-    .cert-pagination {
-      gap: 8px;
-      margin-top: 12px;
-    }
-    
-    .cert-dot {
-      width: 10px;
-      height: 10px;
-    }
-    
-    .cert-stand-shadow {
-      height: 12px;
-      bottom: -12px;
-    }
-  }
+        .cert-arrow {
+          width: 50px;
+          height: 50px;
+          font-size: 1.5rem;
+        }
 
-  .cert-mat {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .cert-mat::after {
-    content: "🔍";
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    opacity: 0.8;
-    transition: all 0.2s;
-    font-size: 14px;
-  }
-  
-  .cert-mat:hover::after {
-    opacity: 1;
-    transform: scale(1.1);
-  }
+        .cert-stand-shadow {
+          height: 16px;
+          bottom: -16px;
+        }
+      }
 
-  /* Add hint text */
-  .cert-hint {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-top: 8px;
-    text-align: center;
-  }
+      /* Mobile scaling */
+      @media (max-width: 700px) {
+        .cert-frame {
+          width: 240px;
+          height: 180px;
+          border-width: 10px;
+          box-shadow:
+            0 0 0 1px #d4c096,
+            0 0 0 8px #a58b57,
+            3px 3px 12px rgba(0, 0, 0, 0.2);
+        }
 
-  /* Extra small screens */
-  @media (max-width: 480px) {
-    .cert-display-wrap {
-      gap: 10px;
-    }
-    
-    .cert-frame {
-      width: 200px;
-      height: 150px;
-      border-width: 8px;
-      box-shadow:
-        0 0 0 1px #d4c096,
-        0 0 0 6px #a58b57,
-        2px 2px 8px rgba(0, 0, 0, 0.2);
-    }
-  }
-</style>
+        .cert-mat {
+          padding: 8px;
+        }
+
+        .cert-arrow {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+
+        .cert-pagination {
+          gap: 8px;
+          margin-top: 12px;
+        }
+
+        .cert-dot {
+          width: 10px;
+          height: 10px;
+        }
+
+        .cert-stand-shadow {
+          height: 12px;
+          bottom: -12px;
+        }
+      }
+
+      .cert-mat {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .cert-mat::after {
+        content: "🔍";
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        opacity: 0.8;
+        transition: all 0.2s;
+        font-size: 14px;
+      }
+
+      .cert-mat:hover::after {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      /* Add hint text */
+      .cert-hint {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 8px;
+        text-align: center;
+      }
+
+      /* Extra small screens */
+      @media (max-width: 480px) {
+        .cert-display-wrap {
+          gap: 10px;
+        }
+
+        .cert-frame {
+          width: 200px;
+          height: 150px;
+          border-width: 8px;
+          box-shadow:
+            0 0 0 1px #d4c096,
+            0 0 0 6px #a58b57,
+            2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+    </style>
   </header>
 
   <main>
-      <section class="hero" style="padding-block:80px;">
+    <section class="hero" style="padding-block:80px;">
 
       <div class="container columns">
         <div class="prose">
@@ -278,10 +278,12 @@
           <p>Test-getrieben, typsicher, dokumentiert. Pairing, Design Reviews,
             Continuous Delivery. Wir liefern iterativ – mit einer Haltung, die Qualität sichtbar macht.</p>
         </div>
+        
         <aside>
           <div class="badge">Studio Notizen</div>
           <p class="meta" style="margin-top:10px">
-            Stack: Python · Django · C# · C++ · Swift · Kotlin · Figma · AdobeXd · Business Process Modeling Notation (BPMN) · HTML5 · CSS · JavaScript · Postgres · NginX · Gunicorn 
+            Stack: Python · Django · C# · C++ · Swift · Kotlin · Figma · AdobeXd · Business Process Modeling Notation
+            (BPMN) · HTML5 · CSS · JavaScript · Postgres · NginX · Gunicorn
           </p>
           <p class="meta">Design: Systemdenken, Bewegung, Typografie</p>
           <div style="margin-top:18px">
@@ -292,37 +294,39 @@
       </div>
     </section>
 
-    <!-- Zertifikate und Auszeichnungen-->
-    <section class="section" style="background:color-mix(in oklab, var(--p-lavender) 8%, white 92%);">
-      <div class="container">
-        <h2>Zertifikate & Auszeichnungen</h2>
-        <div class="cert-display-wrap">
-          <button class="cert-arrow cert-arrow-left" aria-label="Vorheriges Zertifikat">&#8592;</button>
-          <div class="cert-display">
-  <div class="cert-frame-stand">
-    <div class="cert-frame">
-      <div class="cert-mat">
-        <img id="active-cert" src="assets/certificates/GoogleUX_C1.png" alt="Google UX Zertifikat" />
-      </div>
-    </div>
-    <div class="cert-stand-shadow"></div>
-  </div>
-  <p class="cert-hint">Klicken Sie auf das Zertifikat, um es als PDF zu öffnen</p>
-  <div class="cert-pagination">
-    <span class="cert-dot cert-dot-active" data-index="0"></span>
-    <span class="cert-dot" data-index="1"></span>
-  </div>
-</div>
-          <button class="cert-arrow cert-arrow-right" aria-label="Nächstes Zertifikat">&#8594;</button>
-        </div>
-      </div>
-    </section>
+   
 
     <section class="section">
       <div class="container">
         <h2>Manifest</h2>
         <p class="prose">Klarheit vor Komplexität. Reduktion vor Rauschen.
           Systeme sind lebendige Organismen – wir bauen sie so, dass sie wachsen können.</p>
+      </div>
+    </section>
+
+     <!-- Zertifikate und Auszeichnungen-->
+    <section class="section" style="background:color-mix(in oklab, var(--p-lavender) 8%, white 92%);">
+      <div class="container">
+        <h2>Zertifikate & Auszeichnungen</h2>
+        <div class="cert-display-wrap">
+          <button class="cert-arrow cert-arrow-left" aria-label="Vorheriges Zertifikat">&#8592;</button>
+          <div class="cert-display">
+            <div class="cert-frame-stand">
+              <div class="cert-frame">
+                <div class="cert-mat">
+                  <img id="active-cert" src="assets/certificates/GoogleUX_C1.png" alt="Google UX Zertifikat" />
+                </div>
+              </div>
+              <div class="cert-stand-shadow"></div>
+            </div>
+            <p class="cert-hint">Klicken Sie auf das Zertifikat, um es als PDF zu öffnen</p>
+            <div class="cert-pagination">
+              <span class="cert-dot cert-dot-active" data-index="0"></span>
+              <span class="cert-dot" data-index="1"></span>
+            </div>
+          </div>
+          <button class="cert-arrow cert-arrow-right" aria-label="Nächstes Zertifikat">&#8594;</button>
+        </div>
       </div>
     </section>
   </main>
