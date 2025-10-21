@@ -3,6 +3,12 @@ const certImages = [
   "assets/certificates/GoogleUX_C1.png",
   "assets/certificates/GoogleUX_C2.png",
   "assets/certificates/GoogleUX_C3.png",
+  "assets/certificates/Colorado_IIoT_S.png",
+  "assets/certificates/DJ4E_S.png",
+  "assets/certificates/Meta_MobileDev_C1.png",
+  "assets/certificates/Meta_MobileDev_C2.png",
+  "assets/certificates/py4e_C1.png",
+  "assets/certificates/py4e_C2.png"
 ];
 let currentCertIndex = 0;
 const activeCert = document.getElementById("active-cert");

@@ -3,12 +3,57 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Das App Atelier – Wo Software zur Kunst wird</title>
+    <title>Das App Atelier – Wo Software zur Kunst wird | Softwareentwicklung mit Ästhetik</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Das App Atelier – Digitale Erlebnisse, kuratiert wie Kunstwerke. Software Engineering mit Seele.">
+        content="Das App Atelier entwickelt digitale Erlebnisse mit Präzision und Ästhetik. Web Apps, iOS Apps und Full-Stack-Lösungen von Entwicklern mit Sinn für Design.">
+    <meta name="keywords" content="App Entwicklung, Software Engineering, iOS Apps, Web Apps, UX Design, Full-Stack Entwicklung">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://appAtelier.de">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://appAtelier.de">
+    <meta property="og:title" content="Das App Atelier – Digitale Erlebnisse als Kunstwerke">
+    <meta property="og:description" content="Softwarelösungen mit der Präzision von Ingenieuren und der Intuition von Künstlern. Entdecken Sie unsere Projekte.">
+    <meta property="og:image" content="https://appAtelier.de/assets/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://appAtelier.de">
+    <meta property="twitter:title" content="Das App Atelier – Digitale Erlebnisse als Kunstwerke">
+    <meta property="twitter:description" content="Software Engineering mit Seele. Entdecken Sie unsere iOS und Web App Projekte.">
+    <meta property="twitter:image" content="https://appAtelier.de/assets/og-image.jpg">
+    
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured data for better search understanding -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Das App Atelier",
+      "url": "https://appAtelier.de",
+      "logo": "https://appAtelier.de/favicon.ico",
+      "description": "Digitale Erlebnisse, kuratiert wie Kunstwerke. Software Engineering mit Seele.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kornwestheim",
+        "addressRegion": "Baden-Württemberg",
+        "postalCode": "70806",
+        "addressCountry": "DE"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "app.atelier.de@gmail.com",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://github.com/iosif-gogolos"
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -27,11 +72,11 @@
                 <span class="bar"></span>
             </button>
 
-            <nav id="site-navigation" role="navigation">
-                <a class="active" href="#">Projekte </a>
+            <nav id="site-navigation" role="navigation" aria-label="Hauptnavigation">
+                <a class="active" href="#" aria-current="page">Projekte</a>
                 <a href="about.html">Über uns</a>
                 <a href="methodologie.html">Methodologie</a>
-                <a href="karierre.html">Karierre</a>
+                <a href="karierre.html">Karriere</a>
                 <!--a href="impressum.html">Impressum</a-->
                 <!--a href="datenschutz.html">Datenschutz</a-->
             </nav>
@@ -56,7 +101,6 @@
         </section>
 
         <!-- Experience Logos Banner -->
-         
         <section class="section experience-banner" aria-labelledby="xp-title">
             <div class="container">
                 <h2 id="xp-title" class="xp-title">
@@ -65,28 +109,13 @@
 
                 <div class="logo-scroller" aria-label="Firmenlogos der bisherigen Stationen">
                     <div class="logo-track">
-                        <a href="https://www.spherity.com/" target="_blank"><img src="assets/logos/spherity_logo_gradient.png" alt="Spherity GmbH" loading="lazy" ></a>
-                        <a href="https://www.sharpist.com/de" target="_blank"><img src="assets/logos/sharpist_full.jpg" alt="Sharpist GmbH" loading="lazy" /></a>
-                        <a href="https://www.efficioconsulting.com/de/" target="_blank"><img src="assets/logos/efficio.png" href="https://career.axelspringer.com/de/" alt="Efficio - The Procurement Experts" loading="lazy" /></a>
-                        <a href="https://career.axelspringer.com/de/" target="_blank"><img src="assets/logos/axelspringer_logo_long_black-ink_srgb.png"
-                            alt="Axel Springer National Media & Tech GmbH & Co. KG" loading="lazy" /></a>
-                        <a href="https://smart7.io/" target="_blank"><img src="assets/logos/s7black.png" alt="Smart7 GmbH" loading="lazy" /></a>
-                        <a href="https://www.pdr-team.de/" target="_blank"><img src="assets/logos/PDR-Team-GmbH.png" alt="PDR Team GmbH" loading="lazy" /></a>
-                        <a href="https://dalianisarchitects.com/" target="_blank"><img src="assets/logos/da-logo.png" alt="Dalianis Architects" loading="lazy" /></a>
-
-                        <a href="https://www.spherity.com/" target="_blank"><img src="assets/logos/spherity_logo_gradient.png" alt="Spherity GmbH" aria-hidden="true" /></a>
-                        <a href="https://www.sharpist.com/de" target="_blank"><img src="assets/logos/sharpist_full.jpg" alt="Sharpist GmbH" aria-hidden="true" /></a>
-                        <a href="https://www.efficioconsulting.com/de/" target="_blank"><img src="assets/logos/efficio.png" alt="Efficio Consulting" aria-hidden="true" /></a>
-                        <a href="https://career.axelspringer.com/de/" target="_blank"><img src="assets/logos/axelspringer_logo_long_black-ink_srgb.png" href="https://career.axelspringer.com/de/"
-                            alt="Axel Springer National Media & Tech GmbH & Co. KG" aria-hidden="true" /></a>
-                        <a href="https://smart7.io/" target="_blank"><img src="assets/logos/s7black.png" alt="Smart7 GmbH" aria-hidden="true" /></a>
-                        <a href="https://www.pdr-team.de/" target="_blank"><img src="assets/logos/PDR-Team-GmbH.png" alt="PDR Team GmbH" aria-hidden="true" /></a>
-                       <a href="https://dalianisarchitects.com/" target="_blank"><img src="assets/logos/da-logo.png" alt="Dalianis Architects" aria-hidden="true" /></a>
-
-
-
-
-
+                        <a href="https://www.spherity.com/" target="_blank" rel="noopener"><img src="assets/logos/spherity_logo_gradient.png" alt="Spherity GmbH - Blockchain-basierte Identitätslösungen" loading="lazy"></a>
+                        <a href="https://www.sharpist.com/de" target="_blank" rel="noopener"><img src="assets/logos/sharpist_full.jpg" alt="Sharpist GmbH - Digitale Lernplattform" loading="lazy"></a>
+                        <a href="https://www.efficioconsulting.com/de/" target="_blank" rel="noopener"><img src="assets/logos/efficio.png" alt="Efficio - The Procurement Experts - Beratungsunternehmen" loading="lazy"></a>
+                        <a href="https://career.axelspringer.com/de/" target="_blank" rel="noopener"><img src="assets/logos/axelspringer_logo_long_black-ink_srgb.png" alt="Axel Springer National Media & Tech GmbH & Co. KG - Medienunternehmen" loading="lazy"></a>
+                        <a href="https://smart7.io/" target="_blank" rel="noopener"><img src="assets/logos/s7black.png" alt="Smart7 GmbH - Softwareentwicklung" loading="lazy"></a>
+                        <a href="https://www.pdr-team.de/" target="_blank" rel="noopener"><img src="assets/logos/PDR-Team-GmbH.png" alt="PDR Team GmbH - Personaldienstleister" loading="lazy"></a>
+                        <a href="https://dalianisarchitects.com/" target="_blank" rel="noopener"><img src="assets/logos/da-logo.png" alt="Dalianis Architects - Architekturbüro" loading="lazy"></a>
                     </div>
                 </div>
             </div>
@@ -203,14 +232,11 @@
                 <div class="prose">
                     <h2>Kuratorische Notiz</h2>
                     <p>Jedes Werk im App Atelier folgt einer strengen Ingenieurslinie – Skalierbarkeit, Robustheit,
-                        Tests –
-                        und wird zugleich mit einer sensiblen visuellen Sprache inszeniert. Diese Spannung ist unsere
                         Signatur.</p>
-                    <p>Wir verbinden Architektur-Disziplin (DDD, Clean Code, Observability) mit ästhetischer Führung
-                        (Typografie, Rhythmus, Materialität). Das Ergebnis: Shippable Art.</p>
+                    <p>Wir verbinden Architektur-Disziplin (DDD, Clean Code, Observability) mit ästhetischer Führung</p>
                 </div>
                 <div>
-                    <p class="manifest">„In der Welt des Codes ist jede Zeile ein Pinselstrich.“</p>
+                    <p class="manifest">„In der Welt des Codes ist jede Zeile ein Pinselstrich."</p>
                     <a class="button" href="about.html">Über uns lesen</a>
                 </div>
             </div>
@@ -222,7 +248,6 @@
             © 2025 Das App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
         </div>
     </footer>
-
 
     <script src="script.js"></script>
     <script src="language_script.js"></script>
