@@ -1,4 +1,3 @@
-// Certificate display script with PDF viewer functionality, auto-rotation, and dynamic colors
 const certImages = [
   "assets/certificates/GoogleUX_C1.png",
   "assets/certificates/GoogleUX_C2.png",
@@ -15,7 +14,7 @@ const activeCert = document.getElementById("active-cert");
 const certFrame = document.querySelector(".cert-frame");
 let autoRotateInterval;
 let userInteracted = false;
-const AUTO_ROTATE_DELAY = 2500; // 3 seconds
+const AUTO_ROTATE_DELAY = 3000; // 3 seconds
 const INTERACTION_TIMEOUT = 10000; // Resume auto-rotation after 10 seconds of inactivity
 
 // Add transitions to both the image and the frame
@@ -45,7 +44,7 @@ const prefixColorMap = {
     background: "#f0f2f5" 
   },
   "py4e_": { 
-    border: "#a59435ff", 
+    border: "#3572A5", 
     shadow: "#3572A5", 
     background: "#f5faff" 
   },
@@ -58,17 +57,12 @@ const prefixColorMap = {
 };
 
 function getFilePrefix(filepath) {
-  // Extract just the filename from the path
   const filename = filepath.split('/').pop();
-  // Return first 5 characters of the filename
   return filename.substring(0, 5);
 }
 
 function updateFrameColor(prefix) {
-  // Get color settings for this prefix or use default
   const colorSettings = prefixColorMap[prefix] || prefixColorMap["default"];
-  
-  // Update the frame styling
   certFrame.style.borderColor = colorSettings.border;
   certFrame.style.backgroundColor = colorSettings.background;
   certFrame.style.boxShadow = 
@@ -78,7 +72,6 @@ function updateFrameColor(prefix) {
 }
 
 function updateCert(index, skipAnimation = false) {
-  // Prevent animation on the first load or when skipAnimation is true
   if (skipAnimation) {
     showCert(index);
     return;
@@ -115,10 +108,7 @@ function showCert(index) {
 }
 
 function startAutoRotate() {
-  // Clear any existing interval to prevent multiples
   clearInterval(autoRotateInterval);
-  
-  // Set new interval for auto rotation
   autoRotateInterval = setInterval(() => {
     if (!userInteracted) {
       let newIndex = currentCertIndex + 1;
@@ -132,7 +122,6 @@ function handleUserInteraction() {
   userInteracted = true;
   clearInterval(autoRotateInterval);
   
-  // Resume auto-rotation after a period of inactivity
   clearTimeout(window.resumeTimeout);
   window.resumeTimeout = setTimeout(() => {
     userInteracted = false;
@@ -140,53 +129,11 @@ function handleUserInteraction() {
   }, INTERACTION_TIMEOUT);
 }
 
-// Initialize certificate with opacity 1 and start auto-rotation
-activeCert.style.opacity = 1;
-startAutoRotate();
-
-// Add click listeners and mark them as user interactions
-document.querySelector(".cert-arrow-left").addEventListener("click", function () {
-  handleUserInteraction();
-  let newIndex = currentCertIndex - 1;
-  if (newIndex < 0) newIndex = certImages.length - 1;
-  updateCert(newIndex);
-});
-
-document.querySelector(".cert-arrow-right").addEventListener("click", function () {
-  handleUserInteraction();
-  let newIndex = currentCertIndex + 1;
-  if (newIndex >= certImages.length) newIndex = 0;
-  updateCert(newIndex);
-});
-
-// Add click handlers for pagination dots
-document.querySelectorAll(".cert-dot").forEach((dot) => {
-  dot.addEventListener("click", function () {
-    handleUserInteraction();
-    updateCert(parseInt(this.dataset.index));
-  });
-});
-
-// Add click handler to open PDF when certificate is clicked
-document.querySelector(".cert-mat").addEventListener("click", function () {
-  handleUserInteraction();
-  
-  // Get current image path and convert to PDF path
-  const currentImagePath = activeCert.src;
-  const pdfPath = currentImagePath.replace(".png", ".pdf");
-
-  // Open PDF in new tab
-  window.open(pdfPath, "_blank");
-});
-
-// Make sure pagination dots match the number of certificates
+// Initialize certificate display
 document.addEventListener('DOMContentLoaded', () => {
   const paginationContainer = document.querySelector('.cert-pagination');
   
-  // Clear existing dots
-  paginationContainer.innerHTML = '';
-  
-  // Create correct number of dots
+  // Create pagination dots
   certImages.forEach((_, i) => {
     const dot = document.createElement('span');
     dot.className = 'cert-dot' + (i === 0 ? ' cert-dot-active' : '');
@@ -198,10 +145,34 @@ document.addEventListener('DOMContentLoaded', () => {
     paginationContainer.appendChild(dot);
   });
   
-  // Set initial frame color based on the first certificate
+  // Set initial frame color
   const initialPrefix = getFilePrefix(certImages[0]);
   updateFrameColor(initialPrefix);
   
-  // Ensure first certificate is shown correctly
-  updateCert(0, true);
+  // Set up click handlers
+  document.querySelector(".cert-arrow-left").addEventListener("click", function () {
+    handleUserInteraction();
+    let newIndex = currentCertIndex - 1;
+    if (newIndex < 0) newIndex = certImages.length - 1;
+    updateCert(newIndex);
+  });
+
+  document.querySelector(".cert-arrow-right").addEventListener("click", function () {
+    handleUserInteraction();
+    let newIndex = currentCertIndex + 1;
+    if (newIndex >= certImages.length) newIndex = 0;
+    updateCert(newIndex);
+  });
+  
+  // Add PDF viewer functionality
+  document.querySelector(".cert-mat").addEventListener("click", function () {
+    handleUserInteraction();
+    const currentImagePath = activeCert.src;
+    const pdfPath = currentImagePath.replace(".png", ".pdf");
+    window.open(pdfPath, "_blank");
+  });
+  
+  // Start auto-rotation
+  activeCert.style.opacity = 1;
+  startAutoRotate();
 });
