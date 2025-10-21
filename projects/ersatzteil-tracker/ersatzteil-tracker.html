@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Ersatzteil-Tracker – Das App Atelier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Ersatzteil-Tracker – Eine responsive Web-App zur effizienten Erfassung und Verfolgung von Ersatzteilen, die Papierarbeit eliminiert und Berichte automatisiert. Case Study in fünf Phasen." />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Projektspezifische Pastell-Variante -->
+  <style>
+    :root {
+      --p-blue: #B7D1E5;
+      /* Industrie-Blau */
+      --p-mint: #CAEDDD;
+      /* Umwelt/Nachhaltigkeit */
+      --p-lavender: #D7D3EF;
+      /* Eleganz/Effizienz */
+      --p-peach: #F7D0BA;
+      /* Warm Accent */
+    }
+
+    .figure {
+      margin: 14px 0 22px
+    }
+
+    .figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow-soft)
+    }
+
+    .figure figcaption {
+      font-size: .93rem;
+      color: var(--muted);
+      margin-top: 8px
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      background: #fff;
+      margin-right: 6px;
+      font-size: .9rem
+    }
+
+    .meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0
+    }
+
+    .meta-list li {
+      color: var(--muted)
+    }
+
+    code {
+      background: #fff;
+      padding: 1px 6px;
+      border: 1px solid var(--stroke);
+      border-radius: 8px
+    }
+
+    .impact-card {
+      background: color-mix(in oklab, var(--p-mint) 20%, white 80%);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border: 1px solid var(--stroke);
+    }
+
+    .impact-card h4 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="/homepage">
+        <div class="brand-logo">AA</div>
+        <div class="brand-name">Das App Atelier</div>
+      </a>
+      <!-- Hamburger toggle for small screens -->
+      <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Menü umschalten">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav>
+        <a href="../../index.html">Projekte</a>
+        <a href="../../about.html">Über uns</a>
+        <a href="../../methodologie.html">Methodologie</a>
+        <a href="../../karierre.html">Karriere</a>
+        <!--a href="../../impressum.html">Impressum</a-->
+        <!--a href="../../datenschutz.html">Datenschutz</a-->
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Header -->
+    <section class="hero" style="padding-block: 84px;">
+      <div class="container">
+        <div class="kicker">Projekt · Responsive Web App · Industriesektor</div>
+        <img src="assets/AppIcon.png" alt="Ersatzteil-Tracker App Icon" style="width: 120px; height: 120px; border-radius: 20px;">
+        <h1>Ersatzteil-Tracker</h1>
+        <p class="subtitle">
+          Eine responsive Web-Anwendung zur effizienten Erfassung und Nachverfolgung von fehlerhaften oder beschädigten Ersatzteilen – 
+          entwickelt aus der Praxis für die Praxis, um Papierarbeit zu eliminieren und Reporting zu automatisieren.
+        </p>
+        <p class="meta" style="margin-top:10px">
+          Stack: HTML · CSS · JavaScript · IndexedDB · Web Storage API · Responsive Design · Progressive Enhancement
+        </p>
+        <div style="margin-top:8px">
+          <span class="pill">Industrieanwendung</span>
+          <span class="pill">Mobile-First</span>
+          <span class="pill">Offline-Support</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. Hintergrund & Motivation -->
+    <section id="phase-1" class="section">
+      <div class="container columns">
+        <div class="prose">
+          <h2>1. Hintergrund & Motivation</h2>
+          <p>
+            Im Dezember 2024 wurde ich zum Reparaturstandort Markgröningen gerufen, um Excel-Listen für das Management zu erstellen. 
+            Vor Ort beobachtete ich einen Mitarbeiter, der mit einem iPad Mini durch die Werkstatt ging und Daten zu fehlerhaften oder 
+            beschädigten Ersatzteilen erfasste.
+          </p>
+          <p>
+            Der bisherige Prozess war ineffizient: Der Mitarbeiter notierte zunächst alle Informationen auf Papier und übertrug diese 
+            später manuell in Excel-Tabellen. Diese doppelte Dateneingabe war zeitaufwändig und fehleranfällig.
+          </p>
+          <div class="figure">
+            <img src="assets/paper-list.jpg" alt="Originale Papierliste zur Ersatzteilerfassung" />
+            <figcaption>Abb. 1: Die ursprüngliche papierbasierte Methode zur Erfassung von Ersatzteilinformationen</figcaption>
+          </div>
+          <p>
+            Die Idee entstand, eine responsive Web-Anwendung zu entwickeln, die direkt auf dem Tablet des Mitarbeiters laufen könnte 
+            und die doppelte Dateneingabe eliminieren würde. Die App sollte offline funktionieren, Daten lokal speichern und die 
+            Erstellung von Berichten für das Management automatisieren.
+          </p>
+        </div>
+        <aside>
+          <div class="badge">Phase 01</div>
+          <p class="meta">Problemanalyse, Anforderungserhebung</p>
+          <ul class="meta-list">
+            <li>Standort: Markgröningen</li>
+            <li>Beobachtung vor Ort</li>
+            <li>Interviews mit Endnutzern</li>
+            <li>Prozessanalyse</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 2. Konzeption & Design -->
+    <section id="phase-2" class="section" style="background:color-mix(in oklab, var(--p-lavender) 10%, white 90%);">
+      <div class="container columns">
+        <div class="prose">
+          <h2>2. Konzeption & Design</h2>
+          <p>
+            Das Konzept für den Ersatzteil-Tracker basierte auf folgenden Grundprinzipien:
+          </p>
+          <ul>
+            <li><strong>Mobile-First:</strong> Optimiert für das iPad Mini des Mitarbeiters</li>
+            <li><strong>Offline-Funktionalität:</strong> Unabhängig von der Netzwerkverbindung in der Werkstatt</li>
+            <li><strong>Intuitive Bedienung:</strong> Einfache Erfassung und Bearbeitung von Einträgen</li>
+            <li><strong>Exportfunktion:</strong> Automatisierte Berichtserstellung für das Management</li>
+          </ul>
+          <div class="grid">
+            <div class="figure">
+              <img src="assets/wireframe.png" alt="Wireframe der Ersatzteil-Tracker App" />
+              <figcaption>Abb. 2: Low-Fidelity Wireframe der Anwendung</figcaption>
+            </div>
+            <div class="figure">
+              <img src="assets/ui-design.png" alt="UI-Design der Ersatzteil-Tracker App" />
+              <figcaption>Abb. 3: High-Fidelity UI-Design mit Formularansicht</figcaption>
+            </div>
+          </div>
+          <p>
+            Ein besonderer Fokus lag auf der Datenstruktur für die Ersatzteile. Erfasst wurden:
+          </p>
+          <ul>
+            <li>Teilenummer und Bezeichnung</li>
+            <li>Art des Defekts/Problems</li>
+            <li>Lieferant und Lieferdatum</li>
+            <li>Fotos des beschädigten Teils (falls vorhanden)</li>
+            <li>Status der Reklamation</li>
+          </ul>
+          <p>
+            Für die lokale Datenspeicherung wurde IndexedDB gewählt, um auch größere Datenmengen und Binärdaten (Fotos) 
+            effizient verwalten zu können.
+          </p>
+        </div>
+        <aside>
+          <div class="badge">Phase 02</div>
+          <p class="meta">Konzeption, UI/UX-Design</p>
+          <ul class="meta-list">
+            <li>Wireframing</li>
+            <li>Datenmodellierung</li>
+            <li>UI-Design</li>
+            <li>Technologieauswahl</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 3. Iteration & Abstimmung -->
+    <section id="phase-3" class="section">
+      <div class="container columns">
+        <div class="prose">
+          <h2>3. Iteration & Abstimmung mit Stakeholdern</h2>
+          <p>
+            Die Entwicklung erfolgte in enger Abstimmung mit dem Hauptanwender und dem Management des Reparaturstandorts.
+            Durch schnelles Prototyping und regelmäßiges Feedback konnten wir die Anwendung kontinuierlich verbessern.
+          </p>
+          <p>
+            <strong>Wichtige Erkenntnisse aus den Feedback-Runden:</strong>
+          </p>
+          <ul>
+            <li>Bedarf an einer Filterfunktion nach Lieferanten und Zeitraum</li>
+            <li>Wunsch nach einer statistischen Übersicht für Management-Berichte</li>
+            <li>Notwendigkeit einer einfachen Export-Funktion zu Excel</li>
+            <li>Wunsch Fotos hinzuzufügen und zu speichern</li>
+          </ul>
+          <div class="figure">
+            <img src="assets/wireframe2.png" alt="Feedback-Session mit dem Anwender" />
+            <figcaption>Abb. 4: Feedback-Session mit dem Hauptanwender zur Verbesserung der Benutzerführung</figcaption>
+          </div>
+          <p>
+            Ein entscheidender Aspekt war die Balance zwischen Benutzerfreundlichkeit und Funktionalität. Der Anwender 
+            sollte mit minimalen Klicks neue Einträge erstellen können, gleichzeitig aber auch detaillierte Informationen 
+            erfassen können.
+          </p>
+        </div>
+        <aside>
+          <div class="badge">Phase 03</div>
+          <p class="meta">Feedback, Anpassung, Optimierung</p>
+          <ul class="meta-list">
+            <li>3 Feedback-Zyklen</li>
+            <li>Usability-Tests</li>
+            <li>Funktionserweiterungen</li>
+            <li>Performance-Optimierung</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 4. Prototyp & Ergebnisse -->
+    <section id="phase-4" class="section" style="background:color-mix(in oklab, var(--p-mint) 12%, white 88%);">
+      <div class="container columns">
+        <div class="prose">
+          <h2>4. Prototyp & Ergebnisse</h2>
+          <p>
+            Die fertige Web-Anwendung bietet folgende Kernfunktionen:
+          </p>
+          <ul>
+            <li>Formular zur schnellen Erfassung neuer Ersatzteile</li>
+            <li>Übersichtliche Listenansicht aller erfassten Teile</li>
+            <li>Filter- und Suchfunktionen</li>
+            <li>Export zu Excel und PDF</li>
+            <li>Offline-Funktionalität mit lokaler Datenspeicherung</li>
+            <li>Statistik-Dashboard für Management-Berichte</li>
+          </ul>
+
+          <div class="grid-2">
+            <div class="figure">
+              <img src="assets/ListeRetournierterET.png" alt="Listenansicht der Ersatzteil-App" />
+              <figcaption>Abb. 5: Listenansicht mit Filter- und Suchfunktionen</figcaption>
+            </div>
+            <div class="figure">
+              <img src="assets/neuer-eintrag.png" alt="Detailansicht eines Ersatzteils" />
+              <figcaption>Abb. 6: Detailansicht eines erfassten Ersatzteils mit Statusverwaltung</figcaption>
+            </div>
+          </div>
+
+          <p>
+            Die technische Umsetzung der Offline-Funktionalität erfolgte mit IndexedDB und dem Cache API:
+          </p>
+
+          <pre><code>// Beispiel für die IndexedDB-Implementierung
+const dbPromise = idb.openDB('ersatzteil-tracker', 1, {
+  upgrade(db) {
+    const store = db.createObjectStore('ersatzteile', { keyPath: 'id', autoIncrement: true });
+    store.createIndex('lieferant', 'lieferant');
+    store.createIndex('datum', 'lieferdatum');
+    store.createIndex('status', 'status');
+  }
+});
+
+// Speichern eines neuen Ersatzteils
+async function speichereErsatzteil(teil) {
+  const db = await dbPromise;
+  await db.add('ersatzteile', teil);
+  syncWhenOnline();
+}
+
+// Synchronisation, wenn online
+function syncWhenOnline() {
+  if (navigator.onLine) {
+    synchronisiereMitServer();
+  } else {
+    window.addEventListener('online', synchronisiereMitServer);
+  }
+}</code></pre>
+
+          <p>
+            Die App wurde unmittelbar nach Fertigstellung in den Produktivbetrieb übernommen. Der Mitarbeiter in Markgröningen 
+            konnte sofort von den Vorteilen profitieren und seine Arbeit effizienter gestalten.
+          </p>
+        </div>
+        <aside>
+          <div class="badge">Phase 04</div>
+          <p class="meta">Implementierung, Deployment</p>
+          <ul class="meta-list">
+            <li>Frontend-Entwicklung</li>
+            <li>Lokale Datenbank</li>
+            <li>Caching-Strategien</li>
+            <li>Export-Funktionen</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+  <div class="container">
+    <h3>Interaktive Vorschau</h3>
+    <iframe
+      src="https://iosif-gogolos.github.io/sparePartTracker/"
+      title="Ersatzteil-Tracker Live-Vorschau"
+      loading="lazy"
+      style="width:100%; max-width:1100px; height:680px; border:1px solid var(--stroke); border-radius:12px;">
+    </iframe>
+    <p class="meta" style="margin-top:8px">Tipp: Für beste Erfahrung „Live-Demo öffnen“ anklicken.</p>
+  </div>
+</section>
+
+    <!-- 5. Ausblick & Weitere Schritte -->
+    <section id="phase-5" class="section">
+      <div class="container columns">
+        <div class="prose">
+          <h2>5. Ausblick & Impact</h2>
+          
+          <div class="impact-card">
+            <h4>Standortübergreifende Adoption</h4>
+            <p>
+              Nach dem erfolgreichen Einsatz in Markgröningen wurde der Ersatzteil-Tracker auch am zweiten Standort in 
+              Mutlangen eingeführt. Die Mitarbeiter dort konnten ohne zusätzliche Schulung mit der intuitiven Anwendung 
+              arbeiten.
+            </p>
+          </div>
+          
+          <div class="impact-card">
+            <h4>Zeit- und Ressourcenersparnis</h4>
+            <p>
+              Die doppelte Dateneingabe entfiel vollständig, was pro Woche etwa 4-5 Arbeitsstunden einsparte.
+              Die automatische Berichterstellung reduzierte den Aufwand für das Management um weitere 2-3 Stunden wöchentlich.
+            </p>
+          </div>
+          
+          <div class="impact-card">
+            <h4>Umweltauswirkung</h4>
+            <p>
+              Durch die Eliminierung der Papierformulare werden jährlich etwa 5.000 Blatt Papier eingespart, was einer 
+              CO₂-Reduktion von ca. 25 kg entspricht. Dies unterstützt die Nachhaltigkeitsziele des Unternehmens.
+            </p>
+          </div>
+          
+          <h3>Ausblick und nächste Schritte</h3>
+          <p>
+            Für die weitere Entwicklung des Ersatzteil-Trackers sind folgende Erweiterungen geplant:
+          </p>
+          <ul>
+            <li>Integration in das ERP-System des Unternehmens</li>
+            <li>Automatische Benachrichtigungen bei Statusänderungen</li>
+            <li>Erweitertes Analytics-Dashboard für tiefere Einblicke in die Lieferantenqualität</li>
+            <li>Standortübergreifende Synchronisation und Auswertung</li>
+          </ul>
+          <p>
+            Das Projekt zeigt exemplarisch, wie durch aufmerksame Beobachtung vor Ort und agile Entwicklung schnell 
+            praktische Lösungen entstehen können, die unmittelbar zur Prozessoptimierung beitragen.
+          </p>
+        </div>
+        <aside>
+          <div class="badge">Phase 05</div>
+          <p class="meta">Evaluation, Weiterentwicklung</p>
+          <ul class="meta-list">
+            <li>Nutzer-Feedback</li>
+            <li>Performance-Monitoring</li>
+            <li>Standortübergreifende Ausrollung</li>
+            <li>Roadmap für Version 2.0</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Backlink -->
+    <section class="section" style="text-align:center">
+      <a class="button" href="../../index.html">← Zurück zur Galerie</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2025 Das App Atelier · <a href="../../impressum.html">Impressum</a> · <a href="../../datenschutz.html">Datenschutz</a>
+    </div>
+  </footer>
+  <script src="../../script.js"></script>
+  <script src="../../language_script.js"></script>
+</body>
+
+</html>
