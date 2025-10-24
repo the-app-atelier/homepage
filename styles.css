@@ -91,33 +91,29 @@ h1{
 .button:hover{transform: translateY(-1px); box-shadow: var(--shadow)}
 /* === Hero-Layout mit Badge (Credly) === */
 /* HERO: Grid + Spaltenbreiten + Abstand */
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1fr;                /* mobil: einspaltig */
-  gap: clamp(24px, 4vw, 56px);
-  align-items:center;
-}
-
-/* ab Desktop wirklich zweispaltig */
+/* Hero: Spalten */
 @media (min-width: 960px){
   .hero-grid{
-    grid-template-columns: minmax(0, 1.15fr) minmax(240px, 320px);
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 360px); /* mehr Platz rechts */
   }
 }
 
-/* Textspalte */
-.hero-copy{
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
+/* Badge-Spalte oben ausrichten und etwas nach unten „floaten“ */
+.hero-badge{
+  align-self: start;           /* statt place-self:center end -> oben bündig */
+  justify-self: end;
+  width: 100%;
+  max-width: 360px;            /* größer am Desktop */
+  min-height: 420px;           /* verhindert CLS */
 }
 
-/* Badge-Spalte */
-.hero-badge{
-  place-self:center end;                     /* rechts ausrichten */
-  width:100%;
-  max-width:320px;                           /* Zielbreite am Desktop */
-  min-height:360px;                          /* gegen CLS beim Laden */
+/* Optional: hübsche Karte um das iFrame (Glas-Look) */
+.hero-badge .badge-card{
+  padding: 12px;               /* Innenabstand um das iFrame */
+  border-radius: 16px;
+  background: color-mix(in oklab, var(--bg) 70%, white 30%);
+  border: 1px solid var(--stroke);
+  box-shadow: 0 18px 40px rgba(0,0,0,.10);
 }
 
 /* Das Wrapper-DIV, in das Credly das <iframe> schreibt */
@@ -126,14 +122,19 @@ h1{
   width:100%;
 }
 
-/* Das eigentliche Credly-iframe */
+/* Das eigentliche Credly-iframe – responsiv halten */
 .hero-badge iframe{
   width:100% !important;
   height:auto !important;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 2 / 3;         /* 300x450 */
   border-radius:12px;
   box-shadow:0 8px 24px rgba(0,0,0,.12);
   display:block;
+}
+
+/* Mobile: etwas Abstand unterhalb des Textes */
+@media (max-width: 959px){
+  .hero-badge{ margin-top: 4px; }
 }
 
 
@@ -363,5 +364,6 @@ h1{
     font-size: .8rem; 
   }
 }
+
 
 
