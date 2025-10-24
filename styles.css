@@ -89,6 +89,45 @@ h1{
   border-color: transparent;
 }
 .button:hover{transform: translateY(-1px); box-shadow: var(--shadow)}
+/* === Hero-Layout mit Badge (Credly) === */
+.hero-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-badge {
+  justify-self: center;
+  max-width: 260px;
+  width: 100%;
+  /* gegen Layout-Shift, sollte grob der Iframe-Höhe entsprechen */
+  min-height: 340px;
+}
+
+/* Iframe von Credly überschreiben, damit es responsiv wird */
+.hero-badge iframe {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr auto;
+  }
+  .hero-badge {
+    justify-self: end;
+  }
+}
+
 
 /* ---- Gallery ---- */
 .gallery{
@@ -315,3 +354,4 @@ h1{
     font-size: .8rem; 
   }
 }
+
