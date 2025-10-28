@@ -122,10 +122,12 @@
     <section class="hero" style="padding-block: 84px;">
       <div class="container">
         <div class="kicker">Projekt · Responsive Web App · Industriesektor</div>
-        <img src="assets/AppIcon.png" alt="Ersatzteil-Tracker App Icon" style="width: 120px; height: 120px; border-radius: 20px;">
+        <img src="assets/AppIcon.png" alt="Ersatzteil-Tracker App Icon"
+          style="width: 120px; height: 120px; border-radius: 20px;">
         <h1>Ersatzteil-Tracker</h1>
         <p class="subtitle">
-          Eine responsive Web-Anwendung zur effizienten Erfassung und Nachverfolgung von fehlerhaften oder beschädigten Ersatzteilen – 
+          Eine responsive Web-Anwendung zur effizienten Erfassung und Nachverfolgung von fehlerhaften oder beschädigten
+          Ersatzteilen –
           entwickelt aus der Praxis für die Praxis, um Papierarbeit zu eliminieren und Reporting zu automatisieren.
         </p>
         <p class="meta" style="margin-top:10px">
@@ -145,21 +147,29 @@
         <div class="prose">
           <h2>1. Hintergrund & Motivation</h2>
           <p>
-            Im Dezember 2024 wurde ich zum Reparaturstandort Markgröningen gerufen, um Excel-Listen für das Management zu erstellen. 
-            Vor Ort beobachtete ich einen Mitarbeiter, der mit einem iPad Mini durch die Werkstatt ging und Daten zu fehlerhaften oder 
+            Im Dezember 2024 wurde ich zum Reparaturstandort Markgröningen gerufen, um Excel-Listen für das Management
+            zu erstellen.
+            Vor Ort beobachtete ich einen Mitarbeiter, der mit einem iPad Mini durch die Werkstatt ging und Daten zu
+            fehlerhaften oder
             beschädigten Ersatzteilen erfasste.
           </p>
           <p>
-            Der bisherige Prozess war ineffizient: Der Mitarbeiter notierte zunächst alle Informationen auf Papier. Für die manuelle Übetragung der Daten in  
-            in eine Excel-Tabelle benötigte dieser zunächst 1.) Grundlagenkenntisse in Excel und 2.) zusätzliche Hardware (hier: einen Laptop) um das Tabellenkalkulationsprogramm Excel vollumfänglich nutzen zu können. Diese doppelte Dateneingabe war zeitaufwändig und fehleranfällig.
+            Der bisherige Prozess war ineffizient: Der Mitarbeiter notierte zunächst alle Informationen auf Papier. Für
+            die manuelle Übetragung der Daten in
+            in eine Excel-Tabelle benötigte dieser zunächst 1.) Grundlagenkenntisse in Excel und 2.) zusätzliche
+            Hardware (hier: einen Laptop) um das Tabellenkalkulationsprogramm Excel vollumfänglich nutzen zu können.
+            Diese doppelte Dateneingabe war zeitaufwändig und fehleranfällig.
           </p>
           <div class="figure">
             <img src="assets/paper-list.jpg" alt="Originale Papierliste zur Ersatzteilerfassung" />
-            <figcaption>Abb. 1: Die ursprüngliche papierbasierte Methode zur Erfassung von Ersatzteilinformationen</figcaption>
+            <figcaption>Abb. 1: Die ursprüngliche papierbasierte Methode zur Erfassung von Ersatzteilinformationen
+            </figcaption>
           </div>
           <p>
-            Die Idee entstand, eine responsive Web-Anwendung zu entwickeln, die direkt auf dem Tablet des Mitarbeiters laufen könnte 
-            und die doppelte Dateneingabe eliminieren würde. Die App sollte offline funktionieren, Daten lokal speichern und die 
+            Die Idee entstand, eine responsive Web-Anwendung zu entwickeln, die direkt auf dem Tablet des Mitarbeiters
+            laufen könnte
+            und die doppelte Dateneingabe eliminieren würde. Die App sollte offline funktionieren, Daten lokal speichern
+            und die
             Erstellung von Berichten für das Management automatisieren.
           </p>
         </div>
@@ -211,7 +221,7 @@
             <li>Status der Reklamation</li>
           </ul>
           <p>
-            Für die lokale Datenspeicherung wurde IndexedDB gewählt, um auch größere Datenmengen und Binärdaten (Fotos) 
+            Für die lokale Datenspeicherung wurde IndexedDB gewählt, um auch größere Datenmengen und Binärdaten (Fotos)
             effizient verwalten zu können.
           </p>
         </div>
@@ -234,7 +244,8 @@
         <div class="prose">
           <h2>3. Iteration & Abstimmung mit Stakeholdern</h2>
           <p>
-            Die Entwicklung erfolgte in enger Abstimmung mit dem Hauptanwender und dem Management des Reparaturstandorts.
+            Die Entwicklung erfolgte in enger Abstimmung mit dem Hauptanwender und dem Management des
+            Reparaturstandorts.
             Durch schnelles Prototyping und regelmäßiges Feedback konnten wir die Anwendung kontinuierlich verbessern.
           </p>
           <p>
@@ -251,8 +262,9 @@
             <figcaption>Abb. 4: Feedback-Session mit dem Hauptanwender zur Verbesserung der Benutzerführung</figcaption>
           </div>
           <p>
-            Ein entscheidender Aspekt war die Balance zwischen Benutzerfreundlichkeit und Funktionalität. Der Anwender 
-            sollte mit minimalen Klicks neue Einträge erstellen können, gleichzeitig aber auch detaillierte Informationen 
+            Ein entscheidender Aspekt war die Balance zwischen Benutzerfreundlichkeit und Funktionalität. Der Anwender
+            sollte mit minimalen Klicks neue Einträge erstellen können, gleichzeitig aber auch detaillierte
+            Informationen
             erfassen können.
           </p>
         </div>
@@ -328,7 +340,8 @@ function syncWhenOnline() {
 }</code></pre>
 
           <p>
-            Die App wurde unmittelbar nach Fertigstellung in den Produktivbetrieb übernommen. Der Mitarbeiter in Markgröningen 
+            Die App wurde unmittelbar nach Fertigstellung in den Produktivbetrieb übernommen. Der Mitarbeiter in
+            Markgröningen
             konnte sofort von den Vorteilen profitieren und seine Arbeit effizienter gestalten.
           </p>
         </div>
@@ -346,54 +359,53 @@ function syncWhenOnline() {
     </section>
 
     <section class="section">
-  <div class="container">
-    <h3>Interaktive Vorschau</h3>
-    <iframe
-      src="https://iosif-gogolos.github.io/sparePartTracker/"
-      title="Ersatzteil-Tracker Live-Vorschau"
-      loading="lazy"
-      style="width:100%; max-width:1100px; height:680px; border:1px solid var(--stroke); border-radius:12px;">
-    </iframe>
-    <p class="meta" style="margin-top:8px">Tipp: Für beste Erfahrung „Live-Demo öffnen“ anklicken.</p>
-  </div>
-  <div class="container">
-    <a class="button" href="https://iosif-gogolos.github.io/sparePartTracker/" target="_blank" rel="noopener">
-       Live-Demo öffnen
-    </a>
-  </div>
-</section>
+      <div class="container">
+        <h3>Interaktive Vorschau</h3>
+        <iframe src="https://iosif-gogolos.github.io/sparePartTracker/" title="Ersatzteil-Tracker Live-Vorschau"
+          loading="lazy"
+          style="width:100%; max-width:1100px; height:680px; border:1px solid var(--stroke); border-radius:12px;">
+        </iframe>
+        <p class="meta" style="margin-top:8px">Tipp: Für beste Erfahrung „Live-Demo öffnen“ anklicken.</p>
+      </div>
+      <div class="container">
+        <a class="button" href="https://iosif-gogolos.github.io/sparePartTracker/" target="_blank" rel="noopener">
+          Live-Demo öffnen
+        </a>
+      </div>
+    </section>
 
     <!-- 5. Ausblick & Weitere Schritte -->
     <section id="phase-5" class="section">
       <div class="container columns">
         <div class="prose">
           <h2>5. Ausblick & Impact</h2>
-          
+
           <div class="impact-card">
             <h4>Standortübergreifende Adoption</h4>
             <p>
-              Nach dem erfolgreichen Einsatz in Markgröningen wurde der Ersatzteil-Tracker auch am zweiten Standort in 
-              Mutlangen eingeführt. Die Mitarbeiter dort konnten ohne zusätzliche Schulung mit der intuitiven Anwendung 
+              Nach dem erfolgreichen Einsatz in Markgröningen wurde der Ersatzteil-Tracker auch am zweiten Standort in
+              Mutlangen eingeführt. Die Mitarbeiter dort konnten ohne zusätzliche Schulung mit der intuitiven Anwendung
               arbeiten.
             </p>
           </div>
-          
+
           <div class="impact-card">
             <h4>Zeit- und Ressourcenersparnis</h4>
             <p>
               Die doppelte Dateneingabe entfiel vollständig, was pro Woche etwa 4-5 Arbeitsstunden einsparte.
-              Die automatische Berichterstellung reduzierte den Aufwand für das Management um weitere 2-3 Stunden wöchentlich.
+              Die automatische Berichterstellung reduzierte den Aufwand für das Management um weitere 2-3 Stunden
+              wöchentlich.
             </p>
           </div>
-          
+
           <div class="impact-card">
             <h4>Umweltauswirkung</h4>
             <p>
-              Durch die Eliminierung der Papierformulare werden jährlich etwa 5.000 Blatt Papier eingespart, was einer 
+              Durch die Eliminierung der Papierformulare werden jährlich etwa 5.000 Blatt Papier eingespart, was einer
               CO₂-Reduktion von ca. 25 kg entspricht. Dies unterstützt die Nachhaltigkeitsziele des Unternehmens.
             </p>
           </div>
-          
+
           <h3>Ausblick und nächste Schritte</h3>
           <p>
             Für die weitere Entwicklung des Ersatzteil-Trackers sind folgende Erweiterungen geplant:
@@ -405,7 +417,7 @@ function syncWhenOnline() {
             <li>Standortübergreifende Synchronisation und Auswertung</li>
           </ul>
           <p>
-            Das Projekt zeigt exemplarisch, wie durch aufmerksame Beobachtung vor Ort und agile Entwicklung schnell 
+            Das Projekt zeigt exemplarisch, wie durch aufmerksame Beobachtung vor Ort und agile Entwicklung schnell
             praktische Lösungen entstehen können, die unmittelbar zur Prozessoptimierung beitragen.
           </p>
         </div>
@@ -422,8 +434,8 @@ function syncWhenOnline() {
       </div>
     </section>
     <section class="section" style="text-align:center">
-  
-</section>
+
+    </section>
 
     <!-- Backlink -->
     <section class="section" style="text-align:center">
@@ -433,7 +445,8 @@ function syncWhenOnline() {
 
   <footer class="footer">
     <div class="container">
-      © 2025 Das App Atelier · <a href="../../impressum.html">Impressum</a> · <a href="../../datenschutz.html">Datenschutz</a>
+      © 2025 Das App Atelier · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a
+        href="javascript:Cookiebot.renew()">Cookie-Einstellungen</a>
     </div>
   </footer>
   <script src="../../script.js"></script>
