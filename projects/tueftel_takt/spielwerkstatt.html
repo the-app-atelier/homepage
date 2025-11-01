@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Professor Tüftel – Spielwerkstatt</title>
+<style>
+/* ---------- TüftelTakt | Widget Scope ---------- */
+.tt-scope { --tt-bg:#0b0d10; --tt-card:#12161b; --tt-ink:#f3f5f7; --tt-muted:#a6b0bb;
+  --tt-accent:#0E6E6E; --tt-accent-2:#F5C542; --tt-danger:#E4572E; --tt-ok:#33C36D;
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--tt-ink); background:#0b0d10; padding: clamp(16px,3vw,32px);
+}
+.tt-scope * { box-sizing:border-box; }
+.tt-wrap { max-width: 1100px; margin: 0 auto; }
+.tt-header { display:flex; gap:16px; align-items:center; margin-bottom: 18px; }
+.tt-badge { background:linear-gradient(135deg,var(--tt-accent) 0%, #119999 100%); padding:6px 10px; border-radius:999px; font-weight:600; font-size:12px; letter-spacing:.02em; }
+.tt-title { font-weight:800; font-size: clamp(20px, 4vw, 34px); margin:0; }
+.tt-sub { color: var(--tt-muted); margin:4px 0 0 0; font-size: 14px;}
+/* HUD */
+.tt-hud { position:absolute; inset:auto 10px 10px 10px; display:flex; align-items:center; justify-content:space-between; pointer-events:none; font-size:13px; color:#bcd; }
+/* HUD avatar proportional */
+.hud-avatar { width: clamp(28px, 6vw, 44px); height: auto; border-radius:8px; object-fit:cover; border:1px solid rgba(255,255,255,0.06); margin-right:8px; pointer-events:auto; }
+/* layout */
+.tt-grid { display:grid; grid-template-columns: 1.1fr 1.2fr; gap: clamp(16px, 2.5vw, 28px); }
+@media (max-width: 900px){ .tt-grid{ grid-template-columns: 1fr; } }
+
+.tt-card { background: var(--tt-card); border:1px solid #1e2329; border-radius: 14px; padding: clamp(14px,2vw,18px); }
+.tt-card h3 { margin:0 0 10px; font-size: 16px; letter-spacing:.02em; }
+.tt-controls { display:grid; gap: 12px; }
+.tt-field { display:grid; gap: 6px; }
+.tt-field label { font-size: 13px; color: var(--tt-muted); display:flex; align-items:center; gap:8px; }
+.tt-field input[type="color"],
+.tt-field input[type="number"],
+.tt-field input[type="range"],
+.tt-field select {
+  width: 100%; background:#0f1318; color:var(--tt-ink); border:1px solid #20252c;
+  border-radius: 10px; padding: 10px 12px; outline:none;
+}
+.tt-field input[type="range"] { padding:0; height: 30px; }
+.tt-row { display:flex; gap:10px; align-items:center; flex-wrap: wrap; }
+.tt-sm { font-size:12px; color:var(--tt-muted); }
+.tt-switch { display:flex; align-items:center; gap:10px; }
+.tt-switch input { width: 18px; height:18px; }
+
+.tt-actions { display:flex; flex-wrap: wrap; gap:10px; margin-top: 6px; }
+.tt-btn { border:1px solid #1f262d; background:#0f1318; color:var(--tt-ink);
+  padding:10px 12px; border-radius:10px; cursor:pointer; font-weight:600; transition: .15s transform, .15s background, .15s border-color;
+}
+.tt-btn:hover { transform: translateY(-1px); border-color:#2a323b; }
+.tt-btn--accent { background: linear-gradient(135deg, var(--tt-accent) 0%, #119999 100%); border-color:transparent; }
+.tt-btn--ok { background: linear-gradient(135deg, var(--tt-ok) 0%, #27a85b 100%); border-color:transparent; color:#06140d; }
+.tt-btn--danger { background: linear-gradient(135deg, var(--tt-danger) 0%, #c03e1a 100%); border-color:transparent; }
+.tt-btn:disabled { opacity:.55; cursor:not-allowed; transform:none; }
+
+.tt-canvas-wrap { position: relative; aspect-ratio: 16/9; background:#0f1318; border:1px solid #1e2329; border-radius:14px; overflow:hidden; }
+#tt-canvas { width:100%; height:100%; display:block; background:#081015; }
+.tt-hud { position:absolute; inset:auto 10px 10px 10px; display:flex; justify-content:space-between; pointer-events:none; font-size:13px; color:#bcd; }
+.tt-hud .pill { background: #0b1117cc; backdrop-filter: blur(4px); padding:6px 10px; border-radius:999px; border:1px solid #1e2329; pointer-events:auto;}
+
+.tt-prof { position: fixed; right: clamp(10px, 2vw, 20px); bottom: clamp(10px, 2vw, 20px); z-index:9999; }
+.tt-prof .bubble { width: min(380px, 86vw); background:#10151b; border:1px solid #1f2730; border-radius:16px; padding:12px 12px 12px 12px; box-shadow:0 8px 30px rgba(0,0,0,.35); }
+.tt-prof .head { display:flex; gap:10px; align-items:center; }
+.tt-prof .copy { margin:8px 0 10px; font-size:14px; }
+.tt-prof .controls { display:flex; gap:8px; }
+.tt-prof .controls button { flex: 1; }
+/* Avatar in bubble proportional */
+.tt-avatar img { width: clamp(36px, 8vw, 44px); height: auto; border-radius:12px; object-fit:cover; display:block; border:1px solid #1f2730; }
+
+.tt-highlight { outline: 2px dashed var(--tt-accent-2); outline-offset: 2px; border-radius: 10px; }
+.tt-visually-hidden { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+</style>
+</head>
+<body class="tt-scope">
+  <div class="tt-wrap" role="main">
+    
+    <div class="tt-header">
+      <span class="tt-badge">TüftelTakt</span>
+      <div>
+        <h1 class="tt-title">Professor Tüftel – Spielwerkstatt</h1>
+        <p class="tt-sub">Bauen → Testen → Teilen. Pfeiltasten bewegen die Figur. Export funktioniert lokal – zusammen mit den Eltern.</p>
+      </div>
+    </div>
+
+    <div class="tt-grid" aria-label="Spielwerkstatt Raster">
+      <!-- Werkbank -->
+      <section class="tt-card" aria-labelledby="werkbank-title">
+        <h3 id="werkbank-title">Werkbank</h3>
+        <div class="tt-controls">
+          <div class="tt-field" id="tt-bg-field">
+            <label for="tt-bg">Spielfeldfarbe</label>
+            <input id="tt-bg" type="color" value="#0b1020" aria-describedby="tt-bg-help"/>
+            <span id="tt-bg-help" class="tt-sm">Hoher Kontrast – gut sichtbar!</span>
+          </div>
+
+          <div class="tt-row">
+            <div class="tt-field" style="flex:1" id="tt-speed-field">
+              <label for="tt-speed">Spieler-Geschwindigkeit: <strong><span id="tt-speed-val">3</span></strong></label>
+              <input id="tt-speed" type="range" min="1" max="8" value="3" step="1" />
+            </div>
+            <div class="tt-field" style="flex:1" id="tt-stars-field">
+              <label for="tt-stars">Sterne: <strong><span id="tt-stars-val">8</span></strong></label>
+              <input id="tt-stars" type="range" min="3" max="30" value="8" step="1" />
+            </div>
+          </div>
+
+          <div class="tt-row">
+            <div class="tt-field" style="flex:1" id="tt-size-field">
+              <label for="tt-starsize">Stern-Größe: <strong><span id="tt-starsize-val">8</span></strong></label>
+              <input id="tt-starsize" type="range" min="4" max="16" value="8" step="1" />
+            </div>
+            <div class="tt-field" style="flex:1" id="tt-timer-field">
+              <label for="tt-timer">Zeitlimit (Sek., 0 = aus)</label>
+              <input id="tt-timer" type="number" min="0" max="180" value="0" />
+            </div>
+          </div>
+
+          <div class="tt-switch" id="tt-move-field">
+            <input id="tt-move" type="checkbox" />
+            <label for="tt-move">Sterne bewegen sich leicht</label>
+          </div>
+
+          <div class="tt-actions">
+            <button class="tt-btn" id="tt-reset">Zurücksetzen</button>
+            <button class="tt-btn tt-btn--accent" id="tt-play">Testen (Pfeiltasten)</button>
+            <button class="tt-btn tt-btn--ok" id="tt-export" disabled>Als HTML exportieren</button>
+          </div>
+
+          <div class="tt-switch" aria-live="polite" id="tt-parent-field">
+            <input id="tt-parent" type="checkbox" />
+            <label for="tt-parent">Ich bin mit meinen Eltern hier (Export freischalten)</label>
+          </div>
+          <p class="tt-sm">Kein Login. Alles passiert <em>lokal</em> im Browser.</p>
+        </div>
+      </section>
+
+      <!-- Spielfeld -->
+      <section class="tt-card" aria-labelledby="spielfeld-title">
+        <h3 id="spielfeld-title">Spielfeld</h3>
+        <div class="tt-canvas-wrap">
+          <canvas id="tt-canvas" width="960" height="540" aria-label="Spielcanvas"></canvas>
+          <div class="tt-hud">
+            <!-- HUD avatar proportional -->
+            <img id="tt-hud-avatar" src="./assets/professortueftel.png" alt="Professor Tüftel" class="hud-avatar" />
+
+            <div style="display:flex;gap:8px;align-items:center;">
+              <div class="pill" id="tt-score" aria-live="polite">⭐ 0</div>
+              <div class="pill" id="tt-timer-hud" aria-live="polite">⏱ ∞</div>
+            </div>
+          </div>
+        </div>
+        <div class="head" style="margin-top:10px; display:flex; align-items:center; gap:10px;">
+          <div class="tt-avatar" aria-hidden="true">
+<img src="./assets/professortueftel.png" alt="Professor Tüftel" width="44" height="44" style="border-radius:12px;object-fit:cover;display:block;" />
+          </div>
+          <strong>Professor Tüftel</strong>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Professor Tüftel Bubble -->
+  <aside class="tt-prof" aria-live="polite">
+    <div class="bubble" role="dialog" aria-label="Professor Tüftel erklärt">
+      <div class="head">
+        <div class="tt-avatar" aria-hidden="true">
+<img src="./assets/professortueftel.png" alt="Professor Tüftel" width="44" height="44" style="border-radius:12px;object-fit:cover;display:block;" />
+        </div>
+        <strong>Professor Tüftel</strong>
+      </div>
+      <p class="copy" id="tt-prof-text">Willkommen! Wähle zuerst eine <strong>Spielfeldfarbe</strong>. Ich passe auf, dass alles klappt.</p>
+      <div class="controls">
+        <button class="tt-btn" id="tt-prev" aria-label="Zurück">Zurück</button>
+        <button class="tt-btn tt-btn--accent" id="tt-next" aria-label="Weiter">Weiter</button>
+        <button class="tt-btn tt-btn--danger" id="tt-close" aria-label="Schließen">Schließen</button>
+      </div>
+    </div>
+  </aside>
+
+<script>
+/* ---------- TüftelTakt | Widget Logic (IIFE) ---------- */
+(() => {
+  const $ = sel => document.querySelector(sel);
+
+  // Elements
+  const canvas = $("#tt-canvas"), ctx = canvas.getContext("2d");
+  const scoreEl = $("#tt-score"), timerHud = $("#tt-timer-hud");
+  const bgInput = $("#tt-bg"), speedInput = $("#tt-speed"), starsInput = $("#tt-stars"), starSizeInput = $("#tt-starsize");
+  const timerInput = $("#tt-timer"), moveInput = $("#tt-move");
+  const speedVal = $("#tt-speed-val"), starsVal = $("#tt-stars-val"), starSizeVal = $("#tt-starsize-val");
+  const btnReset = $("#tt-reset"), btnPlay = $("#tt-play"), btnExport = $("#tt-export");
+  const parentChk = $("#tt-parent");
+
+  parentChk.addEventListener("change", e => { btnExport.disabled = !e.target.checked; });
+  
+  async function imageToDataURL(src) {
+    try {
+      if (typeof fetch === "function") {
+        try {
+          const resp = await fetch(src, {cache: "no-cache", credentials: "same-origin"});
+          if (resp && resp.ok) {
+            const blob = await resp.blob();
+            return await new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = () => resolve(reader.result);
+              reader.onerror = () => resolve(src);
+              reader.readAsDataURL(blob);
+            });
+          }
+        } catch (err) {}
+      }
+    } catch (e) {}
+
+    return new Promise((resolve) => {
+      try {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+          try {
+            const c = document.createElement('canvas');
+            c.width = img.naturalWidth || img.width || 64;
+            c.height = img.naturalHeight || img.height || 64;
+            const x = c.getContext('2d');
+            x.clearRect(0,0,c.width,c.height);
+            x.drawImage(img, 0, 0);
+            const data = c.toDataURL('image/png');
+            resolve(data);
+          } catch (err) {
+            resolve(src);
+          }
+        };
+        img.onerror = () => resolve(src);
+        img.src = src;
+        if (img.complete) {
+          try { img.onload(); } catch(e){}
+        }
+      } catch (e) {
+        resolve(src);
+      }
+    });
+  }
+
+  // Game state
+  let config = {
+    bg: bgInput.value,
+    speed: +speedInput.value,
+    stars: +starsInput.value,
+    starSize: +starSizeInput.value,
+    timeLimit: Math.max(0, +timerInput.value|0),
+    movingStars: moveInput.checked
+  };
+  let running = false, keys = {}, player, items=[], collected=0, timeLeft = Infinity, rafId=null, lastTs=0;
+
+  const rand = (min, max) => Math.random()*(max-min)+min;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const dist2 = (x1,y1,x2,y2) => (x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
+
+  function initGame() {
+    player = { x: canvas.width*0.5, y: canvas.height*0.5, r: 14, speed: config.speed };
+    items = [];
+    collected = 0;
+    for (let i=0;i<config.stars;i++) {
+      items.push({ x: rand(30, canvas.width-30), y: rand(30, canvas.height-30),
+                   r: config.starSize, vx: (config.movingStars? rand(-0.6,0.6):0), vy: (config.movingStars? rand(-0.6,0.6):0) });
+    }
+    timeLeft = (config.timeLimit>0? config.timeLimit: Infinity);
+    updateHUD();
+  }
+
+  function updateHUD() {
+    scoreEl.textContent = `⭐ ${collected}/${config.stars}`;
+    timerHud.textContent = isFinite(timeLeft) ? `⏱ ${Math.max(0, Math.ceil(timeLeft))}s` : "⏱ ∞";
+  }
+
+  function draw() {
+    ctx.fillStyle = config.bg;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = "#F5C542";
+    ctx.beginPath(); ctx.arc(player.x, player.y, player.r, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = "#0E6E6E";
+    ctx.beginPath(); ctx.arc(player.x-5, player.y-3, 3, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(player.x+5, player.y-3, 3, 0, Math.PI*2); ctx.fill();
+
+    items.forEach(s => {
+      ctx.fillStyle = "#FFD76B";
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2); ctx.fill();
+      ctx.strokeStyle = "rgba(255,215,107,.4)";
+      ctx.lineWidth = 2; ctx.stroke();
+    });
+  }
+
+  function step(dt) {
+    const v = player.speed * (dt/16);
+    if (keys.ArrowLeft)  player.x -= v;
+    if (keys.ArrowRight) player.x += v;
+    if (keys.ArrowUp)    player.y -= v;
+    if (keys.ArrowDown)  player.y += v;
+    player.x = clamp(player.x, player.r, canvas.width-player.r);
+    player.y = clamp(player.y, player.r, canvas.height-player.r);
+
+    items.forEach(s => {
+      s.x += s.vx; s.y += s.vy;
+      if (s.x < s.r || s.x > canvas.width - s.r) s.vx *= -1;
+      if (s.y < s.r || s.y > canvas.height - s.r) s.vy *= -1;
+    });
+
+    for (let i=items.length-1;i>=0;i--){
+      const s = items[i];
+      if (dist2(player.x, player.y, s.x, s.y) < (player.r + s.r)*(player.r + s.r)) {
+        items.splice(i,1); collected++; updateHUD();
+      }
+    }
+
+    if (isFinite(timeLeft)) {
+      timeLeft -= dt/1000; updateHUD();
+      if (timeLeft <= 0) endGame(false);
+    }
+
+    if (collected >= config.stars) endGame(true);
+  }
+
+  function loop(ts) {
+    if (!running) return;
+    const dt = Math.min(48, ts - (lastTs||ts)); lastTs = ts;
+    step(dt);
+    draw();
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function start() {
+    running = true; lastTs = 0;
+    cancelAnimationFrame(rafId);
+    initGame(); draw();
+    rafId = requestAnimationFrame(loop);
+  }
+  
+  function endGame(win) {
+    running = false; cancelAnimationFrame(rafId);
+    draw();
+    ctx.fillStyle = win ? "rgba(51,195,109,.95)" : "rgba(228,87,46,.95)";
+    const msg = win ? "Geschafft! 🎉" : "Zeit abgelaufen ⏱";
+    const boxW = 320, boxH = 80;
+    ctx.fillRect((canvas.width-boxW)/2,(canvas.height-boxH)/2, boxW, boxH);
+    ctx.fillStyle = "#081015"; ctx.font = "bold 28px system-ui"; ctx.textAlign="center"; ctx.textBaseline="middle";
+    ctx.fillText(msg, canvas.width/2, canvas.height/2);
+  }
+
+  speedInput.addEventListener("input", e => { speedVal.textContent = e.target.value; config.speed = +e.target.value; if (player) player.speed = config.speed; });
+  starsInput.addEventListener("input", e => { starsVal.textContent = e.target.value; config.stars = +e.target.value; updateHUD(); });
+  starSizeInput.addEventListener("input", e => { starSizeVal.textContent = e.target.value; config.starSize = +e.target.value; });
+  timerInput.addEventListener("input", e => { config.timeLimit = Math.max(0, +e.target.value|0); timeLeft = isFinite(config.timeLimit)? config.timeLimit : Infinity; updateHUD(); });
+  moveInput.addEventListener("change", e => { config.movingStars = !!e.target.checked; });
+
+  bgInput.addEventListener("input", e => { config.bg = e.target.value; if(!running) draw(); });
+
+  btnReset.addEventListener("click", () => { initGame(); draw(); });
+  btnPlay.addEventListener("click", () => start());
+
+  window.addEventListener("keydown", e => {
+    if (["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)) {
+      keys[e.key]=true; if (running) e.preventDefault();
+    }
+  });
+  window.addEventListener("keyup", e => {
+    if (["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)) {
+      keys[e.key]=false; if (running) e.preventDefault();
+    }
+  });
+
+  btnExport.addEventListener("click", async () => {
+    if (btnExport.disabled) return;
+
+    const avatarImg = document.querySelector('.tt-avatar img') || document.getElementById('tt-hud-avatar');
+    const avatarSrc = avatarImg ? avatarImg.src : '';
+    const avatarData = avatarSrc ? await imageToDataURL(avatarSrc) : '';
+
+    const safeColor = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(config.bg) ? config.bg : "#0b1020";
+    const avatarTag = avatarData ? '<img src="' + avatarData + '" alt="Professor Tüftel" class="avatar">' : '';
+
+    const tpl = `<!doctype html>
+<html lang="de"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mein TüftelTakt Spiel</title>
+<style>
+html,body{height:100%;margin:0;background:${safeColor};color:#f3f5f7;font:16px/1.5 system-ui,Segoe UI,Roboto,Arial;}
+.wrap{max-width:960px;margin:0 auto;padding:12px;}
+h1{font:800 20px/1.2 system-ui;margin:8px 0 10px;}
+.card{background:#0f1318;border:1px solid #1e2329;border-radius:12px;padding:10px;}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pill{background:#0b1117cc;border:1px solid #1e2329;padding:6px 10px;border-radius:999px;color:#bcd;display:inline-block}
+canvas{width:100%;height:auto;display:block;background:${safeColor}}
+.btn{border:1px solid #1f262d;background:#0f1318;color:#f3f5f7;padding:8px 10px;border-radius:10px;cursor:pointer}
+.btn:hover{border-color:#2a323b}
+.avatar{width:clamp(40px,8vw,56px);height:auto;border-radius:12px;object-fit:cover;display:inline-block}
+</style></head><body>
+<div class="wrap">
+  <div style="display:flex;align-items:center;gap:12px;">
+    ${avatarTag}
+    <h1>Mein TüftelTakt Spiel</h1>
+  </div>
+  <div class="row" style="margin-top:8px;">
+    <span class="pill" id="hudScore">⭐ 0</span>
+    <span class="pill" id="hudTimer">⏱ ${config.timeLimit>0? config.timeLimit+"s":"∞"}</span>
+    <button class="btn" id="restart">Neu starten</button>
+  </div>
+  <div class="card" style="margin-top:10px">
+    <canvas id="c" width="960" height="540" aria-label="Spiel"></canvas>
+  </div>
+  <p class="pill" style="margin-top:10px">Pfeiltasten bewegen – Viel Spaß!</p>
+</div>
+<script>
+(()=>{const c=document.getElementById('c'),x=c.getContext('2d');
+let conf={bg:'${safeColor}',speed:${+config.speed},stars:${+config.stars},starSize:${+config.starSize},timeLimit:${+config.timeLimit},movingStars:${config.movingStars}};
+let running=false,keys={},p,it=[],got=0,tL=Infinity,af=null,lt=0;
+const $=id=>document.getElementById(id); const hudS=$('hudScore'),hudT=$('hudTimer');
+const R=(a,b)=>Math.random()*(b-a)+a, C=(v,a,b)=>Math.max(a,Math.min(b,v)), D=(a,b,c,d)=>{a-=c;b-=d;return a*a+b*b};
+function init(){p={x:c.width*.5,y:c.height*.5,r:14,speed:conf.speed}; it=[]; got=0;
+ for(let i=0;i<conf.stars;i++){it.push({x:R(30,c.width-30),y:R(30,c.height-30),r:conf.starSize,vx:conf.movingStars?R(-.6,.6):0,vy:conf.movingStars?R(-.6,.6):0});}
+ tL=(conf.timeLimit>0?conf.timeLimit:Infinity); upd();
+}
+function upd(){hudS.textContent='⭐ '+got+'/'+conf.stars; hudT.textContent=isFinite(tL)?'⏱ '+Math.max(0,Math.ceil(tL))+'s':'⏱ ∞';}
+function draw(){x.fillStyle=conf.bg;x.fillRect(0,0,c.width,c.height);
+ x.fillStyle='#F5C542'; x.beginPath(); x.arc(p.x,p.y,p.r,0,Math.PI*2); x.fill();
+ x.fillStyle='#0E6E6E'; x.beginPath(); x.arc(p.x-5,p.y-3,3,0,Math.PI*2); x.fill(); x.beginPath(); x.arc(p.x+5,p.y-3,3,0,Math.PI*2); x.fill();
+ it.forEach(s=>{x.fillStyle='#FFD76B'; x.beginPath(); x.arc(s.x,s.y,s.r,0,Math.PI*2); x.fill(); x.strokeStyle='rgba(255,215,107,.4)'; x.lineWidth=2; x.stroke();});
+}
+function step(dt){const v=p.speed*(dt/16);
+ if(keys.ArrowLeft)p.x-=v; if(keys.ArrowRight)p.x+=v; if(keys.ArrowUp)p.y-=v; if(keys.ArrowDown)p.y+=v;
+ p.x=C(p.x,p.r,c.width-p.r); p.y=C(p.y,p.r,c.height-p.r);
+ it.forEach(s=>{s.x+=s.vx; s.y+=s.vy; if(s.x<s.r||s.x>c.width-s.r)s.vx*=-1; if(s.y<s.r||s.y>c.height-s.r)s.vy*=-1;});
+ for(let i=it.length-1;i>=0;i--){const s=it[i]; if(D(p.x,p.y,s.x,s.y)<(p.r+s.r)*(p.r+s.r)){it.splice(i,1); got++; upd();}}
+ if(isFinite(tL)){tL-=dt/1000; upd(); if(tL<=0) end(false);}
+ if(got>=conf.stars) end(true);
+}
+function loop(ts){if(!running)return; const dt=Math.min(48, ts-(lt||ts)); lt=ts; step(dt); draw(); af=requestAnimationFrame(loop);}
+function start(){running=true; lt=0; cancelAnimationFrame(af); init(); draw(); af=requestAnimationFrame(loop);}
+function end(win){running=false; cancelAnimationFrame(af); draw(); x.fillStyle=win?'rgba(51,195,109,.95)':'rgba(228,87,46,.95)';
+ const m=win?'Geschafft! 🎉':'Zeit abgelaufen ⏱', W=320,H=80; x.fillRect((c.width-W)/2,(c.height-H)/2,W,H);
+ x.fillStyle='#081015'; x.font='bold 28px system-ui'; x.textAlign='center'; x.textBaseline='middle'; x.fillText(m,c.width/2,c.height/2);}
+window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){keys[e.key]=true; if(running)e.preventDefault();}});
+window.addEventListener('keyup',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){keys[e.key]=false; if(running)e.preventDefault();}});
+$('restart').addEventListener('click',()=>start());
+init(); draw();
+})();
+<` + `/script>
+</body></html>`;
+
+    const blob = new Blob([tpl], {type:"text/html;charset=utf-8"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "Mein-Tueftel-Spiel.html";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 100);
+  });
+
+  (function ensureHudAvatar() {
+    const hud = document.querySelector('.tt-hud');
+    if (!hud) return;
+    if (!document.getElementById('tt-hud-avatar')) {
+      const img = document.createElement('img');
+      img.id = 'tt-hud-avatar';
+      img.className = 'hud-avatar';
+      img.alt = 'Professor Tüftel';
+      img.src = 'assets/professortueftel.png';
+      hud.insertBefore(img, hud.firstChild);
+    }
+  })();
+
+  const profText = $("#tt-prof-text"), btnPrev=$("#tt-prev"), btnNext=$("#tt-next"), btnClose=$("#tt-close");
+  const steps = [
+    { text: "Willkommen! Wähle eine Spielfeldfarbe – hoher Kontrast ist super.", target: "#tt-bg-field" },
+    { text: "Stell die Geschwindigkeit ein. Du kannst es später jederzeit ändern.", target: "#tt-speed-field" },
+    { text: "Wie viele Sterne willst du einsammeln? Und wie groß sollen sie sein?", target: "#tt-stars-field" },
+    { text: "Optional: Bewegte Sterne und ein Zeitlimit machen es kniffliger.", target: "#tt-move-field" },
+    { text: "Klick auf Testen und steuere mit den Pfeiltasten. Viel Spaß!", target: "#tt-play" },
+    { text: "Export geht nur mit Eltern. Häkchen setzen und speichern – alles lokal!", target: "#tt-parent-field" }
+  ];
+  let stepIdx = 0;
+  function highlight(sel, on) {
+    if (!sel) return;
+    const el = document.querySelector(sel);
+    if (!el) return;
+    el.classList.toggle("tt-highlight", !!on);
+    if (on) el.scrollIntoView({behavior:"smooth", block:"center"});
+  }
+  function setStep(i){
+    if (steps[stepIdx]) highlight(steps[stepIdx].target, false);
+    stepIdx = clamp(i, 0, steps.length-1);
+    const s = steps[stepIdx];
+    profText.innerHTML = s.text;
+    if (s.target) highlight(s.target, true);
+    btnPrev.disabled = stepIdx===0;
+    btnNext.textContent = stepIdx===steps.length-1 ? "Fertig" : "Weiter";
+  }
+  btnPrev.addEventListener("click", ()=> setStep(stepIdx-1));
+  btnNext.addEventListener("click", ()=> {
+    if (stepIdx===steps.length-1) {
+      document.querySelector(".tt-prof").style.display="none";
+      if (steps[stepIdx]) highlight(steps[stepIdx].target, false);
+    } else setStep(stepIdx+1);
+  });
+  btnClose.addEventListener("click", ()=> {
+    document.querySelector(".tt-prof").style.display="none";
+    if (steps[stepIdx]) highlight(steps[stepIdx].target, false);
+  });
+
+  setStep(0);
+  initGame(); draw();
+})();
+</script>
+</body>
+</html>
