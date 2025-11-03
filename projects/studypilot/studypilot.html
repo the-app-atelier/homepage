@@ -491,100 +491,10 @@
         <!-- Lo-Fi Prototype -->
         <div style="margin-top:48px;">
           <h3>5.3 Low-Fidelity Prototyp</h3>
-          <p class="meta">Interaktiver Clickthrough zur Validierung von Flows – erste Farbzuordnung</p>
+          <p class="meta">Interaktiver Clickthrough zur Validierung von Flows</p>
           <div class="figure">
-            <svg viewBox="0 0 1300 700" width="100%" style="background:linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); border:1px solid var(--stroke); border-radius:12px;">
-              <!-- Screen 1: Dashboard -->
-              <g transform="translate(30,40)">
-                <rect x="0" y="0" width="360" height="620" fill="white" stroke="var(--brand-400)" stroke-width="3" rx="12" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.1))"/>
-                <rect x="15" y="15" width="330" height="55" fill="var(--brand-600)" rx="8"/>
-                <text x="30" y="48" font-size="18" font-weight="bold" fill="white">StudyPilot</text>
-                <circle cx="320" cy="42" r="12" fill="white" opacity="0.3"/>
-                
-                <text x="20" y="95" font-size="14" font-weight="600" fill="var(--text)">Today's Tasks</text>
-                <rect x="15" y="105" width="330" height="95" fill="var(--brand-50)" stroke="var(--brand-200)" stroke-width="1" rx="8"/>
-                <text x="25" y="130" font-size="13" fill="var(--text)">UX Design Assignment</text>
-                <text x="25" y="150" font-size="11" fill="var(--muted)">Due in 3 hours</text>
-                <circle cx="30" cy="175" r="5" fill="var(--accent-600)"/>
-                <text x="45" y="180" font-size="10" fill="var(--accent-600)">High Priority</text>
-                
-                <rect x="15" y="215" width="330" height="85" fill="white" stroke="var(--stroke)" stroke-width="1" rx="8"/>
-                <text x="25" y="240" font-size="13" fill="var(--text)">Math Problem Set</text>
-                <text x="25" y="258" font-size="11" fill="var(--muted)">Due tomorrow</text>
-                <circle cx="30" cy="280" r="5" fill="var(--brand-500)"/>
-                
-                <text x="20" y="325" font-size="14" font-weight="600" fill="var(--text)">This Week</text>
-                <rect x="15" y="335" width="330" height="60" fill="var(--bg-soft)" stroke="var(--stroke)" stroke-width="1" rx="8"/>
-                <rect x="25" y="350" width="200" height="30" fill="var(--brand-100)" rx="4"/>
-                <text x="35" y="371" font-size="11" fill="var(--brand-700)">Progress: 65%</text>
-                
-                <!-- Arrow to next screen -->
-                <path d="M 375 310 L 410 310" stroke="var(--brand-500)" stroke-width="3" marker-end="url(#arrowhead)"/>
-                <text x="380" y="300" font-size="11" fill="var(--brand-600)">Tap task</text>
-              </g>
-
-              <!-- Screen 2: Task Detail -->
-              <g transform="translate(430,40)">
-                <rect x="0" y="0" width="360" height="620" fill="white" stroke="var(--brand-400)" stroke-width="3" rx="12" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.1))"/>
-                <rect x="15" y="15" width="330" height="55" fill="var(--brand-600)" rx="8"/>
-                <text x="30" y="48" font-size="16" fill="white">← Task Details</text>
-                
-                <rect x="15" y="85" width="330" height="160" fill="var(--brand-50)" stroke="var(--brand-200)" stroke-width="1" rx="10"/>
-                <text x="25" y="110" font-size="16" font-weight="bold" fill="var(--text)">UX Design Assignment</text>
-                <text x="25" y="135" font-size="12" fill="var(--muted)">Course: HCI Design</text>
-                <rect x="25" y="150" width="100" height="24" fill="var(--accent-50)" stroke="var(--accent-400)" stroke-width="1" rx="12"/>
-                <circle cx="35" cy="162" r="4" fill="var(--accent-600)"/>
-                <text x="48" y="167" font-size="11" fill="var(--accent-600)">Due: Oct 31, 17:00</text>
-                
-                <text x="25" y="195" font-size="11" fill="var(--muted)">Estimated time: 4 hours</text>
-                <rect x="25" y="205" width="200" height="8" fill="var(--bg-soft)" rx="4"/>
-                <rect x="25" y="205" width="130" height="8" fill="var(--brand-400)" rx="4"/>
-                
-                <text x="25" y="270" font-size="13" font-weight="600" fill="var(--text)">Description</text>
-                <text x="25" y="290" font-size="11" fill="var(--muted)">Complete the branding case study</text>
-                <text x="25" y="308" font-size="11" fill="var(--muted)">including color palette, app icon,</text>
-                <text x="25" y="326" font-size="11" fill="var(--muted)">and psychological rationale.</text>
-                
-                <rect x="15" y="360" width="158" height="45" fill="white" stroke="var(--brand-500)" stroke-width="2" rx="8"/>
-                <text x="94" y="388" font-size="13" fill="var(--brand-600)" text-anchor="middle">Edit Task</text>
-                
-                <rect x="187" y="360" width="158" height="45" fill="var(--teal-500)" stroke="var(--teal-500)" stroke-width="2" rx="8"/>
-                <text x="266" y="388" font-size="13" fill="white" font-weight="600" text-anchor="middle">✓ Mark Done</text>
-                
-                <!-- Arrow to next screen -->
-                <path d="M 375 382 L 410 382" stroke="var(--teal-500)" stroke-width="3" marker-end="url(#arrowhead2)"/>
-                <text x="380" y="372" font-size="11" fill="var(--teal-600)">Complete</text>
-              </g>
-
-              <!-- Screen 3: Success -->
-              <g transform="translate(830,40)">
-                <rect x="0" y="0" width="360" height="620" fill="white" stroke="var(--brand-400)" stroke-width="3" rx="12" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.1))"/>
-                <rect x="15" y="15" width="330" height="55" fill="var(--brand-600)" rx="8"/>
-                <text x="30" y="48" font-size="18" font-weight="bold" fill="white">StudyPilot</text>
-                
-                <g transform="translate(180,200)">
-                  <circle cx="0" cy="0" r="50" fill="var(--teal-50)" stroke="var(--teal-500)" stroke-width="3"/>
-                  <path d="M -20 0 L -8 12 L 20 -16" fill="none" stroke="var(--teal-600)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                
-                <text x="180" y="290" font-size="18" font-weight="600" fill="var(--text)" text-anchor="middle">Task Completed!</text>
-                <text x="180" y="315" font-size="12" fill="var(--muted)" text-anchor="middle">Great work. Keep it up!</text>
-                
-                <rect x="80" y="350" width="200" height="45" fill="var(--brand-600)" stroke="var(--brand-600)" stroke-width="2" rx="8"/>
-                <text x="180" y="378" font-size="13" fill="white" font-weight="600" text-anchor="middle">Back to Dashboard</text>
-              </g>
-
-              <!-- Arrow markers -->
-              <defs>
-                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                  <polygon points="0 0, 10 3, 0 6" fill="var(--brand-500)"/>
-                </marker>
-                <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                  <polygon points="0 0, 10 3, 0 6" fill="var(--teal-500)"/>
-                </marker>
-              </defs>
-            </svg>
-            <figcaption>Low-Fi interaktiver Prototyp: Hauptflow Dashboard → Task Details → Completion Feedback mit ersten Farbsignalen (Blau=Navigation, Rot=Urgency, Teal=Success)</figcaption>
+            <img src="assets/LoFiPrototype.png" alt="Skizzen der mobilen Ansicht" />
+            <figcaption>Low-Fi interaktiver Prototyp: Hauptflow Dashboard → Task Details → Completion Feedback </figcaption>
           </div>
         </div>
 
