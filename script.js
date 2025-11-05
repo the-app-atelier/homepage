@@ -68,7 +68,7 @@ addEventListener("DOMContentLoaded", (event) => {
       de: {
         // navigation
         "nav.projects": "Projekte",
-        "nav.about": "Über uns",
+        "nav.about": "Über das App Atelier",
         "nav.method": "Methodologie",
         "nav.career": "Karriere",
         "nav.imprint": "Impressum",
